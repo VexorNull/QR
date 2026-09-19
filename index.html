@@ -180,7 +180,7 @@
                     <input type="text" id="inputDob" value="10-07-2000" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
                 </div>
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number (Auto-formatted)</label>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number</label>
                     <input type="text" id="inputCnic" value="42101-0000000-1" maxlength="15" oninput="formatCnic(this); saveAndHandleUpdate();" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
                 </div>
             </div>
@@ -199,7 +199,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Authorized Organization</label>
-                    <input type="text" id="inputOrg" value="AGC & RP // Employed" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <input type="text" id="inputOrg" value="AGC & RP 🛡️ Registed Employee" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Official Photograph / Emblem</label>
@@ -274,11 +274,11 @@
                     </div>
                     <div class="flex justify-between border-b border-slate-800/60 pb-1">
                         <span class="text-slate-400 text-[11px]">DOB :</span>
-                        <span id="cardDob" class="text-slate-200 font-mono text-[11px]">10-07-2000</span>
+                        <span id="cardDob" class="text-slate-200 font-mono text-[11px]">1x-0x-20xx</span>
                     </div>
                     <div class="flex justify-between border-b border-slate-800/60 pb-1">
                         <span class="text-slate-400 text-[11px]">CNIC :</span>
-                        <span id="cardCnic" class="text-slate-200 font-mono text-[11px] font-semibold">42101-0000000-1</span>
+                        <span id="cardCnic" class="text-slate-200 font-mono text-[11px] font-semibold">42201-xxxxxxx-1</span>
                     </div>
                     <div class="flex justify-between border-b border-slate-800/60 pb-1">
                         <span class="text-slate-400 text-[11px]">Issue Date :</span>
@@ -301,7 +301,7 @@
                 <!-- Authorized Organization Footer Tag inside card -->
                 <div class="pt-2 border-t border-slate-800/60 text-center flex justify-between items-center px-1">
                     <span class="text-[9px] text-slate-500 font-mono">STATUS: ACTIVE</span>
-                    <span id="cardOrg" class="text-[10px] tracking-wider uppercase font-black text-blue-400 dynamic-text">AGC & RP // Employed</span>
+                    <span id="cardOrg" class="text-[10px] tracking-wider uppercase font-black text-blue-400 dynamic-text">AGC & RP 🛡️ Registed Employee</span>
                 </div>
             </div>
 
@@ -516,7 +516,7 @@
 
             // Generate structured format for QR Code
             const qrText = `[SECURE ID VERIFICATION]\n` +
-                           `Credential ID: ${customId}\n` +
+                           `Credential : ${customId}\n` +
                            `Name : ${name}\n` +
                            `Father : ${father}\n` +
                            `DOB : ${dob}\n` +
