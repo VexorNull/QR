@@ -117,7 +117,7 @@
                 <h2 class="text-xl font-bold flex items-center gap-2.5 text-white">
                     <i class="fa-solid fa-shield-halved text-blue-500" id="formIcon"></i> Enterprise Credential Configurator
                 </h2>
-                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Universal Pass v13.0</span>
+                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Universal Pass v14.0</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -197,7 +197,7 @@
                     <span class="text-blue-400 dynamic-text font-bold">OFFICIAL PASS</span>
                 </div>
 
-                <!-- Profile Photo Preview -->
+                <!-- Profile Photo Preview (Google Drive default link configured) -->
                 <div class="relative w-20 h-20 mx-auto mt-1">
                     <img id="previewImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Employee Photo" class="w-20 h-20 rounded-xl object-cover border-2 border-blue-500 shadow-xl dynamic-border">
                     <div class="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full p-1 text-[9px] shadow dynamic-bg ring-2 ring-slate-900">
@@ -352,8 +352,8 @@
             document.getElementById("cardExpiryDate").innerText = expiryDate;
             document.getElementById("cardOrg").innerText = org;
 
-            // Generate structured format for QR Code
-            const qrText = `[SECURE ID VERIFICATION]\nCredential ID: ${customId}\nName : ${name}\nFather : xxx-xxx\nDOB : ${dob}\nDesignation: ${designation}\nCnic : xxx-xxx-x\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\nOrganization : ${org}`;
+            // Generate structured format for QR Code mapping live form inputs (with masked sensitive info for security)
+            const qrText = `[SECURE ID VERIFICATION]\nCredential ID: ${customId}\nName : ${name}\nFather : ${father}\nDOB : ${dob}\nDesignation: ${designation}\nCnic : xxx-xxx-x\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\nOrganization : ${org}`;
 
             initQR(qrText);
         }
@@ -391,7 +391,7 @@
             document.getElementById("modalDataBox").innerHTML = `
                 <div><b>ID:</b> <span class="text-white">${customId}</span></div>
                 <div><b>Holder Name:</b> <span class="text-white">${name}</span></div>
-                <div><b>Father Name:</b> <span class="text-slate-500">xxx-xxx (Masked)</span></div>
+                <div><b>Father Name:</b> <span class="text-slate-300">${document.getElementById("inputFather").value}</span></div>
                 <div><b>DOB:</b> <span class="text-white">${dob}</span></div>
                 <div><b>Role:</b> ${designation}</div>
                 <div><b>CNIC:</b> <span class="text-slate-500">xxxxx-xxxxxxx-x</span></div>
