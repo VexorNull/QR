@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Status: Stable](https://img.shields.io/badge/Status-Production%20Ready-emerald.svg)]()
 [![Developed By](https://img.shields.io/badge/Author-Tanveer%20Hussain%20(@vexornull)-purple.svg)](https://Instagram.com/vexornull)
 
