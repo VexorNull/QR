@@ -325,12 +325,18 @@
     <div id="verifyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="glass max-w-sm w-full p-6 rounded-2xl shadow-2xl border border-slate-700 space-y-4 text-center relative animate-in fade-in zoom-in duration-200">
             <button onclick="closeVerificationModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
-            <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center mx-auto text-xl dynamic-bg text-white">
-                <i class="fa-solid fa-shield-check"></i>
+            
+            <!-- Dynamic Main Card Profile Image integrated inside Verification Modal -->
+            <div class="relative w-16 h-16 mx-auto">
+                <img id="modalProfileImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Verified Profile" class="w-16 h-16 rounded-full object-cover border-2 border-blue-500 shadow-xl dynamic-border">
+                <div class="absolute -bottom-1 -right-1 bg-emerald-600 text-white rounded-full p-1 text-[8px] shadow ring-2 ring-slate-900">
+                    <i class="fa-solid fa-check"></i>
+                </div>
             </div>
+
             <div>
                 <h3 class="text-base font-bold text-white">Digital Credential Verified</h3>
-                <p class="text-xs text-slate-400 mt-1">Official cryptographic authentication record.</p>
+                <p class="text-xs text-slate-400 mt-0.5">Official cryptographic authentication record.</p>
             </div>
             <div id="modalDataBox" class="bg-slate-950 p-3 rounded-xl text-left text-xs font-mono space-y-1.5 text-slate-300 border border-slate-800">
                 <!-- Dynamically filled -->
@@ -561,6 +567,10 @@
             const dob = document.getElementById("inputDob").value;
             const cnic = document.getElementById("inputCnic").value;
             const org = document.getElementById("inputOrg").value;
+
+            // Sync main card profile image to verification modal profile image
+            const mainImgSrc = document.getElementById("previewImg").src;
+            document.getElementById("modalProfileImg").src = mainImgSrc;
 
             document.getElementById("modalDataBox").innerHTML = `
                 <div><b>ID:</b> <span class="text-white">${customId}</span></div>
