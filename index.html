@@ -7,7 +7,7 @@
     <!-- Professional SEO & Branding Meta Tags -->
     <title>VexorNull | Official Enterprise Credential & Verification Studio</title>
     <meta name="description" content="Official secure digital credential and employee verification ID card generator studio. Developed by Tanveer Hussain (@vexornull).">
-    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain, agc & rp">
+    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain">
     <meta name="author" content="Tanveer Hussain">
     <meta name="robots" content="index, follow">
     
@@ -84,7 +84,7 @@
                 <h2 class="text-xl font-bold flex items-center gap-2.5 text-white">
                     <i class="fa-solid fa-shield-halved text-blue-500" id="formIcon"></i> Enterprise Credential Configurator
                 </h2>
-                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">SecureID Pro v10.0</span>
+                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Universal Pass v11.0</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -101,7 +101,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Designation</label>
-                    <input type="text" id="inputDesignation" value="Finance Assistant & Developer" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <input type="text" id="inputDesignation" value="Software Engineer" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number</label>
@@ -123,7 +123,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Authorized Organization</label>
-                    <input type="text" id="inputOrg" value="AGC & RP // Employee" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <input type="text" id="inputOrg" value="TechCorp Global // Employee" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="e.g. Acme Corporation // Staff">
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Official Photograph / Emblem</label>
@@ -144,12 +144,12 @@
             <!-- Specific Professional ID Card Container targeted for image download -->
             <div id="digitalCard" class="w-full max-w-sm bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden">
                 
-                <!-- Watermark Logo / Ribbon -->
+                <!-- Watermark Logo Ribbon -->
                 <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none"></div>
 
-                <!-- Top Enterprise Header Bar -->
+                <!-- Top Enterprise Header Bar with Dynamic Company Prefix ID -->
                 <div class="flex justify-between items-center border-b border-slate-800 pb-2 text-[10px] text-slate-400 font-mono tracking-wider">
-                    <span>ID: #VN-8849-AGC</span>
+                    <span id="cardIdBadge">ID: #TC-4921-EMP</span>
                     <span class="text-blue-400 dynamic-text font-bold">OFFICIAL PASS</span>
                 </div>
 
@@ -164,7 +164,7 @@
                 <!-- Info Header Display -->
                 <div>
                     <h3 id="cardName" class="text-lg font-extrabold text-white tracking-wide">Tanveer Hussain</h3>
-                    <p id="cardDesignation" class="text-xs text-blue-400 font-semibold mt-0.5 dynamic-text">Finance Assistant & Developer</p>
+                    <p id="cardDesignation" class="text-xs text-blue-400 font-semibold mt-0.5 dynamic-text">Software Engineer</p>
                 </div>
 
                 <!-- Official Fields Registry Box -->
@@ -196,7 +196,7 @@
                 <!-- Authorized Organization Footer Tag inside card -->
                 <div class="pt-2 border-t border-slate-800/60 text-center flex justify-between items-center px-1">
                     <span class="text-[9px] text-slate-500 font-mono">STATUS: ACTIVE</span>
-                    <span id="cardOrg" class="text-[10px] tracking-wider uppercase font-black text-blue-400 dynamic-text">AGC & RP // Employee</span>
+                    <span id="cardOrg" class="text-[10px] tracking-wider uppercase font-black text-blue-400 dynamic-text">TechCorp Global // Employee</span>
                 </div>
             </div>
 
@@ -216,7 +216,7 @@
 
     </main>
 
-    <!-- Verification Modal Popup -->
+    <!-- Verification Modal Popup (Masked with xxx-xxx details) -->
     <div id="verifyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="glass max-w-sm w-full p-6 rounded-2xl shadow-2xl border border-slate-700 space-y-4 text-center relative animate-in fade-in zoom-in duration-200">
             <button onclick="closeVerificationModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
@@ -225,10 +225,10 @@
             </div>
             <div>
                 <h3 class="text-base font-bold text-white">Digital Credential Verified</h3>
-                <p class="text-xs text-slate-400 mt-1">This official profile is authenticated under system security standards.</p>
+                <p class="text-xs text-slate-400 mt-1">Official cryptographic authentication record.</p>
             </div>
-            <div id="modalDataBox" class="bg-slate-950 p-3 rounded-xl text-left text-xs font-mono space-y-1 text-slate-300 border border-slate-800">
-                <!-- Dynamically filled -->
+            <div id="modalDataBox" class="bg-slate-950 p-3 rounded-xl text-left text-xs font-mono space-y-1.5 text-slate-300 border border-slate-800">
+                <!-- Dynamically filled with masked example data -->
             </div>
             <button onclick="closeVerificationModal()" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-xs font-semibold transition dynamic-bg">Close Window</button>
         </div>
@@ -242,6 +242,8 @@
     <!-- Script Logic -->
     <script>
         let qrcodeObj = null;
+        let randomNumericCode = Math.floor(1000 + Math.random() * 9000);
+
         const colorThemes = {
             blue: { primary: '#3b82f6', class: 'text-blue-400', bg: 'bg-blue-600', border: 'border-blue-500' },
             emerald: { primary: '#10b981', class: 'text-emerald-400', bg: 'bg-emerald-600', border: 'border-emerald-500' },
@@ -281,6 +283,17 @@
             });
         }
 
+        // Helper to extract company initials for dynamic ID prefix
+        function getCompanyPrefix(orgText) {
+            if (!orgText) return "GEN";
+            const clean = orgText.split('/')[0].trim();
+            const words = clean.split(' ');
+            if (words.length >= 2) {
+                return (words[0][0] + words[1][0]).toUpperCase();
+            }
+            return clean.substring(0, 3).toUpperCase();
+        }
+
         function updateCard() {
             const name = document.getElementById("inputName").value;
             const father = document.getElementById("inputFather").value;
@@ -289,6 +302,11 @@
             const issueDate = document.getElementById("inputIssueDate").value;
             const expiryDate = document.getElementById("inputExpiryDate").value;
             const org = document.getElementById("inputOrg").value;
+
+            // Generate dynamic prefix based on company name input
+            const prefix = getCompanyPrefix(org);
+            const dynamicIdString = `ID: #${prefix}-${randomNumericCode}`;
+            document.getElementById("cardIdBadge").innerText = dynamicIdString;
 
             // Update UI Preview
             document.getElementById("cardName").innerText = name;
@@ -299,8 +317,8 @@
             document.getElementById("cardExpiryDate").innerText = expiryDate;
             document.getElementById("cardOrg").innerText = org;
 
-            // Generate structured format for QR Code
-            const qrText = `[SECURE ID VERIFICATION]\nName : ${name}\nFather : ${father}\nDesignation: ${designation}\nCnic : ${cnic}\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\nAuthorized Organization : ${org}`;
+            // Generate structured format for QR Code with example masked (xxx-xxx) format
+            const qrText = `[SECURE ID VERIFICATION]\nName : ${name}\nFather : xxx-xxx\nDesignation: ${designation}\nCnic : xxx-xxx-x\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\nOrganization : ${org}`;
 
             initQR(qrText);
         }
@@ -329,13 +347,13 @@
         function openVerificationModal() {
             const name = document.getElementById("inputName").value;
             const designation = document.getElementById("inputDesignation").value;
-            const cnic = document.getElementById("inputCnic").value;
             const org = document.getElementById("inputOrg").value;
 
             document.getElementById("modalDataBox").innerHTML = `
-                <div><b>Holder:</b> ${name}</div>
+                <div><b>Holder Name:</b> <span class="text-white">${name}</span></div>
+                <div><b>Father Name:</b> <span class="text-slate-500">xxx-xxx (Masked)</span></div>
                 <div><b>Role:</b> ${designation}</div>
-                <div><b>CNIC:</b> ${cnic}</div>
+                <div><b>CNIC:</b> <span class="text-slate-500">xxxxx-xxxxxxx-x</span></div>
                 <div><b>Issuer:</b> ${org}</div>
             `;
             document.getElementById("verifyModal").classList.remove("hidden");
