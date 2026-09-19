@@ -62,6 +62,8 @@
     </script>
     <!-- QRCodeJS Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- html2canvas Library for clean Card downloading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -104,7 +106,7 @@
                 <h2 class="text-xl font-bold flex items-center gap-2.5 text-white">
                     <i class="fa-solid fa-sliders text-blue-500" id="formIcon"></i> Profile & SEO Configurator
                 </h2>
-                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">SEO Pro v5.0</span>
+                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">SEO Pro v6.0</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -169,7 +171,8 @@
             
             <h3 class="text-sm font-semibold tracking-wider text-slate-400 uppercase">Live Digital Badge & vCard QR</h3>
 
-            <div class="w-full max-w-sm bg-slate-900/90 border border-slate-800/80 rounded-2xl p-6 text-center shadow-2xl space-y-4 relative">
+            <!-- Specific Card Container targeted for focused download -->
+            <div id="digitalCard" class="w-full max-w-sm bg-slate-900/95 border border-slate-800 rounded-2xl p-6 text-center shadow-2xl space-y-4 relative">
                 
                 <!-- Profile Image Preview (Google Drive Direct Link configured) -->
                 <div class="relative w-24 h-24 mx-auto">
@@ -199,21 +202,21 @@
                     <span class="text-[10px] text-slate-400 mt-2 font-medium">Scan to save vCard directly</span>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="grid grid-cols-2 gap-2 pt-2">
-                    <button onclick="downloadVCard()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2.5 px-3 rounded-xl shadow transition flex items-center justify-center gap-1.5 dynamic-bg">
-                        <i class="fa-solid fa-address-book"></i> Save Contact
-                    </button>
-                    <button onclick="downloadQRCodeImage()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 px-3 rounded-xl shadow transition flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-download"></i> Save QR
-                    </button>
-                </div>
-
-                <!-- Social Handles -->
+                <!-- Social Handles Display inside card -->
                 <div class="flex justify-center space-x-4 pt-1 text-slate-400 text-xs border-t border-slate-800/60 mt-3">
-                    <a id="socialIg" href="https://Instagram.com/vexornull" target="_blank" class="hover:text-blue-400 transition flex items-center gap-1 pt-3"><i class="fa-brands fa-instagram text-pink-500"></i> @vexornull</a>
-                    <a id="socialGh" href="https://github.com/vexornull" target="_blank" class="hover:text-blue-400 transition flex items-center gap-1 pt-3"><i class="fa-brands fa-github text-slate-200"></i> @vexornull</a>
+                    <span class="flex items-center gap-1 pt-2"><i class="fa-brands fa-instagram text-pink-500"></i> <span id="cardIgText">@vexornull</span></span>
+                    <span class="flex items-center gap-1 pt-2"><i class="fa-brands fa-github text-slate-200"></i> <span id="cardGhText">@vexornull</span></span>
                 </div>
+            </div>
+
+            <!-- Action Buttons (Outside the captured card area) -->
+            <div class="w-full max-w-sm grid grid-cols-2 gap-2 pt-2">
+                <button onclick="downloadVCard()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2.5 px-3 rounded-xl shadow transition flex items-center justify-center gap-1.5 dynamic-bg">
+                    <i class="fa-solid fa-address-book"></i> Save Contact
+                </button>
+                <button onclick="downloadCardImage()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 px-3 rounded-xl shadow transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-download"></i> Save Card
+                </button>
             </div>
         </div>
 
@@ -257,8 +260,8 @@
             document.getElementById("qrcode").innerHTML = "";
             qrcodeObj = new QRCode(document.getElementById("qrcode"), {
                 text: vcfData,
-                width: 145,
-                height: 145,
+                width: 130,
+                height: 130,
                 colorDark : "#0f172a",
                 colorLight : "#ffffff",
                 correctLevel : QRCode.CorrectLevel.M
@@ -284,8 +287,8 @@
             document.getElementById("phoneLink").href = `tel:${phone}`;
             document.getElementById("emailLink").href = `mailto:${email}`;
 
-            document.getElementById("socialIg").href = `https://Instagram.com/${ig}`;
-            document.getElementById("socialGh").href = `https://github.com/${gh}`;
+            document.getElementById("cardIgText").innerText = `@${ig}`;
+            document.getElementById("cardGhText").innerText = `@${gh}`;
 
             // Generate vCard format string
             const vcfData = `BEGIN:VCARD\nVERSION:3.0\nFN:${name}\nTITLE:${role}\nORG:${company}\nTEL:${phone}\nEMAIL:${email}\nNOTE:${bio}\nURL:https://Instagram.com/${ig}\nEND:VCARD`;
@@ -314,16 +317,24 @@
             document.body.removeChild(link);
         }
 
-        function downloadQRCodeImage() {
-            const qrImg = document.querySelector("#qrcode img");
-            if (qrImg) {
+        // Focused Card Image Downloader using html2canvas
+        function downloadCardImage() {
+            const cardElement = document.getElementById("digitalCard");
+            const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
+            
+            html2canvas(cardElement, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: null
+            }).then(canvas => {
                 const link = document.createElement('a');
-                link.href = qrImg.src;
-                link.download = 'Tanveer_Digital_QRCode.png';
+                link.download = `${name}_Digital_Card.png`;
+                link.href = canvas.toDataURL('image/png');
                 link.click();
-            } else {
-                alert('Please wait for QR code to generate.');
-            }
+            }).catch(err => {
+                console.error("Error downloading card:", err);
+                alert("Failed to capture card image. Please try again.");
+            });
         }
 
         // Image upload preview handler
