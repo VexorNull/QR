@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" href="https://vexornull.github.io/favicon/favicon.png">
 
     <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
-    <meta property="property:type" content="website">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://vexornull.github.io/QR/">
     <meta property="og:title" content="VexorNull | Official Enterprise Credential Studio">
     <meta property="og:description" content="Generate secure enterprise credentials, custom employee badges, and cryptographic verification passes instantly.">
@@ -117,7 +117,7 @@
                 <h2 class="text-xl font-bold flex items-center gap-2.5 text-white">
                     <i class="fa-solid fa-shield-halved text-blue-500" id="formIcon"></i> Enterprise Credential Configurator
                 </h2>
-                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Universal Pass v11.0</span>
+                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Universal Pass v13.0</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -144,27 +144,31 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number</label>
-                    <input type="text" id="inputCnic" value="42101-0000000-1" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Date of Birth (DOB)</label>
+                    <input type="text" id="inputDob" value="10-07-2000" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
                 </div>
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Issue Date</label>
-                    <input type="text" id="inputIssueDate" value="01-01-2026" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number</label>
+                    <input type="text" id="inputCnic" value="42101-0000000-1" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Issue Date</label>
+                    <input type="text" id="inputIssueDate" value="01-01-2026" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                </div>
+                <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Expiry Date</label>
                     <input type="text" id="inputExpiryDate" value="31-12-2028" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Authorized Organization</label>
-                    <input type="text" id="inputOrg" value="AGC & RP // Employed" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="e.g. Acme Corporation // Staff">
-                </div>
             </div>
 
-            <div class="grid grid-cols-1 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Authorized Organization</label>
+                    <input type="text" id="inputOrg" value="AGC & RP // Employed" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Official Photograph / Emblem</label>
                     <input type="file" id="inputPhoto" accept="image/*" class="w-full text-xs text-slate-400 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer bg-slate-900 border border-slate-800 rounded-xl">
@@ -214,8 +218,12 @@
                         <span id="cardFather" class="text-slate-200 font-semibold">Hidden</span>
                     </div>
                     <div class="flex justify-between border-b border-slate-800/60 pb-1">
+                        <span class="text-slate-400 text-[11px]">DOB :</span>
+                        <span id="cardDob" class="text-slate-200 font-mono text-[11px]">10-07-2000</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800/60 pb-1">
                         <span class="text-slate-400 text-[11px]">CNIC :</span>
-                        <span id="cardCnic" class="text-slate-200 font-mono text-[11px] text-slate-200 font-semibold">42101-0000000-1</span>
+                        <span id="cardCnic" class="text-slate-200 font-mono text-[11px] font-semibold">42101-0000000-1</span>
                     </div>
                     <div class="flex justify-between border-b border-slate-800/60 pb-1">
                         <span class="text-slate-400 text-[11px]">Issue Date :</span>
@@ -256,7 +264,7 @@
 
     </main>
 
-    <!-- Verification Modal Popup (Masked with xxx-xxx details) -->
+    <!-- Verification Modal Popup -->
     <div id="verifyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="glass max-w-sm w-full p-6 rounded-2xl shadow-2xl border border-slate-700 space-y-4 text-center relative animate-in fade-in zoom-in duration-200">
             <button onclick="closeVerificationModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
@@ -268,7 +276,7 @@
                 <p class="text-xs text-slate-400 mt-1">Official cryptographic authentication record.</p>
             </div>
             <div id="modalDataBox" class="bg-slate-950 p-3 rounded-xl text-left text-xs font-mono space-y-1.5 text-slate-300 border border-slate-800">
-                <!-- Dynamically filled with masked example data -->
+                <!-- Dynamically filled -->
             </div>
             <button onclick="closeVerificationModal()" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-xs font-semibold transition dynamic-bg">Close Window</button>
         </div>
@@ -327,23 +335,25 @@
             const father = document.getElementById("inputFather").value;
             const designation = document.getElementById("inputDesignation").value;
             const customId = document.getElementById("inputCustomId").value;
+            const dob = document.getElementById("inputDob").value;
             const cnic = document.getElementById("inputCnic").value;
             const issueDate = document.getElementById("inputIssueDate").value;
             const expiryDate = document.getElementById("inputExpiryDate").value;
             const org = document.getElementById("inputOrg").value;
 
-            // Update UI Preview with manual ID value
+            // Update UI Preview
             document.getElementById("cardIdBadge").innerText = customId;
             document.getElementById("cardName").innerText = name;
             document.getElementById("cardFather").innerText = father;
             document.getElementById("cardDesignation").innerText = designation;
+            document.getElementById("cardDob").innerText = dob;
             document.getElementById("cardCnic").innerText = cnic;
             document.getElementById("cardIssueDate").innerText = issueDate;
             document.getElementById("cardExpiryDate").innerText = expiryDate;
             document.getElementById("cardOrg").innerText = org;
 
             // Generate structured format for QR Code
-            const qrText = `[SECURE ID VERIFICATION]\nCredential ID: ${customId}\nName : ${name}\nFather : xxx-xxx\nDesignation: ${designation}\nCnic : xxx-xxx-x\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\nOrganization : ${org}`;
+            const qrText = `[SECURE ID VERIFICATION]\nCredential ID: ${customId}\nName : ${name}\nFather : xxx-xxx\nDOB : ${dob}\nDesignation: ${designation}\nCnic : xxx-xxx-x\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\nOrganization : ${org}`;
 
             initQR(qrText);
         }
@@ -353,12 +363,13 @@
             const father = document.getElementById("inputFather").value;
             const designation = document.getElementById("inputDesignation").value;
             const customId = document.getElementById("inputCustomId").value;
+            const dob = document.getElementById("inputDob").value;
             const cnic = document.getElementById("inputCnic").value;
             const issueDate = document.getElementById("inputIssueDate").value;
             const expiryDate = document.getElementById("inputExpiryDate").value;
             const org = document.getElementById("inputOrg").value;
 
-            const content = `Credential ID: ${customId}\nName : ${name}\nFather : ${father}\nDesignation: ${designation}\nCnic : ${cnic}\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\n\nAuthorized Organization : ${org}`;
+            const content = `Credential ID: ${customId}\nName : ${name}\nFather : ${father}\nDOB : ${dob}\nDesignation: ${designation}\nCnic : ${cnic}\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\n\nAuthorized Organization : ${org}`;
 
             const blob = new Blob([content], { type: 'text/plain;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
@@ -374,12 +385,14 @@
             const name = document.getElementById("inputName").value;
             const designation = document.getElementById("inputDesignation").value;
             const customId = document.getElementById("inputCustomId").value;
+            const dob = document.getElementById("inputDob").value;
             const org = document.getElementById("inputOrg").value;
 
             document.getElementById("modalDataBox").innerHTML = `
                 <div><b>ID:</b> <span class="text-white">${customId}</span></div>
                 <div><b>Holder Name:</b> <span class="text-white">${name}</span></div>
                 <div><b>Father Name:</b> <span class="text-slate-500">xxx-xxx (Masked)</span></div>
+                <div><b>DOB:</b> <span class="text-white">${dob}</span></div>
                 <div><b>Role:</b> ${designation}</div>
                 <div><b>CNIC:</b> <span class="text-slate-500">xxxxx-xxxxxxx-x</span></div>
                 <div><b>Issuer:</b> ${org}</div>
