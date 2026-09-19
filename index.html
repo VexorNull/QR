@@ -117,7 +117,7 @@
                 <h2 class="text-xl font-bold flex items-center gap-2.5 text-white">
                     <i class="fa-solid fa-shield-halved text-blue-500" id="formIcon"></i> Enterprise Credential Configurator
                 </h2>
-                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Universal Pass v15.0</span>
+                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Universal Pass v16.0</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -148,8 +148,8 @@
                     <input type="text" id="inputDob" value="10-07-2000" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
                 </div>
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number</label>
-                    <input type="text" id="inputCnic" value="42101-0000000-1" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number (Auto-formatted)</label>
+                    <input type="text" id="inputCnic" value="42101-0000000-1" maxlength="15" oninput="formatCnic(this); updateCard();" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
                 </div>
             </div>
 
@@ -197,7 +197,7 @@
                     <span class="text-blue-400 dynamic-text font-bold">OFFICIAL PASS</span>
                 </div>
 
-                <!-- Profile Photo Preview (Google Drive default link configured) -->
+                <!-- Profile Photo Preview -->
                 <div class="relative w-20 h-20 mx-auto mt-1">
                     <img id="previewImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Employee Photo" class="w-20 h-20 rounded-xl object-cover border-2 border-blue-500 shadow-xl dynamic-border">
                     <div class="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full p-1 text-[9px] shadow dynamic-bg ring-2 ring-slate-900">
@@ -298,6 +298,19 @@
             amber: { primary: '#f59e0b', class: 'text-amber-400', bg: 'bg-amber-600', border: 'border-amber-500' }
         };
 
+        // Auto format CNIC function (e.g. 4210100000001 -> 42101-0000000-1)
+        function formatCnic(input) {
+            let v = input.value.replace(/\D/g, '');
+            if (v.length > 13) v = v.slice(0, 13);
+            
+            if (v.length > 5 && v.length <= 12) {
+                v = v.slice(0, 5) + '-' + v.slice(5);
+            } else if (v.length > 12) {
+                v = v.slice(0, 5) + '-' + v.slice(5, 12) + '-' + v.slice(12);
+            }
+            input.value = v;
+        }
+
         function setThemeColor(themeName) {
             const theme = colorThemes[themeName];
             document.querySelectorAll('.dynamic-text').forEach(el => {
@@ -352,14 +365,14 @@
             document.getElementById("cardExpiryDate").innerText = expiryDate;
             document.getElementById("cardOrg").innerText = org;
 
-            // Generate structured format for QR Code with explicit newlines (\n) for clean formatting
+            // Generate structured format for QR Code with actual CNIC numbers and clean newlines
             const qrText = `[SECURE ID VERIFICATION]\n` +
                            `Credential ID: ${customId}\n` +
                            `Name : ${name}\n` +
                            `Father : ${father}\n` +
                            `DOB : ${dob}\n` +
                            `Designation: ${designation}\n` +
-                           `Cnic : xxx-xxx-x\n` +
+                           `Cnic : ${cnic}\n` +
                            `Issue Date : ${issueDate}\n` +
                            `Expiry Date : ${expiryDate}\n` +
                            `Organization : ${org}`;
@@ -403,6 +416,7 @@
             const designation = document.getElementById("inputDesignation").value;
             const customId = document.getElementById("inputCustomId").value;
             const dob = document.getElementById("inputDob").value;
+            const cnic = document.getElementById("inputCnic").value;
             const org = document.getElementById("inputOrg").value;
 
             document.getElementById("modalDataBox").innerHTML = `
@@ -411,7 +425,7 @@
                 <div><b>Father Name:</b> <span class="text-slate-300">${document.getElementById("inputFather").value}</span></div>
                 <div><b>DOB:</b> <span class="text-white">${dob}</span></div>
                 <div><b>Role:</b> ${designation}</div>
-                <div><b>CNIC:</b> <span class="text-slate-500">xxxxx-xxxxxxx-x</span></div>
+                <div><b>CNIC:</b> <span class="text-white">${cnic}</span></div>
                 <div><b>Issuer:</b> ${org}</div>
             `;
             document.getElementById("verifyModal").classList.remove("hidden");
