@@ -4,44 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Professional SEO Meta Tags -->
-    <title>VexorNull | Ultimate Digital vCard & QR Creator Studio</title>
-    <meta name="description" content="Create, customize, and share professional digital business cards with instant dynamic vCard QR codes. Developed by Tanveer Hussain (@vexornull).">
-    <meta name="keywords" content="digital vcard, qr code generator, digital business card, vexornull, tanveer hussain, web portfolio, contact generator">
+    <!-- Professional SEO & Branding Meta Tags -->
+    <title>VexorNull | Official Enterprise Credential & Verification Studio</title>
+    <meta name="description" content="Official secure digital credential and employee verification ID card generator studio. Developed by Tanveer Hussain (@vexornull).">
+    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain, agc & rp">
     <meta name="author" content="Tanveer Hussain">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph / Social Media SEO Meta Tags -->
-    <meta property="og:title" content="VexorNull | Ultimate Digital vCard & QR Creator Studio">
-    <meta property="og:description" content="Generate instant vCard QR codes, manage professional digital profiles, and share contact cards seamlessly.">
+    <!-- Custom Favicon Integration -->
+    <link rel="icon" type="image/png" href="https://vexornull.github.io/favicon/favicon.png">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="VexorNull | Official Enterprise Credential Studio">
+    <meta property="og:description" content="Generate secure enterprise credentials and cryptographic verification badges.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://Instagram.com/vexornull">
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000">
-
-    <!-- Twitter Card SEO -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="VexorNull | Ultimate Digital vCard & QR Creator Studio">
-    <meta name="twitter:description" content="Professional digital business card and dynamic vCard QR generator studio.">
-    <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000">
-
-    <!-- Structured Data (JSON-LD) for Google SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Tanveer Hussain",
-      "url": "https://Instagram.com/vexornull",
-      "sameAs": [
-        "https://github.com/vexornull",
-        "https://Instagram.com/vexornull"
-      ],
-      "jobTitle": "Finance Assistant & Developer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Airmen Golf Club"
-      }
-    }
-    </script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -67,10 +45,10 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glow:hover { box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); }
+        .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow:hover { box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
         input, textarea, select { color-scheme: dark; }
     </style>
 </head>
@@ -80,16 +58,16 @@
     <header class="w-full py-4 px-6 border-b border-slate-800/80 flex justify-between items-center glass sticky top-0 z-50">
         <div class="flex items-center space-x-3">
             <div id="headerDot" class="w-3 h-3 rounded-full bg-blue-500 animate-ping"></div>
-            <span class="font-extrabold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500" id="brandTextSpan">NULL</span> STUDIO</span>
+            <span class="font-extrabold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500" id="brandTextSpan">NULL</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 ml-1">SECURE ID</span></span>
         </div>
         <div class="flex items-center space-x-4">
             <!-- Theme Accent Color Selector -->
             <div class="hidden md:flex items-center space-x-2 text-xs text-slate-400">
                 <span>Theme:</span>
-                <button onclick="setThemeColor('blue')" class="w-4 h-4 rounded-full bg-blue-500 focus:outline-none ring-2 ring-white/20"></button>
-                <button onclick="setThemeColor('emerald')" class="w-4 h-4 rounded-full bg-emerald-500 focus:outline-none ring-2 ring-white/20"></button>
-                <button onclick="setThemeColor('purple')" class="w-4 h-4 rounded-full bg-purple-500 focus:outline-none ring-2 ring-white/20"></button>
-                <button onclick="setThemeColor('amber')" class="w-4 h-4 rounded-full bg-amber-500 focus:outline-none ring-2 ring-white/20"></button>
+                <button onclick="setThemeColor('blue')" class="w-4 h-4 rounded-full bg-blue-500 focus:outline-none ring-2 ring-white/20 transition hover:scale-110"></button>
+                <button onclick="setThemeColor('emerald')" class="w-4 h-4 rounded-full bg-emerald-500 focus:outline-none ring-2 ring-white/20 transition hover:scale-110"></button>
+                <button onclick="setThemeColor('purple')" class="w-4 h-4 rounded-full bg-purple-500 focus:outline-none ring-2 ring-white/20 transition hover:scale-110"></button>
+                <button onclick="setThemeColor('amber')" class="w-4 h-4 rounded-full bg-amber-500 focus:outline-none ring-2 ring-white/20 transition hover:scale-110"></button>
             </div>
             <div class="text-xs text-slate-400 border-l border-slate-800 pl-4">
                 By <a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-400 hover:underline font-semibold" id="authorLink">@vexornull</a>
@@ -104,9 +82,9 @@
         <div class="lg:col-span-7 glass p-6 md:p-8 rounded-2xl shadow-2xl space-y-6">
             <div class="flex justify-between items-center border-b border-slate-800 pb-4">
                 <h2 class="text-xl font-bold flex items-center gap-2.5 text-white">
-                    <i class="fa-solid fa-sliders text-blue-500" id="formIcon"></i> Profile & SEO Configurator
+                    <i class="fa-solid fa-shield-halved text-blue-500" id="formIcon"></i> Enterprise Credential Configurator
                 </h2>
-                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">SEO Pro v6.0</span>
+                <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">SecureID Pro v10.0</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -115,52 +93,41 @@
                     <input type="text" id="inputName" value="Tanveer Hussain" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Designation / Role</label>
-                    <input type="text" id="inputRole" value="Finance Assistant & Developer" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Father's Name</label>
+                    <input type="text" id="inputFather" value="Muhammad Hussain" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Phone Number</label>
-                    <input type="text" id="inputPhone" value="+92 300 0000000" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Designation</label>
+                    <input type="text" id="inputDesignation" value="Finance Assistant & Developer" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Email Address</label>
-                    <input type="email" id="inputEmail" value="contact@vexornull.com" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number</label>
+                    <input type="text" id="inputCnic" value="42101-0000000-1" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Company / Organization</label>
-                    <input type="text" id="inputCompany" value="Airmen Golf Club" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Issue Date</label>
+                    <input type="text" id="inputIssueDate" value="01-01-2026" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Profile Photo / Logo</label>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Expiry Date</label>
+                    <input type="text" id="inputExpiryDate" value="31-12-2028" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Authorized Organization</label>
+                    <input type="text" id="inputOrg" value="AGC & RP // Employee" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Official Photograph / Emblem</label>
                     <input type="file" id="inputPhoto" accept="image/*" class="w-full text-xs text-slate-400 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer bg-slate-900 border border-slate-800 rounded-xl">
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Short Bio / Summary</label>
-                <textarea id="inputBio" rows="2" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">Building web applications, digital solutions & custom scripts.</textarea>
-            </div>
-
-            <!-- Social Links Section -->
-            <div class="border-t border-slate-800 pt-4 space-y-3">
-                <label class="block text-xs uppercase tracking-wider text-blue-400 font-bold" id="socialHeaderLabel">Social Handles (@vexornull Ecosystem)</label>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl px-3 py-2">
-                        <i class="fa-brands fa-instagram text-pink-500 w-6"></i>
-                        <span class="text-xs text-slate-500 mr-1">instagram.com/</span>
-                        <input type="text" id="inputInstagram" value="vexornull" oninput="updateCard()" class="bg-transparent text-sm w-full focus:outline-none text-slate-200">
-                    </div>
-                    <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl px-3 py-2">
-                        <i class="fa-brands fa-github text-slate-300 w-6"></i>
-                        <span class="text-xs text-slate-500 mr-1">github.com/</span>
-                        <input type="text" id="inputGithub" value="vexornull" oninput="updateCard()" class="bg-transparent text-sm w-full focus:outline-none text-slate-200">
-                    </div>
                 </div>
             </div>
         </div>
@@ -169,62 +136,107 @@
         <div class="lg:col-span-5 flex flex-col items-center justify-start glass p-6 rounded-2xl shadow-2xl relative overflow-hidden space-y-5">
             <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" id="previewGlow"></div>
             
-            <h3 class="text-sm font-semibold tracking-wider text-slate-400 uppercase">Live Digital Badge & vCard QR</h3>
+            <div class="flex justify-between items-center w-full px-1">
+                <h3 class="text-xs font-bold tracking-wider text-slate-400 uppercase">Live Official ID Pass</h3>
+                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-mono">VERIFIED SECURE</span>
+            </div>
 
-            <!-- Specific Card Container targeted for focused download -->
-            <div id="digitalCard" class="w-full max-w-sm bg-slate-900/95 border border-slate-800 rounded-2xl p-6 text-center shadow-2xl space-y-4 relative">
+            <!-- Specific Professional ID Card Container targeted for image download -->
+            <div id="digitalCard" class="w-full max-w-sm bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden">
                 
-                <!-- Profile Image Preview (Google Drive Direct Link configured) -->
-                <div class="relative w-24 h-24 mx-auto">
-                    <img id="previewImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Profile Logo" class="w-24 h-24 rounded-full object-cover border-2 border-blue-500 shadow-lg dynamic-border">
-                    <div class="absolute bottom-0 right-0 bg-blue-600 text-white rounded-full p-1.5 text-[10px] shadow dynamic-bg">
+                <!-- Watermark Logo / Ribbon -->
+                <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none"></div>
+
+                <!-- Top Enterprise Header Bar -->
+                <div class="flex justify-between items-center border-b border-slate-800 pb-2 text-[10px] text-slate-400 font-mono tracking-wider">
+                    <span>ID: #VN-8849-AGC</span>
+                    <span class="text-blue-400 dynamic-text font-bold">OFFICIAL PASS</span>
+                </div>
+
+                <!-- Profile Photo Preview -->
+                <div class="relative w-20 h-20 mx-auto mt-1">
+                    <img id="previewImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Employee Photo" class="w-20 h-20 rounded-xl object-cover border-2 border-blue-500 shadow-xl dynamic-border">
+                    <div class="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full p-1 text-[9px] shadow dynamic-bg ring-2 ring-slate-900">
                         <i class="fa-solid fa-check"></i>
                     </div>
                 </div>
 
-                <!-- Info Display -->
+                <!-- Info Header Display -->
                 <div>
-                    <h3 id="cardName" class="text-xl font-bold text-white">Tanveer Hussain</h3>
-                    <p id="cardRole" class="text-xs text-blue-400 font-semibold mt-0.5 dynamic-text">Finance Assistant & Developer</p>
-                    <p id="cardCompany" class="text-[11px] text-slate-400 font-medium mt-0.5">Airmen Golf Club</p>
-                    <p id="cardBio" class="text-xs text-slate-400 mt-2 px-1">Building web applications, digital solutions & custom scripts.</p>
+                    <h3 id="cardName" class="text-lg font-extrabold text-white tracking-wide">Tanveer Hussain</h3>
+                    <p id="cardDesignation" class="text-xs text-blue-400 font-semibold mt-0.5 dynamic-text">Finance Assistant & Developer</p>
                 </div>
 
-                <!-- Contact Pills -->
-                <div class="flex justify-center gap-2 pt-1">
-                    <a id="phoneLink" href="#" class="bg-slate-800/90 hover:bg-slate-800 px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 text-slate-200 transition"><i class="fa-solid fa-phone text-blue-400 dynamic-icon"></i> Call</a>
-                    <a id="emailLink" href="#" class="bg-slate-800/90 hover:bg-slate-800 px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 text-slate-200 transition"><i class="fa-solid fa-envelope text-blue-400 dynamic-icon"></i> Email</a>
+                <!-- Official Fields Registry Box -->
+                <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium">
+                    <div class="flex justify-between border-b border-slate-800/60 pb-1">
+                        <span class="text-slate-400 text-[11px]">Father :</span>
+                        <span id="cardFather" class="text-slate-200 font-semibold">Muhammad Hussain</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800/60 pb-1">
+                        <span class="text-slate-400 text-[11px]">CNIC :</span>
+                        <span id="cardCnic" class="text-slate-200 font-mono text-[11px] text-slate-200 font-semibold">42101-0000000-1</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800/60 pb-1">
+                        <span class="text-slate-400 text-[11px]">Issue Date :</span>
+                        <span id="cardIssueDate" class="text-slate-200 font-mono text-[11px]">01-01-2026</span>
+                    </div>
+                    <div class="flex justify-between pb-0.5">
+                        <span class="text-slate-400 text-[11px]">Expiry Date :</span>
+                        <span id="cardExpiryDate" class="text-slate-200 font-mono text-[11px]">31-12-2028</span>
+                    </div>
                 </div>
 
                 <!-- QR Code Box -->
-                <div class="pt-3 border-t border-slate-800/80 flex flex-col items-center">
-                    <div id="qrcode" class="bg-white p-3 rounded-xl shadow-inner inline-block"></div>
-                    <span class="text-[10px] text-slate-400 mt-2 font-medium">Scan to save vCard directly</span>
+                <div class="pt-2 border-t border-slate-800/80 flex flex-col items-center">
+                    <div id="qrcode" class="bg-white p-2.5 rounded-xl shadow-inner inline-block"></div>
+                    <span class="text-[9px] text-slate-400 mt-1.5 font-mono">ENCRYPTED CREDENTIAL QR</span>
                 </div>
 
-                <!-- Social Handles Display inside card -->
-                <div class="flex justify-center space-x-4 pt-1 text-slate-400 text-xs border-t border-slate-800/60 mt-3">
-                    <span class="flex items-center gap-1 pt-2"><i class="fa-brands fa-instagram text-pink-500"></i> <span id="cardIgText">@vexornull</span></span>
-                    <span class="flex items-center gap-1 pt-2"><i class="fa-brands fa-github text-slate-200"></i> <span id="cardGhText">@vexornull</span></span>
+                <!-- Authorized Organization Footer Tag inside card -->
+                <div class="pt-2 border-t border-slate-800/60 text-center flex justify-between items-center px-1">
+                    <span class="text-[9px] text-slate-500 font-mono">STATUS: ACTIVE</span>
+                    <span id="cardOrg" class="text-[10px] tracking-wider uppercase font-black text-blue-400 dynamic-text">AGC & RP // Employee</span>
                 </div>
             </div>
 
-            <!-- Action Buttons (Outside the captured card area) -->
-            <div class="w-full max-w-sm grid grid-cols-2 gap-2 pt-2">
-                <button onclick="downloadVCard()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2.5 px-3 rounded-xl shadow transition flex items-center justify-center gap-1.5 dynamic-bg">
-                    <i class="fa-solid fa-address-book"></i> Save Contact
+            <!-- Action Buttons (Outside captured area) -->
+            <div class="w-full max-w-sm grid grid-cols-3 gap-2 pt-1">
+                <button onclick="downloadTextDetails()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 px-2 rounded-xl shadow transition flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-file-lines text-blue-400 dynamic-icon"></i> Copy
                 </button>
-                <button onclick="downloadCardImage()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 px-3 rounded-xl shadow transition flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-download"></i> Save Card
+                <button onclick="openVerificationModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 px-2 rounded-xl shadow transition flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-qrcode text-emerald-400"></i> Scan
+                </button>
+                <button onclick="downloadCardImage()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2.5 px-2 rounded-xl shadow transition flex items-center justify-center gap-1 dynamic-bg">
+                    <i class="fa-solid fa-download"></i> Save ID
                 </button>
             </div>
         </div>
 
     </main>
 
+    <!-- Verification Modal Popup -->
+    <div id="verifyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass max-w-sm w-full p-6 rounded-2xl shadow-2xl border border-slate-700 space-y-4 text-center relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeVerificationModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
+            <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center mx-auto text-xl dynamic-bg text-white">
+                <i class="fa-solid fa-shield-check"></i>
+            </div>
+            <div>
+                <h3 class="text-base font-bold text-white">Digital Credential Verified</h3>
+                <p class="text-xs text-slate-400 mt-1">This official profile is authenticated under system security standards.</p>
+            </div>
+            <div id="modalDataBox" class="bg-slate-950 p-3 rounded-xl text-left text-xs font-mono space-y-1 text-slate-300 border border-slate-800">
+                <!-- Dynamically filled -->
+            </div>
+            <button onclick="closeVerificationModal()" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-xs font-semibold transition dynamic-bg">Close Window</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="py-4 text-center text-xs text-slate-500 border-t border-slate-900">
-        Designed & Built with ❤️ by <span class="text-slate-300 font-medium">Tanveer Hussain</span> (<a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-400 hover:underline" id="footerAuthorLink">@vexornull</a>)
+        Official Enterprise Studio Built by <span class="text-slate-300 font-medium">Tanveer Hussain</span> (<a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-400 hover:underline" id="footerAuthorLink">@vexornull</a>)
     </footer>
 
     <!-- Script Logic -->
@@ -240,7 +252,9 @@
         function setThemeColor(themeName) {
             const theme = colorThemes[themeName];
             document.querySelectorAll('.dynamic-text').forEach(el => {
-                el.className = `text-xs font-semibold mt-0.5 ${theme.class}`;
+                el.className = el.classList.contains('font-black') || el.classList.contains('font-extrabold') 
+                    ? `text-[10px] tracking-wider uppercase font-black ${theme.class}`
+                    : `text-xs font-semibold mt-0.5 ${theme.class}`;
             });
             document.querySelectorAll('.dynamic-bg').forEach(el => {
                 el.style.backgroundColor = theme.primary;
@@ -252,16 +266,15 @@
                 el.className = `fa-solid ${el.classList[1]} ${theme.class}`;
             });
             document.getElementById('brandTextSpan').className = theme.class;
-            document.getElementById('formIcon').className = `fa-solid fa-sliders ${theme.class}`;
-            document.getElementById('socialHeaderLabel').className = `block text-xs uppercase tracking-wider font-bold ${theme.class}`;
+            document.getElementById('formIcon').className = `fa-solid fa-shield-halved ${theme.class}`;
         }
 
-        function initQR(vcfData) {
+        function initQR(qrData) {
             document.getElementById("qrcode").innerHTML = "";
             qrcodeObj = new QRCode(document.getElementById("qrcode"), {
-                text: vcfData,
-                width: 130,
-                height: 130,
+                text: qrData,
+                width: 115,
+                height: 115,
                 colorDark : "#0f172a",
                 colorLight : "#ffffff",
                 correctLevel : QRCode.CorrectLevel.M
@@ -270,51 +283,66 @@
 
         function updateCard() {
             const name = document.getElementById("inputName").value;
-            const role = document.getElementById("inputRole").value;
-            const phone = document.getElementById("inputPhone").value;
-            const email = document.getElementById("inputEmail").value;
-            const company = document.getElementById("inputCompany").value;
-            const bio = document.getElementById("inputBio").value;
-            const ig = document.getElementById("inputInstagram").value;
-            const gh = document.getElementById("inputGithub").value;
+            const father = document.getElementById("inputFather").value;
+            const designation = document.getElementById("inputDesignation").value;
+            const cnic = document.getElementById("inputCnic").value;
+            const issueDate = document.getElementById("inputIssueDate").value;
+            const expiryDate = document.getElementById("inputExpiryDate").value;
+            const org = document.getElementById("inputOrg").value;
 
             // Update UI Preview
             document.getElementById("cardName").innerText = name;
-            document.getElementById("cardRole").innerText = role;
-            document.getElementById("cardCompany").innerText = company;
-            document.getElementById("cardBio").innerText = bio;
-            
-            document.getElementById("phoneLink").href = `tel:${phone}`;
-            document.getElementById("emailLink").href = `mailto:${email}`;
+            document.getElementById("cardFather").innerText = father;
+            document.getElementById("cardDesignation").innerText = designation;
+            document.getElementById("cardCnic").innerText = cnic;
+            document.getElementById("cardIssueDate").innerText = issueDate;
+            document.getElementById("cardExpiryDate").innerText = expiryDate;
+            document.getElementById("cardOrg").innerText = org;
 
-            document.getElementById("cardIgText").innerText = `@${ig}`;
-            document.getElementById("cardGhText").innerText = `@${gh}`;
+            // Generate structured format for QR Code
+            const qrText = `[SECURE ID VERIFICATION]\nName : ${name}\nFather : ${father}\nDesignation: ${designation}\nCnic : ${cnic}\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\nAuthorized Organization : ${org}`;
 
-            // Generate vCard format string
-            const vcfData = `BEGIN:VCARD\nVERSION:3.0\nFN:${name}\nTITLE:${role}\nORG:${company}\nTEL:${phone}\nEMAIL:${email}\nNOTE:${bio}\nURL:https://Instagram.com/${ig}\nEND:VCARD`;
-
-            initQR(vcfData);
+            initQR(qrText);
         }
 
-        function downloadVCard() {
+        function downloadTextDetails() {
             const name = document.getElementById("inputName").value;
-            const role = document.getElementById("inputRole").value;
-            const phone = document.getElementById("inputPhone").value;
-            const email = document.getElementById("inputEmail").value;
-            const company = document.getElementById("inputCompany").value;
-            const bio = document.getElementById("inputBio").value;
-            const ig = document.getElementById("inputInstagram").value;
+            const father = document.getElementById("inputFather").value;
+            const designation = document.getElementById("inputDesignation").value;
+            const cnic = document.getElementById("inputCnic").value;
+            const issueDate = document.getElementById("inputIssueDate").value;
+            const expiryDate = document.getElementById("inputExpiryDate").value;
+            const org = document.getElementById("inputOrg").value;
 
-            const vcfData = `BEGIN:VCARD\nVERSION:3.0\nFN:${name}\nTITLE:${role}\nORG:${company}\nTEL:${phone}\nEMAIL:${email}\nNOTE:${bio}\nURL:https://Instagram.com/${ig}\nEND:VCARD`;
+            const content = `Name : ${name}\nFather : ${father}\nDesignation: ${designation}\nCnic : ${cnic}\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\n\nAuthorized Organization : ${org}`;
 
-            const blob = new Blob([vcfData], { type: 'text/vcard;charset=utf-8;' });
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', `${name.replace(/\s+/g, '_')}_Contact.vcf`);
+            link.setAttribute('download', `${name.replace(/\s+/g, '_')}_Credential.txt`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+        }
+
+        function openVerificationModal() {
+            const name = document.getElementById("inputName").value;
+            const designation = document.getElementById("inputDesignation").value;
+            const cnic = document.getElementById("inputCnic").value;
+            const org = document.getElementById("inputOrg").value;
+
+            document.getElementById("modalDataBox").innerHTML = `
+                <div><b>Holder:</b> ${name}</div>
+                <div><b>Role:</b> ${designation}</div>
+                <div><b>CNIC:</b> ${cnic}</div>
+                <div><b>Issuer:</b> ${org}</div>
+            `;
+            document.getElementById("verifyModal").classList.remove("hidden");
+        }
+
+        function closeVerificationModal() {
+            document.getElementById("verifyModal").classList.add("hidden");
         }
 
         // Focused Card Image Downloader using html2canvas
@@ -323,17 +351,17 @@
             const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
             
             html2canvas(cardElement, {
-                scale: 2,
+                scale: 2.5,
                 useCORS: true,
                 backgroundColor: null
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `${name}_Digital_Card.png`;
+                link.download = `${name}_Official_ID_Pass.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(err => {
-                console.error("Error downloading card:", err);
-                alert("Failed to capture card image. Please try again.");
+                console.error("Error capturing card:", err);
+                alert("Failed to capture ID image. Please try again.");
             });
         }
 
