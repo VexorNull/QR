@@ -1,6 +1,6 @@
 ====================================================================
-                    VEXORNULL ENTERPRISE STUDIO
-                          MIT LICENSE
+           VEXORNULL ENTERPRISE CREDENTIAL & VERIFICATION STUDIO
+                       OFFICIAL MIT LICENSE
 ====================================================================
 
 Copyright (c) 2026 Tanveer Hussain (@vexornull)
@@ -15,6 +15,17 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
+--------------------------------------------------------------------
+DISCLAIMER & LIABILITY LIMITATION:
+This software is provided for legitimate digital credential creation, 
+employee badge generation, and authorized verification purposes only. 
+The author and maintainer (Tanveer Hussain) strictly prohibit any 
+unauthorized, fraudulent, or malicious usage, including the generation 
+of fake government documents, illicit identification, or deceptive 
+credentials. Users assume total responsibility for all generated content 
+and compliance with applicable regional laws.
+--------------------------------------------------------------------
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,7 +34,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
---------------------------------------------------------------------
-Project: VexorNull Enterprise Credential & Verification Studio (PRO v18.0)
-Maintainer: Tanveer Hussain
+====================================================================
+Project: VexorNull Enterprise Credential Studio (PRO v18.0)
+Maintainer: Tanveer Hussain (@vexornull)
 ====================================================================
