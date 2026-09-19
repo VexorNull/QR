@@ -4,22 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Professional SEO & Branding Meta Tags -->
+    <!-- Advanced Professional SEO & Branding Meta Tags -->
     <title>VexorNull | Official Enterprise Credential & Verification Studio</title>
+    <meta name="title" content="VexorNull | Official Enterprise Credential & Verification Studio">
     <meta name="description" content="Official secure digital credential and employee verification ID card generator studio. Developed by Tanveer Hussain (@vexornull).">
-    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain">
+    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain, secure ID generator">
     <meta name="author" content="Tanveer Hussain">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://vexornull.github.io/QR/">
     
     <!-- Custom Favicon Integration -->
     <link rel="icon" type="image/png" href="https://vexornull.github.io/favicon/favicon.png">
 
-    <!-- Open Graph / Social Media Meta Tags -->
+    <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+    <meta property="property:type" content="website">
+    <meta property="og:url" content="https://vexornull.github.io/QR/">
     <meta property="og:title" content="VexorNull | Official Enterprise Credential Studio">
-    <meta property="og:description" content="Generate secure enterprise credentials and cryptographic verification badges.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://Instagram.com/vexornull">
+    <meta property="og:description" content="Generate secure enterprise credentials, custom employee badges, and cryptographic verification passes instantly.">
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000">
+    <meta property="og:site_name" content="VexorNull Security Studio">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://vexornull.github.io/QR/">
+    <meta name="twitter:title" content="VexorNull | Official Enterprise Credential Studio">
+    <meta name="twitter:description" content="Official secure digital credential and employee verification ID card generator studio.">
+    <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000">
+    <meta name="twitter:creator" content="@vexornull">
+
+    <!-- JSON-LD Structured Data for Search Engine Optimization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "VexorNull Enterprise Credential Studio",
+      "operatingSystem": "All",
+      "applicationCategory": "BusinessApplication",
+      "author": {
+        "@type": "Person",
+        "name": "Tanveer Hussain",
+        "alternateName": "vexornull"
+      },
+      "description": "Secure digital credential and employee ID card generator with real-time QR code encryption.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -94,37 +127,44 @@
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Father's Name</label>
-                    <input type="text" id="inputFather" value="forbidden" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <input type="text" id="inputFather" value="Hidden" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Designation</label>
-                    <input type="text" id="inputDesignation" value="Software Engineer" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <input type="text" id="inputDesignation" value="Assistant | Finance Department" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Credential ID Number</label>
+                    <input type="text" id="inputCustomId" value="ID: #AR-4921-EMP" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number</label>
                     <input type="text" id="inputCnic" value="42101-0000000-1" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Issue Date</label>
                     <input type="text" id="inputIssueDate" value="01-01-2026" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Expiry Date</label>
-                    <input type="text" id="inputExpiryDate" value="31-12-2028" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
-                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Expiry Date</label>
+                    <input type="text" id="inputExpiryDate" value="31-12-2028" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                </div>
+                <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Authorized Organization</label>
                     <input type="text" id="inputOrg" value="AGC & RP // Employed" oninput="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition" placeholder="e.g. Acme Corporation // Staff">
                 </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Official Photograph / Emblem</label>
                     <input type="file" id="inputPhoto" accept="image/*" class="w-full text-xs text-slate-400 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer bg-slate-900 border border-slate-800 rounded-xl">
@@ -147,7 +187,7 @@
                 <!-- Watermark Logo Ribbon -->
                 <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none"></div>
 
-                <!-- Top Enterprise Header Bar with Dynamic Company Prefix ID -->
+                <!-- Top Enterprise Header Bar with Manual ID -->
                 <div class="flex justify-between items-center border-b border-slate-800 pb-2 text-[10px] text-slate-400 font-mono tracking-wider">
                     <span id="cardIdBadge">ID: #AR-4921-EMP</span>
                     <span class="text-blue-400 dynamic-text font-bold">OFFICIAL PASS</span>
@@ -164,14 +204,14 @@
                 <!-- Info Header Display -->
                 <div>
                     <h3 id="cardName" class="text-lg font-extrabold text-white tracking-wide">Tanveer Hussain</h3>
-                    <p id="cardDesignation" class="text-xs text-blue-400 font-semibold mt-0.5 dynamic-text">Software Engineer</p>
+                    <p id="cardDesignation" class="text-xs text-blue-400 font-semibold mt-0.5 dynamic-text">Assistant | Finance Department</p>
                 </div>
 
                 <!-- Official Fields Registry Box -->
                 <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium">
                     <div class="flex justify-between border-b border-slate-800/60 pb-1">
                         <span class="text-slate-400 text-[11px]">Father :</span>
-                        <span id="cardFather" class="text-slate-200 font-semibold">forbidden</span>
+                        <span id="cardFather" class="text-slate-200 font-semibold">Hidden</span>
                     </div>
                     <div class="flex justify-between border-b border-slate-800/60 pb-1">
                         <span class="text-slate-400 text-[11px]">CNIC :</span>
@@ -242,7 +282,6 @@
     <!-- Script Logic -->
     <script>
         let qrcodeObj = null;
-        let randomNumericCode = Math.floor(1000 + Math.random() * 9000);
 
         const colorThemes = {
             blue: { primary: '#3b82f6', class: 'text-blue-400', bg: 'bg-blue-600', border: 'border-blue-500' },
@@ -283,32 +322,18 @@
             });
         }
 
-        // Helper to extract company initials for dynamic ID prefix
-        function getCompanyPrefix(orgText) {
-            if (!orgText) return "GEN";
-            const clean = orgText.split('/')[0].trim();
-            const words = clean.split(' ');
-            if (words.length >= 2) {
-                return (words[0][0] + words[1][0]).toUpperCase();
-            }
-            return clean.substring(0, 3).toUpperCase();
-        }
-
         function updateCard() {
             const name = document.getElementById("inputName").value;
             const father = document.getElementById("inputFather").value;
             const designation = document.getElementById("inputDesignation").value;
+            const customId = document.getElementById("inputCustomId").value;
             const cnic = document.getElementById("inputCnic").value;
             const issueDate = document.getElementById("inputIssueDate").value;
             const expiryDate = document.getElementById("inputExpiryDate").value;
             const org = document.getElementById("inputOrg").value;
 
-            // Generate dynamic prefix based on company name input
-            const prefix = getCompanyPrefix(org);
-            const dynamicIdString = `ID: #${prefix}-${randomNumericCode}`;
-            document.getElementById("cardIdBadge").innerText = dynamicIdString;
-
-            // Update UI Preview
+            // Update UI Preview with manual ID value
+            document.getElementById("cardIdBadge").innerText = customId;
             document.getElementById("cardName").innerText = name;
             document.getElementById("cardFather").innerText = father;
             document.getElementById("cardDesignation").innerText = designation;
@@ -317,8 +342,8 @@
             document.getElementById("cardExpiryDate").innerText = expiryDate;
             document.getElementById("cardOrg").innerText = org;
 
-            // Generate structured format for QR Code with example masked (xxx-xxx) format
-            const qrText = `[SECURE ID VERIFICATION]\nName : ${name}\nFather : xxx-xxx\nDesignation: ${designation}\nCnic : xxx-xxx-x\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\nOrganization : ${org}`;
+            // Generate structured format for QR Code
+            const qrText = `[SECURE ID VERIFICATION]\nCredential ID: ${customId}\nName : ${name}\nFather : xxx-xxx\nDesignation: ${designation}\nCnic : xxx-xxx-x\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\nOrganization : ${org}`;
 
             initQR(qrText);
         }
@@ -327,12 +352,13 @@
             const name = document.getElementById("inputName").value;
             const father = document.getElementById("inputFather").value;
             const designation = document.getElementById("inputDesignation").value;
+            const customId = document.getElementById("inputCustomId").value;
             const cnic = document.getElementById("inputCnic").value;
             const issueDate = document.getElementById("inputIssueDate").value;
             const expiryDate = document.getElementById("inputExpiryDate").value;
             const org = document.getElementById("inputOrg").value;
 
-            const content = `Name : ${name}\nFather : ${father}\nDesignation: ${designation}\nCnic : ${cnic}\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\n\nAuthorized Organization : ${org}`;
+            const content = `Credential ID: ${customId}\nName : ${name}\nFather : ${father}\nDesignation: ${designation}\nCnic : ${cnic}\nIssue Date : ${issueDate}\nExpiry Date : ${expiryDate}\n\nAuthorized Organization : ${org}`;
 
             const blob = new Blob([content], { type: 'text/plain;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
@@ -347,9 +373,11 @@
         function openVerificationModal() {
             const name = document.getElementById("inputName").value;
             const designation = document.getElementById("inputDesignation").value;
+            const customId = document.getElementById("inputCustomId").value;
             const org = document.getElementById("inputOrg").value;
 
             document.getElementById("modalDataBox").innerHTML = `
+                <div><b>ID:</b> <span class="text-white">${customId}</span></div>
                 <div><b>Holder Name:</b> <span class="text-white">${name}</span></div>
                 <div><b>Father Name:</b> <span class="text-slate-500">xxx-xxx (Masked)</span></div>
                 <div><b>Role:</b> ${designation}</div>
