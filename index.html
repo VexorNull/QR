@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VexorNull | Ultimate Digital Card & QR Creator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- QRCodeJS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(17, 24, 39, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glow:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.5); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+
+    <!-- Header -->
+    <header class="w-full py-4 px-6 border-b border-slate-800/80 flex justify-between items-center glass sticky top-0 z-50">
+        <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
+            <span class="font-bold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500">NULL</span> HUB</span>
+        </div>
+        <div class="text-xs text-slate-400">
+            Powered by <a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-400 hover:underline">@vexornull</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-2 gap-8 w-full flex-grow">
+        
+        <!-- Input Form Section -->
+        <div class="glass p-6 rounded-2xl shadow-2xl space-y-5">
+            <h2 class="text-xl font-bold border-b border-slate-800 pb-3 flex items-center gap-2">
+                <i class="fa-solid fa-sliders text-blue-500"></i> Card & QR Configuration
+            </h2>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Full Name</label>
+                    <input type="text" id="inputName" value="Tanveer Hussain" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Designation / Role</label>
+                        <input type="text" id="inputRole" value="Finance Assistant & Developer" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Phone Number</label>
+                        <input type="text" id="inputPhone" value="+92 300 0000000" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Email Address</label>
+                    <input type="email" id="inputEmail" value="contact@vexornull.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Profile Photo / Logo Upload</label>
+                    <input type="file" id="inputPhoto" accept="image/*" class="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer bg-slate-900 border border-slate-800 rounded-xl">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Short Bio / Tagline</label>
+                    <textarea id="inputBio" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">Building web applications & digital experiences.</textarea>
+                </div>
+            </div>
+
+            <button onclick="generateCard()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-3 rounded-xl shadow-lg transition duration-300 glow flex items-center justify-center gap-2">
+                <i class="fa-solid fa-qrcode"></i> Update & Generate QR Code
+            </button>
+        </div>
+
+        <!-- Preview & QR Output Section -->
+        <div class="flex flex-col items-center justify-center glass p-6 rounded-2xl shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="w-full max-w-sm bg-slate-900/90 border border-slate-800 rounded-2xl p-6 text-center shadow-xl space-y-4 relative">
+                
+                <!-- Profile Image Preview -->
+                <div class="relative w-24 h-24 mx-auto">
+                    <img id="previewImg" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Profile" class="w-24 h-24 rounded-full object-cover border-2 border-blue-500 shadow-md">
+                </div>
+
+                <!-- Info Display -->
+                <div>
+                    <h3 id="cardName" class="text-xl font-bold text-white">Tanveer Hussain</h3>
+                    <p id="cardRole" class="text-xs text-blue-400 font-medium mt-0.5">Finance Assistant & Developer</p>
+                    <p id="cardBio" class="text-xs text-slate-400 mt-2 px-2">Building web applications & digital experiences.</p>
+                </div>
+
+                <!-- Contact Badges -->
+                <div class="flex justify-center space-x-3 text-sm text-slate-300 pt-1">
+                    <span id="cardPhone" class="bg-slate-800/80 px-2.5 py-1 rounded-lg text-xs flex items-center gap-1.5"><i class="fa-solid fa-phone text-blue-400"></i> Call</span>
+                    <span id="cardEmail" class="bg-slate-800/80 px-2.5 py-1 rounded-lg text-xs flex items-center gap-1.5"><i class="fa-solid fa-envelope text-blue-400"></i> Email</span>
+                </div>
+
+                <!-- QR Code Box -->
+                <div class="pt-4 border-t border-slate-800 flex flex-col items-center">
+                    <div id="qrcode" class="bg-white p-3 rounded-xl shadow-inner inline-block"></div>
+                    <span class="text-[10px] text-slate-500 mt-2">Scan to access digital profile</span>
+                </div>
+
+                <!-- Social Handles -->
+                <div class="flex justify-center space-x-4 pt-2 text-slate-400 text-sm">
+                    <a href="https://Instagram.com/vexornull" target="_blank" class="hover:text-blue-400 transition"><i class="fa-brands fa-instagram"></i> @vexornull</a>
+                    <a href="https://github.com/vexornull" target="_blank" class="hover:text-blue-400 transition"><i class="fa-brands fa-github"></i> @vexornull</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center text-xs text-slate-500 border-t border-slate-900">
+        Designed & Developed by <span class="text-slate-300 font-medium">Tanveer Hussain</span> (<a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-400 hover:underline">@vexornull</a>)
+    </footer>
+
+    <!-- Script to handle dynamic updates and QR code -->
+    <script>
+        let qrcodeObj = null;
+
+        function initQR(textData) {
+            document.getElementById("qrcode").innerHTML = "";
+            qrcodeObj = new QRCode(document.getElementById("qrcode"), {
+                text: textData,
+                width: 140,
+                height: 140,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+
+        function generateCard() {
+            const name = document.getElementById("inputName").value;
+            const role = document.getElementById("inputRole").value;
+            const phone = document.getElementById("inputPhone").value;
+            const email = document.getElementById("inputEmail").value;
+            const bio = document.getElementById("inputBio").value;
+
+            // Update UI preview text
+            document.getElementById("cardName").innerText = name;
+            document.getElementById("cardRole").innerText = role;
+            document.getElementById("cardPhone").innerHTML = `<i class="fa-solid fa-phone text-blue-400"></i> ${phone}`;
+            document.getElementById("cardEmail").innerHTML = `<i class="fa-solid fa-envelope text-blue-400"></i> ${email}`;
+            document.getElementById("cardBio").innerText = bio;
+
+            // Generate structured data text for QR Code contents
+            const qrPayload = `Name: ${name}\nRole: ${role}\nPhone: ${phone}\nEmail: ${email}\nBio: ${bio}\nInstagram: https://Instagram.com/vexornull`;
+            
+            initQR(qrPayload);
+        }
+
+        // Handle Image upload preview
+        document.getElementById("inputPhoto").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("previewImg").src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Initial load QR generation
+        window.onload = function() {
+            generateCard();
+        };
+    </script>
+</body>
+</html>
