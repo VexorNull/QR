@@ -97,6 +97,19 @@
             font-family: 'Courier New', Courier, monospace;
             font-weight: 900;
         }
+
+        /* PRO v18.0 Seamless Transparent QR Wrapper Styling */
+        .qr-wrapper-v18 {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.3s ease;
+        }
+        .qr-wrapper-v18:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
@@ -105,7 +118,7 @@
     <header class="w-full py-4 px-6 border-b border-slate-800/80 flex justify-between items-center glass sticky top-0 z-50">
         <div class="flex items-center space-x-3">
             <div id="headerDot" class="w-3 h-3 rounded-full bg-blue-500 animate-ping"></div>
-            <span class="font-extrabold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500" id="brandTextSpan">NULL</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 ml-1">PRO v17.0</span></span>
+            <span class="font-extrabold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500" id="brandTextSpan">NULL</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 ml-1">PRO v18.0</span></span>
         </div>
         <div class="flex items-center space-x-4">
             <!-- Theme Accent Color Selector -->
@@ -219,7 +232,7 @@
             
             <div class="flex justify-between items-center w-full px-1">
                 <h3 class="text-xs font-bold tracking-wider text-slate-400 uppercase">Live Official ID Pass</h3>
-                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-mono">SECURE v17</span>
+                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-mono">SECURE v18</span>
             </div>
 
             <!-- Specific Professional ID Card Container targeted for image download -->
@@ -277,12 +290,12 @@
                     </div>
                 </div>
 
-                <!-- Code Box (QR or Barcode) -->
+                <!-- PRO v18.0 Seamless Transparent Code Container Box -->
                 <div class="pt-2 border-t border-slate-800/80 flex flex-col items-center">
-                    <div id="codeContainer" class="bg-white p-2.5 rounded-xl shadow-inner inline-block w-full flex justify-center">
+                    <div id="codeContainer" class="qr-wrapper-v18 p-3 rounded-xl inline-flex justify-center items-center">
                         <div id="qrcode"></div>
                     </div>
-                    <span id="codeLabel" class="text-[9px] text-slate-400 mt-1.5 font-mono">ENCRYPTED CREDENTIAL QR</span>
+                    <span id="codeLabel" class="text-[9px] text-slate-400 mt-2 font-mono tracking-wider">ENCRYPTED CREDENTIAL QR</span>
                 </div>
 
                 <!-- Authorized Organization Footer Tag inside card -->
@@ -300,7 +313,7 @@
                 <button onclick="openVerificationModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 px-2 rounded-xl shadow transition flex items-center justify-center gap-1">
                     <i class="fa-solid fa-qrcode text-emerald-400"></i> Scan
                 </button>
-                <button id="saveIdBtn" onclick="downloadCardImage()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2.5 px-2 rounded-xl shadow transition flex items-center justify-center gap-1 dynamic-bg">
+                <button onclick="downloadCardImage()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2.5 px-2 rounded-xl shadow transition flex items-center justify-center gap-1 dynamic-bg">
                     <i class="fa-solid fa-download"></i> Save ID
                 </button>
             </div>
@@ -312,15 +325,12 @@
     <div id="verifyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="glass max-w-sm w-full p-6 rounded-2xl shadow-2xl border border-slate-700 space-y-4 text-center relative animate-in fade-in zoom-in duration-200">
             <button onclick="closeVerificationModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
-            <div class="relative w-16 h-16 mx-auto mt-2">
-                <img id="modalPreviewImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Verified Profile" class="w-16 h-16 rounded-full object-cover border-2 border-blue-500 shadow-lg dynamic-border">
-                <div class="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full p-0.5 text-[8px] shadow dynamic-bg ring-2 ring-slate-900">
-                    <i class="fa-solid fa-check"></i>
-                </div>
+            <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center mx-auto text-xl dynamic-bg text-white">
+                <i class="fa-solid fa-shield-check"></i>
             </div>
             <div>
-                <h3 class="text-base font-bold text-white mt-1">Digital Credential Verified</h3>
-                <p class="text-xs text-slate-400 mt-0.5">Official cryptographic authentication record.</p>
+                <h3 class="text-base font-bold text-white">Digital Credential Verified</h3>
+                <p class="text-xs text-slate-400 mt-1">Official cryptographic authentication record.</p>
             </div>
             <div id="modalDataBox" class="bg-slate-950 p-3 rounded-xl text-left text-xs font-mono space-y-1.5 text-slate-300 border border-slate-800">
                 <!-- Dynamically filled -->
@@ -463,12 +473,13 @@
                 container.innerHTML = `<div class="py-2 text-center text-slate-900"><div class="barcode-lines text-2xl tracking-widest">||| | |||| || | ||</div><div class="text-[9px] font-mono mt-1">${document.getElementById("inputCustomId").value}</div></div>`;
                 label.innerText = "LINEAR ENTERPRISE BARCODE";
             } else {
+                // Transparent styling applied to qrcode generator for clean blending
                 qrcodeObj = new QRCode(container, {
                     text: qrData,
                     width: 115,
                     height: 115,
-                    colorDark : "#0f172a",
-                    colorLight : "#ffffff",
+                    colorDark : "#ffffff", /* QR dots ko white/bright kar diya gaya hai dark theme ke liye */
+                    colorLight : "#0f172a", /* Background ko transparent/dark match kar diya gaya hai taake square box khatam hojaye */
                     correctLevel : QRCode.CorrectLevel.M
                 });
                 label.innerText = "ENCRYPTED CREDENTIAL QR";
@@ -486,6 +497,7 @@
             const expiryDate = document.getElementById("inputExpiryDate").value;
             const org = document.getElementById("inputOrg").value;
 
+            // Update UI Preview
             document.getElementById("cardIdBadge").innerText = customId;
             document.getElementById("cardName").innerText = name;
             document.getElementById("cardFather").innerText = father;
@@ -496,6 +508,7 @@
             document.getElementById("cardExpiryDate").innerText = expiryDate;
             document.getElementById("cardOrg").innerText = org;
 
+            // Generate structured format for QR Code
             const qrText = `[SECURE ID VERIFICATION]\n` +
                            `Credential ID: ${customId}\n` +
                            `Name : ${name}\n` +
@@ -548,10 +561,6 @@
             const dob = document.getElementById("inputDob").value;
             const cnic = document.getElementById("inputCnic").value;
             const org = document.getElementById("inputOrg").value;
-            const currentImgSrc = document.getElementById("previewImg").src;
-
-            // Update modal profile picture dynamically
-            document.getElementById("modalPreviewImg").src = currentImgSrc;
 
             document.getElementById("modalDataBox").innerHTML = `
                 <div><b>ID:</b> <span class="text-white">${customId}</span></div>
@@ -569,16 +578,11 @@
             document.getElementById("verifyModal").classList.add("hidden");
         }
 
-        // Focused Card Image Downloader using html2canvas with loading state
+        // Focused Card Image Downloader using html2canvas
         function downloadCardImage() {
             const cardElement = document.getElementById("digitalCard");
             const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
-            const saveBtn = document.getElementById("saveIdBtn");
             
-            const originalHTML = saveBtn.innerHTML;
-            saveBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Saving...`;
-            saveBtn.disabled = true;
-
             html2canvas(cardElement, {
                 scale: 2.5,
                 useCORS: true,
@@ -588,14 +592,9 @@
                 link.download = `${name}_Official_ID_Pass.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
-
-                saveBtn.innerHTML = originalHTML;
-                saveBtn.disabled = false;
             }).catch(err => {
                 console.error("Error capturing card:", err);
                 alert("Failed to capture ID image. Please try again.");
-                saveBtn.innerHTML = originalHTML;
-                saveBtn.disabled = false;
             });
         }
 
@@ -606,7 +605,6 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     document.getElementById("previewImg").src = e.target.result;
-                    document.getElementById("modalPreviewImg").src = e.target.result;
                 }
                 reader.readAsDataURL(file);
             }
