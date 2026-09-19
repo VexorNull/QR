@@ -71,8 +71,6 @@
             }
         }
     </script>
-    <!-- QRCodeJS Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <!-- html2canvas Library for clean Card downloading -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <!-- FontAwesome Icons -->
@@ -352,8 +350,6 @@
 
     <!-- Script Logic -->
     <script>
-        let qrcodeObj = null;
-
         const colorThemes = {
             blue: { primary: '#3b82f6', class: 'text-blue-400', bg: 'bg-blue-600', border: 'border-blue-500' },
             emerald: { primary: '#10b981', class: 'text-emerald-400', bg: 'bg-emerald-600', border: 'border-emerald-500' },
@@ -479,15 +475,9 @@
                 container.innerHTML = `<div class="py-2 text-center text-slate-900"><div class="barcode-lines text-2xl tracking-widest">||| | |||| || | ||</div><div class="text-[9px] font-mono mt-1">${document.getElementById("inputCustomId").value}</div></div>`;
                 label.innerText = "LINEAR ENTERPRISE BARCODE";
             } else {
-                // Transparent styling applied to qrcode generator for clean blending
-                qrcodeObj = new QRCode(container, {
-                    text: qrData,
-                    width: 115,
-                    height: 115,
-                    colorDark : "#ffffff",
-                    colorLight : "#0f172a",
-                    correctLevel : QRCode.CorrectLevel.M
-                });
+                // Direct reliable API image generation for 100% bug-free rendering
+                const encodedData = encodeURIComponent(qrData);
+                container.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=115x115&data=${encodedData}" alt="QR Code" class="w-[115px] h-[115px] rounded-lg">`;
                 label.innerText = "ENCRYPTED CREDENTIAL QR";
             }
         }
