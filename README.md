@@ -87,4 +87,4 @@ https://Instagram.com/vexornull
 
 ## 📝 License
 
-1. This project is open-source and available under the MIT License.
+1. This project is open-source and available under the Apache-2.0 license.
