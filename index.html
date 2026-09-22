@@ -136,6 +136,14 @@
         .card-back {
             transform: rotateY(180deg);
         }
+
+        /* Custom Unified Component Grid Integration */
+        .vexor-component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            width: 100%;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
@@ -459,6 +467,55 @@
         </div>
 
     </main>
+
+    <!-- Unified Component Showcase Section (Integrated Studio Add-on) -->
+    <section class="max-w-7xl mx-auto px-4 pb-12 w-full">
+        <div class="glass p-6 rounded-2xl shadow-xl space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-blue-500"></i> VexorNull Unified Cyber-Glass Component Suite
+                </h3>
+                <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">Active Modules</span>
+            </div>
+            
+            <div class="vexor-component-grid">
+                <!-- 1. Cyberpunk Neon Border Card -->
+                <div class="bg-[#0d0f18] border border-[rgba(0,255,204,0.3)] rounded-xl p-5 flex flex-col justify-between shadow-lg relative overflow-hidden transition-all duration-300 hover:border-[#00ffcc] hover:shadow-[0_0_20px_rgba(0,255,204,0.2)]">
+                    <div>
+                        <span class="inline-block px-2.5 py-1 rounded-full text-[10px] font-semibold bg-[rgba(0,255,204,0.1)] text-[#00ffcc] border border-[rgba(0,255,204,0.3)] mb-3">System Node</span>
+                        <h4 class="text-white font-bold text-sm mb-1">CyberPulse Uptime</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Real-time node monitoring and automated latency tracker active.</p>
+                    </div>
+                    <a href="https://github.com/vexornull" target="_blank" class="mt-4 block text-center py-2 px-3 rounded-lg border border-[#00ffcc] text-[#00ffcc] text-xs font-semibold transition hover:bg-[#00ffcc] hover:text-[#0d0f18]">Access Terminal</a>
+                </div>
+
+                <!-- 2. Frosted Glassmorphism Card -->
+                <div class="bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-xl p-5 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center font-bold text-white text-xs">TH</div>
+                            <div>
+                                <h4 class="text-white text-xs font-bold">Tanveer Hussain</h4>
+                                <span class="text-[10px] text-slate-400">Finance Assistant</span>
+                            </div>
+                        </div>
+                        <p class="text-slate-300 text-xs leading-relaxed">Building custom web architectures, Blogger themes, and cloud applications.</p>
+                    </div>
+                    <a href="https://github.com/vexornull" target="_blank" class="mt-4 block text-center py-2 px-3 rounded-lg bg-white/10 border border-white/15 text-white text-xs font-semibold transition hover:bg-white/20">View Profile</a>
+                </div>
+
+                <!-- 3. Spotlight Hover Card -->
+                <div class="bg-[#121216] border border-white/[0.06] rounded-xl p-5 flex flex-col justify-between shadow-xl relative overflow-hidden">
+                    <div>
+                        <span class="inline-block px-2.5 py-1 rounded-full text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/30 mb-3">Vercel Deployment</span>
+                        <h4 class="text-white font-bold text-sm mb-1">VexorVPN Tunnel</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">High-performance tunneling web application built with modern web standards.</p>
+                    </div>
+                    <a href="https://github.com/vexornull" target="_blank" class="mt-4 block text-center py-2 px-3 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold transition hover:bg-blue-500 hover:text-white">Explore Repo</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Verification Modal Popup -->
     <div id="verifyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
@@ -869,7 +926,6 @@
         }
 
         function downloadCardImage() {
-            // Check if card is flipped to determine which side to capture, or capture front by default
             const cardElement = document.getElementById("digitalCard");
             const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
             
