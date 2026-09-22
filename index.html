@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +7,8 @@
     <!-- Advanced Professional SEO & Branding Meta Tags -->
     <title>VexorNull | Multi-Format Enterprise ID & Cryptographic Credential Studio v35.0</title>
     <meta name="title" content="VexorNull | Multi-Format Enterprise ID & Cryptographic Credential Studio v35.0">
-    <meta name="description" content="Official secure multi-format digital credential and employee verification ID card generator studio featuring multiple card formats (Vertical, Horizontal, VIP Lanyard, Holographic Badge, Compact RFID), cryptographic biometrics, NFC simulator, and batch CSV support.">
-    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain, secure ID generator, v35, NFC badge, multi-format card">
+    <meta name="description" content="Official secure multi-format digital credential and employee verification ID card generator studio featuring multiple card formats, cryptographic biometrics, NFC simulator, and batch CSV support.">
+    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain, secure ID generator, v35, NFC badge">
     <meta name="author" content="Tanveer Hussain">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://vexornull.github.io/QR/">
@@ -63,7 +63,7 @@
                 extend: {
                     colors: {
                         brand: {
-                            DEFAULT: '#3b82f6',
+                            DEFAULT: '#2563eb',
                             dark: '#1d4ed8',
                         }
                     }
@@ -81,64 +81,45 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glow:hover { box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
-        input, textarea, select { color-scheme: dark; }
+        
+        /* Dynamic Theme Glass Styles */
+        .glass-light { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(24px); border: 1px solid rgba(0, 0, 0, 0.08); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); }
+        .glass-dark { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.08); }
         
         /* Holographic Seal Effect */
         .holo-stamp {
-            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(59,130,246,0.3) 50%, rgba(168,85,247,0.3) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(37,99,235,0.15) 50%, rgba(168,85,247,0.15) 100%);
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(0,0,0,0.1);
         }
 
         /* Gold Smart Chip Styling */
         .smart-chip {
             background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #d4af37 100%);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: inset 0 1px 2px rgba(255,255,255,0.6);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.8);
         }
 
-        /* Barcode simulated look styling */
         .barcode-lines {
             letter-spacing: 3px;
             font-family: 'Courier New', Courier, monospace;
             font-weight: 900;
         }
 
-        /* QR Wrapper Styling */
         .qr-wrapper-v35 {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             backdrop-filter: blur(8px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             transition: all 0.3s ease;
-        }
-        .qr-wrapper-v35:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
         }
 
         /* 3D Card Flip Mechanics */
-        .card-perspective {
-            perspective: 1200px;
-        }
-        .card-inner {
-            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-        .card-inner.is-flipped {
-            transform: rotateY(180deg);
-        }
-        .card-face {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-        .card-back {
-            transform: rotateY(180deg);
-        }
+        .card-perspective { perspective: 1200px; }
+        .card-inner { transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); transform-style: preserve-3d; }
+        .card-inner.is-flipped { transform: rotateY(180deg); }
+        .card-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+        .card-back { transform: rotateY(180deg); }
 
-        /* Custom Unified Component Grid Integration */
         .vexor-component-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -146,36 +127,37 @@
             width: 100%;
         }
 
-        /* NFC Ripple Wave Animation */
         @keyframes nfcPulse {
             0% { transform: scale(0.95); opacity: 0.8; }
             50% { transform: scale(1.15); opacity: 0.2; }
             100% { transform: scale(1.35); opacity: 0; }
         }
-        .nfc-wave {
-            animation: nfcPulse 2s infinite ease-out;
-        }
+        .nfc-wave { animation: nfcPulse 2s infinite ease-out; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<body id="appBody" class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white transition-colors duration-300">
 
     <!-- Header -->
-    <header class="w-full py-4 px-6 border-b border-slate-800/80 flex justify-between items-center glass sticky top-0 z-50">
+    <header id="appHeader" class="w-full py-4 px-6 border-b border-slate-200 flex justify-between items-center glass-light sticky top-0 z-50">
         <div class="flex items-center space-x-3">
-            <div id="headerDot" class="w-3 h-3 rounded-full bg-blue-500 animate-ping"></div>
-            <span class="font-extrabold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500" id="brandTextSpan">NULL</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 ml-1">PRO v35.0</span></span>
+            <div id="headerDot" class="w-3 h-3 rounded-full bg-blue-600 animate-ping"></div>
+            <span class="font-extrabold text-lg tracking-wider text-slate-900" id="brandTitleText">VEXOR<span class="text-blue-600" id="brandTextSpan">NULL</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-200 text-slate-700 ml-1">PRO v35.0</span></span>
         </div>
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-3 md:space-x-4">
+            <!-- Theme Mode Switcher Button -->
+            <button onclick="toggleMasterTheme()" id="themeToggleBtn" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-moon text-blue-600" id="themeIcon"></i> <span id="themeBtnText">Dark Mode</span>
+            </button>
             <!-- Theme Accent Color Selector -->
-            <div class="hidden md:flex items-center space-x-2 text-xs text-slate-400">
+            <div class="hidden md:flex items-center space-x-2 text-xs text-slate-500">
                 <span>Theme:</span>
-                <button onclick="setThemeColor('blue')" class="w-4 h-4 rounded-full bg-blue-500 focus:outline-none ring-2 ring-white/20 transition hover:scale-110"></button>
-                <button onclick="setThemeColor('emerald')" class="w-4 h-4 rounded-full bg-emerald-500 focus:outline-none ring-2 ring-white/20 transition hover:scale-110"></button>
-                <button onclick="setThemeColor('purple')" class="w-4 h-4 rounded-full bg-purple-500 focus:outline-none ring-2 ring-white/20 transition hover:scale-110"></button>
-                <button onclick="setThemeColor('amber')" class="w-4 h-4 rounded-full bg-amber-500 focus:outline-none ring-2 ring-white/20 transition hover:scale-110"></button>
+                <button onclick="setThemeColor('blue')" class="w-4 h-4 rounded-full bg-blue-600 focus:outline-none ring-2 ring-slate-400/20 transition hover:scale-110"></button>
+                <button onclick="setThemeColor('emerald')" class="w-4 h-4 rounded-full bg-emerald-600 focus:outline-none ring-2 ring-slate-400/20 transition hover:scale-110"></button>
+                <button onclick="setThemeColor('purple')" class="w-4 h-4 rounded-full bg-purple-600 focus:outline-none ring-2 ring-slate-400/20 transition hover:scale-110"></button>
+                <button onclick="setThemeColor('amber')" class="w-4 h-4 rounded-full bg-amber-600 focus:outline-none ring-2 ring-slate-400/20 transition hover:scale-110"></button>
             </div>
-            <div class="text-xs text-slate-400 border-l border-slate-800 pl-4">
-                By <a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-400 hover:underline font-semibold" id="authorLink">@vexornull</a>
+            <div class="text-xs text-slate-500 border-l border-slate-300 pl-4">
+                By <a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-600 hover:underline font-semibold" id="authorLink">@vexornull</a>
             </div>
         </div>
     </header>
@@ -184,133 +166,133 @@
     <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 w-full flex-grow">
         
         <!-- Input Form Section (Cols 7) -->
-        <div class="lg:col-span-7 glass p-6 md:p-8 rounded-2xl shadow-2xl space-y-6">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                <h2 class="text-xl font-bold flex items-center gap-2.5 text-white">
-                    <i class="fa-solid fa-id-card-clip text-blue-500" id="formIcon"></i> Multi-Format Enterprise Studio v35
+        <div id="formSectionContainer" class="lg:col-span-7 glass-light p-6 md:p-8 rounded-2xl shadow-xl space-y-6 transition-colors duration-300">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-4">
+                <h2 class="text-xl font-bold flex items-center gap-2.5 text-slate-900" id="formMainTitle">
+                    <i class="fa-solid fa-id-card-clip text-blue-600" id="formIcon"></i> Multi-Format Enterprise Studio v35
                 </h2>
                 <div class="flex items-center gap-2">
-                    <button onclick="resetToDefaults()" title="Reset to Defaults" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-2.5 py-1 rounded-lg transition flex items-center gap-1">
+                    <button onclick="resetToDefaults()" title="Reset to Defaults" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 border border-slate-300 px-2.5 py-1 rounded-lg transition flex items-center gap-1">
                         <i class="fa-solid fa-rotate-right text-[10px]"></i> Reset
                     </button>
-                    <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Multi-Format Sync</span>
+                    <span class="text-xs bg-blue-50 text-blue-600 border border-blue-200 px-3 py-1 rounded-full font-medium" id="versionBadge">White UI Active</span>
                 </div>
             </div>
 
             <!-- Quick Preset Templates Bar -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                <button onclick="applyPreset('standard')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-user-tie text-blue-400"></i> Standard
+                <button onclick="applyPreset('standard')" class="preset-btn bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-user-tie text-blue-600"></i> Standard
                 </button>
-                <button onclick="applyPreset('executive')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-crown text-amber-400"></i> Executive
+                <button onclick="applyPreset('executive')" class="preset-btn bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-crown text-amber-600"></i> Executive
                 </button>
-                <button onclick="applyPreset('contractor')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-helmet-safety text-emerald-400"></i> Contractor
+                <button onclick="applyPreset('contractor')" class="preset-btn bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-helmet-safety text-emerald-600"></i> Contractor
                 </button>
-                <button onclick="applyPreset('visitor')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-id-badge text-purple-400"></i> Visitor Pass
+                <button onclick="applyPreset('visitor')" class="preset-btn bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-id-badge text-purple-600"></i> Visitor Pass
                 </button>
             </div>
 
             <!-- Batch CSV Upload Toolbar -->
-            <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div id="csvToolbar" class="bg-white border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
                 <div class="text-xs">
-                    <span class="font-bold text-slate-200 block">Batch Generator (CSV Support)</span>
-                    <span class="text-slate-400">Upload CSV (Name,Father,Designation,ID,DOB,CNIC,Issue,Expiry,Org)</span>
+                    <span class="font-bold text-slate-800 block">Batch Generator (CSV Support)</span>
+                    <span class="text-slate-500">Upload CSV (Name,Father,Designation,ID,DOB,CNIC,Issue,Expiry,Org)</span>
                 </div>
-                <label class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2 px-3.5 rounded-lg cursor-pointer transition shadow flex items-center gap-1.5 dynamic-bg">
+                <label class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 px-3.5 rounded-lg cursor-pointer transition shadow flex items-center gap-1.5 dynamic-bg">
                     <i class="fa-solid fa-file-csv"></i> Upload CSV <input type="file" id="csvFileInput" accept=".csv" class="hidden" onchange="handleCsvUpload(event)">
                 </label>
             </div>
 
             <!-- FRONT SIDE FIELDS SECTION -->
             <div class="space-y-4 pt-2">
-                <div class="text-xs uppercase font-extrabold text-blue-400 tracking-wider flex items-center gap-2">
+                <div class="text-xs uppercase font-extrabold text-blue-600 tracking-wider flex items-center gap-2">
                     <i class="fa-solid fa-id-card"></i> Front Side Details
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Full Name</label>
-                        <input type="text" id="inputName" value="Tanveer Hussain" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Full Name</label>
+                        <input type="text" id="inputName" value="Tanveer Hussain" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition shadow-sm">
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Father's Name</label>
-                        <input type="text" id="inputFather" value="Hidden" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Designation & Department</label>
-                        <input type="text" id="inputDesignation" value="Finance Assistant | Finance Dept" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Credential ID Number</label>
-                        <input type="text" id="inputCustomId" value="ID: #AG-2026-001" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Father's Name</label>
+                        <input type="text" id="inputFather" value="Hidden" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition shadow-sm">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Date of Birth (DOB)</label>
-                        <input type="text" id="inputDob" value="10-07-2000" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Designation & Department</label>
+                        <input type="text" id="inputDesignation" value="Finance Assistant | Finance Dept" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition shadow-sm">
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number</label>
-                        <input type="text" id="inputCnic" value="42101-9988776-5" maxlength="15" oninput="formatCnic(this); saveAndHandleUpdate();" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Issue Date</label>
-                        <input type="text" id="inputIssueDate" value="01-01-2026" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Expiry Date</label>
-                        <input type="text" id="inputExpiryDate" value="31-12-2028" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Credential ID Number</label>
+                        <input type="text" id="inputCustomId" value="ID: #AG-2026-001" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition font-mono shadow-sm">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Authorized Organization</label>
-                        <input type="text" id="inputOrg" value="AIRMEN GOLF CLUB & RECREATIONAL PARK" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Date of Birth (DOB)</label>
+                        <input type="text" id="inputDob" value="10-07-2000" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition font-mono shadow-sm">
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Official Photograph / Emblem</label>
-                        <input type="file" id="inputPhoto" accept="image/*" class="w-full text-xs text-slate-400 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer bg-slate-900 border border-slate-800 rounded-xl">
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">CNIC Number</label>
+                        <input type="text" id="inputCnic" value="42101-9988776-5" maxlength="15" oninput="formatCnic(this); saveAndHandleUpdate();" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition font-mono shadow-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Issue Date</label>
+                        <input type="text" id="inputIssueDate" value="01-01-2026" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition shadow-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Expiry Date</label>
+                        <input type="text" id="inputExpiryDate" value="31-12-2028" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition shadow-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Authorized Organization</label>
+                        <input type="text" id="inputOrg" value="AIRMEN GOLF CLUB & RECREATIONAL PARK" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition shadow-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Official Photograph / Emblem</label>
+                        <input type="file" id="inputPhoto" accept="image/*" class="w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer bg-white border border-slate-300 rounded-xl shadow-sm">
                     </div>
                 </div>
             </div>
 
             <!-- BACK SIDE EDITABLE FIELDS SECTION -->
-            <div class="space-y-4 pt-4 border-t border-slate-800">
-                <div class="text-xs uppercase font-extrabold text-purple-400 tracking-wider flex items-center gap-2">
+            <div class="space-y-4 pt-4 border-t border-slate-200">
+                <div class="text-xs uppercase font-extrabold text-purple-600 tracking-wider flex items-center gap-2">
                     <i class="fa-solid fa-address-card"></i> Back Side Directive Details (Fully Editable)
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Emergency Helpline</label>
-                        <input type="text" id="inputHelpline" value="+92-21-3506XXXX" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Emergency Helpline</label>
+                        <input type="text" id="inputHelpline" value="+92-21-3506XXXX" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition font-mono shadow-sm">
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Security Clearance Level</label>
-                        <input type="text" id="inputClearance" value="LEVEL-5 ENTERPRISE" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
+                        <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Security Clearance Level</label>
+                        <input type="text" id="inputClearance" value="LEVEL-5 ENTERPRISE" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition font-mono shadow-sm">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Back-Side Directive / Terms Statement</label>
-                    <textarea id="inputDirective" rows="2" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-blue-500 transition">This secure credential is authenticated for official use. Unauthorized reproduction or forgery is strictly prohibited under local jurisdiction.</textarea>
+                    <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Back-Side Directive / Terms Statement</label>
+                    <textarea id="inputDirective" rows="2" oninput="saveAndHandleUpdate()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-4 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600 transition shadow-sm">This secure credential is authenticated for official use. Unauthorized reproduction or forgery is strictly prohibited under local jurisdiction.</textarea>
                 </div>
             </div>
 
             <!-- Upgrade Controls Toolbar (Layout & Appearance) -->
-            <div class="pt-4 border-t border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="pt-4 border-t border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Card Format Preset</label>
-                    <select id="cardLayout" onchange="changeCardFormat()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+                    <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Card Format Preset</label>
+                    <select id="cardLayout" onchange="changeCardFormat()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600 shadow-sm">
                         <option value="vertical">Vertical ID Badge (Standard)</option>
                         <option value="horizontal">Horizontal Pass (Landscape)</option>
                         <option value="vip">VIP Lanyard Pass (Event)</option>
@@ -319,166 +301,166 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Security Code</label>
-                    <select id="codeFormat" onchange="updateCard()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+                    <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Security Code</label>
+                    <select id="codeFormat" onchange="updateCard()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600 shadow-sm">
                         <option value="qr">Cryptographic QR Code</option>
                         <option value="barcode">Linear Barcode Scan</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Color Theme Mode</label>
-                    <select id="cardMode" onchange="toggleCardThemeMode()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
-                        <option value="dark">Dark Enterprise Mode</option>
+                    <label class="block text-xs uppercase tracking-wider text-slate-600 font-semibold mb-1">Color Theme Mode</label>
+                    <select id="cardMode" onchange="toggleCardThemeMode()" class="form-input-field w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600 shadow-sm">
                         <option value="light">Corporate White Mode</option>
+                        <option value="dark">Dark Enterprise Mode</option>
                     </select>
                 </div>
             </div>
         </div>
 
         <!-- Preview & Output Section (Cols 5) -->
-        <div class="lg:col-span-5 flex flex-col items-center justify-start glass p-6 rounded-2xl shadow-2xl relative overflow-hidden space-y-5">
+        <div id="previewSectionContainer" class="lg:col-span-5 flex flex-col items-center justify-start glass-light p-6 rounded-2xl shadow-xl relative overflow-hidden space-y-5 transition-colors duration-300">
             <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" id="previewGlow"></div>
             
             <div class="flex justify-between items-center w-full px-1">
-                <h3 class="text-xs font-bold tracking-wider text-slate-400 uppercase" id="previewHeaderTitle">Live 3D NFC Vertical Pass (v35.0)</h3>
-                <button onclick="flipCard()" class="text-[10px] bg-blue-600 hover:bg-blue-500 text-white px-2.5 py-1 rounded-lg font-semibold transition flex items-center gap-1 shadow dynamic-bg">
+                <h3 class="text-xs font-bold tracking-wider text-slate-500 uppercase" id="previewHeaderTitle">Live 3D NFC Vertical Pass (v35.0)</h3>
+                <button onclick="flipCard()" class="text-[10px] bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1 rounded-lg font-semibold transition flex items-center gap-1 shadow dynamic-bg">
                     <i class="fa-solid fa-rotate"></i> Flip Card (Front/Back)
                 </button>
             </div>
 
-            <!-- Professional 3D Flip Card Container with dynamic dimensions based on format -->
+            <!-- Professional 3D Flip Card Container -->
             <div class="card-perspective w-full flex justify-center">
                 <div id="cardInnerContainer" class="card-inner relative w-full max-w-sm">
                     
                     <!-- FRONT SIDE OF THE CARD -->
-                    <div id="digitalCard" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1200" class="card-face w-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300">
+                    <div id="digitalCard" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1200" class="card-face w-full bg-gradient-to-b from-slate-50 via-white to-slate-100 border border-slate-200 rounded-2xl p-5 text-center shadow-xl space-y-3 relative overflow-hidden transition-colors duration-300">
                         
                         <!-- Holographic Security Seal Overlay Stamp -->
-                        <div class="absolute top-12 right-3 w-12 h-12 rounded-full holo-stamp flex items-center justify-center shadow-lg z-10 pointer-events-none rotate-12 border border-white/30">
-                            <div class="text-[8px] font-black tracking-tighter text-blue-200 text-center uppercase leading-none">SECURE<br>PASS<br>VERIFIED</div>
+                        <div class="absolute top-12 right-3 w-12 h-12 rounded-full holo-stamp flex items-center justify-center shadow-md z-10 pointer-events-none rotate-12 border border-slate-300">
+                            <div class="text-[8px] font-black tracking-tighter text-blue-700 text-center uppercase leading-none">SECURE<br>PASS<br>VERIFIED</div>
                         </div>
 
                         <!-- Watermark Logo Ribbon -->
                         <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none"></div>
 
-                        <!-- Top Enterprise Header Bar with Manual ID & Smart Chip / NFC wave indicator -->
-                        <div class="flex justify-between items-center border-b border-slate-800 pb-2 text-[10px] text-slate-400 font-mono tracking-wider card-header-sub">
+                        <!-- Top Enterprise Header Bar -->
+                        <div class="flex justify-between items-center border-b border-slate-200 pb-2 text-[10px] text-slate-500 font-mono tracking-wider card-header-sub">
                             <span id="cardIdBadge">ID: #AG-2026-001</span>
                             <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-wifi text-blue-400 animate-pulse text-xs dynamic-icon" title="NFC Enabled Chip"></i>
+                                <i class="fa-solid fa-wifi text-blue-600 animate-pulse text-xs dynamic-icon" title="NFC Enabled Chip"></i>
                                 <div class="smart-chip w-5 h-3.5 rounded-[3px]"></div>
-                                <span class="text-blue-400 dynamic-text font-bold">NFC v35</span>
+                                <span class="text-blue-600 dynamic-text font-bold">NFC v35</span>
                             </div>
                         </div>
 
                         <!-- Profile Photo & Info Layout -->
                         <div id="cardContentLayout" class="flex flex-col items-center space-y-3">
                             <div class="relative w-20 h-20 mx-auto mt-1">
-                                <img id="previewImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Employee Photo" class="w-20 h-20 rounded-xl object-cover border-2 border-blue-500 shadow-xl dynamic-border">
-                                <div class="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full p-1 text-[9px] shadow dynamic-bg ring-2 ring-slate-900">
+                                <img id="previewImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Employee Photo" class="w-20 h-20 rounded-xl object-cover border-2 border-blue-600 shadow-md dynamic-border">
+                                <div class="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full p-1 text-[9px] shadow dynamic-bg ring-2 ring-white">
                                     <i class="fa-solid fa-check"></i>
                                 </div>
                             </div>
 
                             <div>
-                                <h3 id="cardName" class="text-lg font-extrabold text-white tracking-wide card-title-text">Tanveer Hussain</h3>
-                                <p id="cardDesignation" class="text-xs text-blue-400 font-semibold mt-0.5 dynamic-text">Finance Assistant | Finance Dept</p>
+                                <h3 id="cardName" class="text-lg font-extrabold text-slate-900 tracking-wide card-title-text">Tanveer Hussain</h3>
+                                <p id="cardDesignation" class="text-xs text-blue-600 font-semibold mt-0.5 dynamic-text">Finance Assistant | Finance Dept</p>
                             </div>
                         </div>
 
                         <!-- Official Fields Registry Box -->
-                        <div id="cardFieldsBox" class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium">
-                            <div class="flex justify-between border-b border-slate-800/60 pb-1">
-                                <span class="text-slate-400 text-[11px]">Father :</span>
-                                <span id="cardFather" class="text-slate-200 font-semibold">Hidden</span>
+                        <div id="cardFieldsBox" class="bg-white border border-slate-200 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium shadow-sm">
+                            <div class="flex justify-between border-b border-slate-100 pb-1">
+                                <span class="text-slate-500 text-[11px]">Father :</span>
+                                <span id="cardFather" class="text-slate-800 font-semibold">Hidden</span>
                             </div>
-                            <div class="flex justify-between border-b border-slate-800/60 pb-1">
-                                <span class="text-slate-400 text-[11px]">DOB :</span>
-                                <span id="cardDob" class="text-slate-200 font-mono text-[11px]">10-07-2000</span>
+                            <div class="flex justify-between border-b border-slate-100 pb-1">
+                                <span class="text-slate-500 text-[11px]">DOB :</span>
+                                <span id="cardDob" class="text-slate-800 font-mono text-[11px]">10-07-2000</span>
                             </div>
-                            <div class="flex justify-between border-b border-slate-800/60 pb-1">
-                                <span class="text-slate-400 text-[11px]">CNIC :</span>
-                                <span id="cardCnic" class="text-slate-200 font-mono text-[11px] font-semibold">42101-9988776-5</span>
+                            <div class="flex justify-between border-b border-slate-100 pb-1">
+                                <span class="text-slate-500 text-[11px]">CNIC :</span>
+                                <span id="cardCnic" class="text-slate-800 font-mono text-[11px] font-semibold">42101-9988776-5</span>
                             </div>
-                            <div class="flex justify-between border-b border-slate-800/60 pb-1">
-                                <span class="text-slate-400 text-[11px]">Issue Date :</span>
-                                <span id="cardIssueDate" class="text-slate-200 font-mono text-[11px]">01-01-2026</span>
+                            <div class="flex justify-between border-b border-slate-100 pb-1">
+                                <span class="text-slate-500 text-[11px]">Issue Date :</span>
+                                <span id="cardIssueDate" class="text-slate-800 font-mono text-[11px]">01-01-2026</span>
                             </div>
                             <div class="flex justify-between pb-0.5">
-                                <span class="text-slate-400 text-[11px]">Expiry Date :</span>
-                                <span id="cardExpiryDate" class="text-slate-200 font-mono text-[11px]">31-12-2028</span>
+                                <span class="text-slate-500 text-[11px]">Expiry Date :</span>
+                                <span id="cardExpiryDate" class="text-slate-800 font-mono text-[11px]">31-12-2028</span>
                             </div>
                         </div>
 
-                        <!-- PRO v35.0 Code Container Box -->
-                        <div class="pt-2 border-t border-slate-800/80 flex flex-col items-center">
-                            <div id="codeContainer" class="qr-wrapper-v35 p-3 rounded-xl inline-flex justify-center items-center">
+                        <!-- Code Container Box -->
+                        <div class="pt-2 border-t border-slate-200 flex flex-col items-center">
+                            <div id="codeContainer" class="qr-wrapper-v35 p-3 rounded-xl inline-flex justify-center items-center shadow-sm">
                                 <div id="qrcode"></div>
                             </div>
-                            <span id="codeLabel" class="text-[9px] text-slate-400 mt-2 font-mono tracking-wider">CRYPTOGRAPHIC CREDENTIAL QR</span>
+                            <span id="codeLabel" class="text-[9px] text-slate-500 mt-2 font-mono tracking-wider">CRYPTOGRAPHIC CREDENTIAL QR</span>
                         </div>
 
-                        <!-- Authorized Organization & Live Nonce Checksum Footer -->
-                        <div class="pt-2 border-t border-slate-800/60 text-center flex justify-between items-center px-1">
-                            <span id="liveNonce" class="text-[9px] text-slate-500 font-mono">NONCE: 0x9F3A</span>
-                            <span id="cardOrg" class="text-[10px] tracking-wider uppercase font-black text-blue-400 dynamic-text truncate max-w-[200px]">AIRMEN GOLF CLUB</span>
+                        <!-- Authorized Organization Footer -->
+                        <div class="pt-2 border-t border-slate-200 text-center flex justify-between items-center px-1">
+                            <span id="liveNonce" class="text-[9px] text-slate-400 font-mono">NONCE: 0x9F3A</span>
+                            <span id="cardOrg" class="text-[10px] tracking-wider uppercase font-black text-blue-600 dynamic-text truncate max-w-[200px]">AIRMEN GOLF CLUB</span>
                         </div>
                     </div>
 
                     <!-- BACK SIDE OF THE CARD -->
-                    <div id="digitalCardBack" class="card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl flex flex-col justify-between">
-                        <div class="border-b border-slate-800 pb-2 flex justify-between items-center">
-                            <span class="text-[10px] font-mono text-blue-400 font-bold dynamic-text">OFFICIAL SECURITY DIRECTIVE</span>
+                    <div id="digitalCardBack" class="card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-50 via-white to-slate-100 border border-slate-200 rounded-2xl p-5 text-center shadow-xl flex flex-col justify-between">
+                        <div class="border-b border-slate-200 pb-2 flex justify-between items-center">
+                            <span class="text-[10px] font-mono text-blue-600 font-bold dynamic-text">OFFICIAL SECURITY DIRECTIVE</span>
                             <span class="text-[9px] text-slate-400 font-mono">BACK PASS v35</span>
                         </div>
 
                         <div class="space-y-3 text-left py-2">
-                            <div class="bg-slate-950/80 border border-slate-800 p-3 rounded-xl space-y-2">
-                                <div class="text-[10px] uppercase tracking-wider text-slate-400 font-bold flex items-center justify-between">
+                            <div class="bg-white border border-slate-200 p-3 rounded-xl space-y-2 shadow-sm">
+                                <div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold flex items-center justify-between">
                                     <span>Biometric & NFC UID</span>
-                                    <i class="fa-solid fa-fingerprint text-blue-400 animate-pulse text-sm dynamic-icon"></i>
+                                    <i class="fa-solid fa-fingerprint text-blue-600 animate-pulse text-sm dynamic-icon"></i>
                                 </div>
-                                <p id="cardDirectiveText" class="text-[10px] text-slate-300 leading-relaxed">
+                                <p id="cardDirectiveText" class="text-[10px] text-slate-600 leading-relaxed">
                                     This secure credential is authenticated for official use. Unauthorized reproduction or forgery is strictly prohibited under local jurisdiction.
                                 </p>
                             </div>
 
                             <div class="grid grid-cols-2 gap-2 text-[10px]">
-                                <div class="bg-slate-950/60 border border-slate-800/60 p-2 rounded-lg">
-                                    <span class="text-slate-400 block">Emergency Helpline:</span>
-                                    <span id="cardHelpline" class="text-slate-200 font-mono font-bold">+92-21-3506XXXX</span>
+                                <div class="bg-white border border-slate-200 p-2 rounded-xl shadow-sm">
+                                    <span class="text-slate-500 block">Emergency Helpline:</span>
+                                    <span id="cardHelpline" class="text-slate-800 font-mono font-bold">+92-21-3506XXXX</span>
                                 </div>
-                                <div class="bg-slate-950/60 border border-slate-800/60 p-2 rounded-lg">
-                                    <span class="text-slate-400 block">Security Clearance:</span>
-                                    <span id="cardClearance" class="text-emerald-400 font-mono font-bold">LEVEL-5 ENTERPRISE</span>
+                                <div class="bg-white border border-slate-200 p-2 rounded-xl shadow-sm">
+                                    <span class="text-slate-500 block">Security Clearance:</span>
+                                    <span id="cardClearance" class="text-emerald-600 font-mono font-bold">LEVEL-5 ENTERPRISE</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="pt-3 border-t border-slate-800/80 text-center space-y-1">
-                            <div class="barcode-lines text-slate-300 text-lg tracking-widest">||| |||| || | ||||</div>
-                            <span id="cardHashLabel" class="text-[9px] text-slate-500 font-mono">HASH: 0x30A8F21C9E7</span>
+                        <div class="pt-3 border-t border-slate-200 text-center space-y-1">
+                            <div class="barcode-lines text-slate-700 text-lg tracking-widest">||| |||| || | ||||</div>
+                            <span id="cardHashLabel" class="text-[9px] text-slate-400 font-mono">HASH: 0x30A8F21C9E7</span>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- Action Buttons (Outside captured area) -->
+            <!-- Action Buttons -->
             <div class="w-full max-w-sm grid grid-cols-5 gap-1 pt-1">
-                <button onclick="downloadTextDetails()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5" title="Copy / Text Export">
-                    <i class="fa-solid fa-file-lines text-blue-400 dynamic-icon"></i> <span class="text-[9px]">Text</span>
+                <button onclick="downloadTextDetails()" class="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold py-2.5 px-1 rounded-xl shadow-sm transition flex flex-col items-center justify-center gap-0.5" title="Copy / Text Export">
+                    <i class="fa-solid fa-file-lines text-blue-600 dynamic-icon"></i> <span class="text-[9px]">Text</span>
                 </button>
-                <button onclick="openVerificationModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5" title="Scan Verification">
-                    <i class="fa-solid fa-qrcode text-emerald-400"></i> <span class="text-[9px]">Scan</span>
+                <button onclick="openVerificationModal()" class="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold py-2.5 px-1 rounded-xl shadow-sm transition flex flex-col items-center justify-center gap-0.5" title="Scan Verification">
+                    <i class="fa-solid fa-qrcode text-emerald-600"></i> <span class="text-[9px]">Scan</span>
                 </button>
-                <button onclick="simulateNfcTap()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5" title="Simulate NFC Proximity Tap">
+                <button onclick="simulateNfcTap()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5" title="Simulate NFC Proximity Tap">
                     <i class="fa-solid fa-wifi"></i> <span class="text-[9px]">NFC Tap</span>
                 </button>
-                <button onclick="downloadCardPdf()" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5" title="Export as PDF Badge">
+                <button onclick="downloadCardPdf()" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5" title="Export as PDF Badge">
                     <i class="fa-solid fa-file-pdf"></i> <span class="text-[9px]">PDF</span>
                 </button>
-                <button onclick="downloadCardImage()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5 dynamic-bg" title="Save as High-Res PNG">
+                <button onclick="downloadCardImage()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5 dynamic-bg" title="Save as High-Res PNG">
                     <i class="fa-solid fa-download"></i> <span class="text-[9px]">PNG</span>
                 </button>
             </div>
@@ -487,9 +469,9 @@
     </main>
 
     <!-- NFC Simulation Modal Popup -->
-    <div id="nfcModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="glass max-w-sm w-full p-6 rounded-2xl shadow-2xl border border-blue-500/40 space-y-5 text-center relative animate-in fade-in zoom-in duration-200">
-            <button onclick="closeNfcModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
+    <div id="nfcModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-light max-w-sm w-full p-6 rounded-2xl shadow-2xl border border-blue-500/40 space-y-5 text-center relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeNfcModal()" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-sm"><i class="fa-solid fa-xmark"></i></button>
             
             <div class="relative w-24 h-24 mx-auto flex items-center justify-center">
                 <div class="absolute inset-0 rounded-full border-2 border-blue-500/60 nfc-wave"></div>
@@ -500,104 +482,104 @@
             </div>
 
             <div>
-                <h3 class="text-base font-bold text-white" id="nfcModalTitle">Simulating NFC Proximity Tap</h3>
-                <p class="text-xs text-slate-400 mt-1" id="nfcModalSub">Broadcasting encrypted badge UID to gateway reader...</p>
+                <h3 class="text-base font-bold text-slate-900" id="nfcModalTitle">Simulating NFC Proximity Tap</h3>
+                <p class="text-xs text-slate-500 mt-1" id="nfcModalSub">Broadcasting encrypted badge UID to gateway reader...</p>
             </div>
             
-            <div id="nfcStatusBox" class="bg-slate-950 p-3 rounded-xl text-left text-xs font-mono space-y-1 text-slate-300 border border-slate-800">
-                <div><b>UID:</b> <span class="text-blue-400">0x04F8A289C132</span></div>
+            <div id="nfcStatusBox" class="bg-slate-50 p-3 rounded-xl text-left text-xs font-mono space-y-1 text-slate-700 border border-slate-200 shadow-inner">
+                <div><b>UID:</b> <span class="text-blue-600">0x04F8A289C132</span></div>
                 <div><b>Protocol:</b> ISO/IEC 14443-4</div>
-                <div><b>Status:</b> <span class="text-amber-400">Authenticating...</span></div>
+                <div><b>Status:</b> <span class="text-amber-600 font-semibold">Authenticating...</span></div>
             </div>
 
-            <button onclick="closeNfcModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white py-2.5 rounded-xl text-xs font-semibold transition">Disconnect Reader</button>
+            <button onclick="closeNfcModal()" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 py-2.5 rounded-xl text-xs font-semibold transition">Disconnect Reader</button>
         </div>
     </div>
 
-    <!-- Unified Component Showcase Section (Integrated Studio Add-on) -->
+    <!-- Unified Component Showcase Section -->
     <section class="max-w-7xl mx-auto px-4 pb-12 w-full">
-        <div class="glass p-6 rounded-2xl shadow-xl space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                    <i class="fa-solid fa-layer-group text-blue-500"></i> VexorNull Unified Cyber-Glass Component Suite
+        <div id="componentSuiteContainer" class="glass-light p-6 rounded-2xl shadow-xl space-y-4 transition-colors duration-300">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-blue-600"></i> VexorNull Unified Cyber-Glass Component Suite
                 </h3>
-                <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">Active Modules v35</span>
+                <span class="text-[10px] font-mono text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">Active Modules v35</span>
             </div>
             
             <div class="vexor-component-grid">
-                <!-- 1. Cyberpunk Neon Border Card -->
-                <div class="bg-[#0d0f18] border border-[rgba(0,255,204,0.3)] rounded-xl p-5 flex flex-col justify-between shadow-lg relative overflow-hidden transition-all duration-300 hover:border-[#00ffcc] hover:shadow-[0_0_20px_rgba(0,255,204,0.2)]">
+                <!-- 1. Node Card -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
                     <div>
-                        <span class="inline-block px-2.5 py-1 rounded-full text-[10px] font-semibold bg-[rgba(0,255,204,0.1)] text-[#00ffcc] border border-[rgba(0,255,204,0.3)] mb-3">System Node</span>
-                        <h4 class="text-white font-bold text-sm mb-1">CyberPulse Uptime</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Real-time node monitoring and automated latency tracker active.</p>
+                        <span class="inline-block px-2.5 py-1 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-600 border border-emerald-200 mb-3">System Node</span>
+                        <h4 class="text-slate-900 font-bold text-sm mb-1">CyberPulse Uptime</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Real-time node monitoring and automated latency tracker active.</p>
                     </div>
-                    <a href="https://github.com/vexornull" target="_blank" class="mt-4 block text-center py-2 px-3 rounded-lg border border-[#00ffcc] text-[#00ffcc] text-xs font-semibold transition hover:bg-[#00ffcc] hover:text-[#0d0f18]">Access Terminal</a>
+                    <a href="https://github.com/vexornull" target="_blank" class="mt-4 block text-center py-2 px-3 rounded-lg border border-slate-300 text-slate-700 text-xs font-semibold transition hover:bg-slate-50">Access Terminal</a>
                 </div>
 
-                <!-- 2. Frosted Glassmorphism Card -->
-                <div class="bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-xl p-5 flex flex-col justify-between shadow-xl">
+                <!-- 2. Profile Card -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
                     <div>
                         <div class="flex items-center gap-3 mb-3">
-                            <div class="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center font-bold text-white text-xs">TH</div>
+                            <div class="w-9 h-9 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center font-bold text-white text-xs">TH</div>
                             <div>
-                                <h4 class="text-white text-xs font-bold">Tanveer Hussain</h4>
-                                <span class="text-[10px] text-slate-400">Finance Assistant</span>
+                                <h4 class="text-slate-900 text-xs font-bold">Tanveer Hussain</h4>
+                                <span class="text-[10px] text-slate-500">Finance Assistant</span>
                             </div>
                         </div>
-                        <p class="text-slate-300 text-xs leading-relaxed">Building custom web architectures, Blogger themes, and cloud applications.</p>
+                        <p class="text-slate-500 text-xs leading-relaxed">Building custom web architectures, Blogger themes, and cloud applications.</p>
                     </div>
-                    <a href="https://github.com/vexornull" target="_blank" class="mt-4 block text-center py-2 px-3 rounded-lg bg-white/10 border border-white/15 text-white text-xs font-semibold transition hover:bg-white/20">View Profile</a>
+                    <a href="https://github.com/vexornull" target="_blank" class="mt-4 block text-center py-2 px-3 rounded-lg bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold transition hover:bg-slate-200">View Profile</a>
                 </div>
 
-                <!-- 3. Spotlight Hover Card -->
-                <div class="bg-[#121216] border border-white/[0.06] rounded-xl p-5 flex flex-col justify-between shadow-xl relative overflow-hidden">
+                <!-- 3. Deployment Card -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
                     <div>
-                        <span class="inline-block px-2.5 py-1 rounded-full text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/30 mb-3">Vercel Deployment</span>
-                        <h4 class="text-white font-bold text-sm mb-1">VexorVPN Tunnel</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">High-performance tunneling web application built with modern web standards.</p>
+                        <span class="inline-block px-2.5 py-1 rounded-full text-[10px] font-semibold bg-blue-50 text-blue-600 border border-blue-200 mb-3">Vercel Deployment</span>
+                        <h4 class="text-slate-900 font-bold text-sm mb-1">VexorVPN Tunnel</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">High-performance tunneling web application built with modern web standards.</p>
                     </div>
-                    <a href="https://github.com/vexornull" target="_blank" class="mt-4 block text-center py-2 px-3 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold transition hover:bg-blue-500 hover:text-white">Explore Repo</a>
+                    <a href="https://github.com/vexornull" target="_blank" class="mt-4 block text-center py-2 px-3 rounded-lg bg-blue-50 text-blue-600 border border-blue-200 text-xs font-semibold transition hover:bg-blue-600 hover:text-white">Explore Repo</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Verification Modal Popup -->
-    <div id="verifyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="glass max-w-sm w-full p-6 rounded-2xl shadow-2xl border border-slate-700 space-y-4 text-center relative animate-in fade-in zoom-in duration-200">
-            <button onclick="closeVerificationModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
+    <div id="verifyModal" class="fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass-light max-w-sm w-full p-6 rounded-2xl shadow-2xl border border-slate-200 space-y-4 text-center relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeVerificationModal()" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-sm"><i class="fa-solid fa-xmark"></i></button>
             
             <div class="relative w-16 h-16 mx-auto">
-                <img id="modalProfileImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Verified Profile" class="w-16 h-16 rounded-full object-cover border-2 border-blue-500 shadow-xl dynamic-border">
-                <div class="absolute -bottom-1 -right-1 bg-emerald-600 text-white rounded-full p-1 text-[8px] shadow ring-2 ring-slate-900">
+                <img id="modalProfileImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Verified Profile" class="w-16 h-16 rounded-full object-cover border-2 border-blue-600 shadow-md dynamic-border">
+                <div class="absolute -bottom-1 -right-1 bg-emerald-600 text-white rounded-full p-1 text-[8px] shadow ring-2 ring-white">
                     <i class="fa-solid fa-check"></i>
                 </div>
             </div>
 
             <div>
-                <h3 class="text-base font-bold text-white">v35.0 Secure Credential Verified</h3>
-                <p class="text-xs text-slate-400 mt-0.5">Cryptographic state validation successful.</p>
+                <h3 class="text-base font-bold text-slate-900">v35.0 Secure Credential Verified</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Cryptographic state validation successful.</p>
             </div>
-            <div id="modalDataBox" class="bg-slate-950 p-3 rounded-xl text-left text-xs font-mono space-y-1.5 text-slate-300 border border-slate-800">
+            <div id="modalDataBox" class="bg-slate-50 p-3 rounded-xl text-left text-xs font-mono space-y-1.5 text-slate-700 border border-slate-200 shadow-inner">
                 <!-- Dynamically filled -->
             </div>
-            <button onclick="closeVerificationModal()" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-xs font-semibold transition dynamic-bg">Close Window</button>
+            <button onclick="closeVerificationModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl text-xs font-semibold transition dynamic-bg shadow">Close Window</button>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="py-4 text-center text-xs text-slate-500 border-t border-slate-900">
-        Official Multi-Format Enterprise Studio Built by <span class="text-slate-300 font-medium">Tanveer Hussain</span> (<a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-400 hover:underline" id="footerAuthorLink">@vexornull</a>)
+    <footer class="py-4 text-center text-xs text-slate-500 border-t border-slate-200 bg-white">
+        Official Multi-Format Enterprise Studio Built by <span class="text-slate-800 font-medium">Tanveer Hussain</span> (<a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-600 hover:underline" id="footerAuthorLink">@vexornull</a>)
     </footer>
 
     <!-- Script Logic -->
     <script>
         const colorThemes = {
-            blue: { primary: '#3b82f6', class: 'text-blue-400', bg: 'bg-blue-600', border: 'border-blue-500' },
-            emerald: { primary: '#10b981', class: 'text-emerald-400', bg: 'bg-emerald-600', border: 'border-emerald-500' },
-            purple: { primary: '#a855f7', class: 'text-purple-400', bg: 'bg-purple-600', border: 'border-purple-500' },
-            amber: { primary: '#f59e0b', class: 'text-amber-400', bg: 'bg-amber-600', border: 'border-amber-500' }
+            blue: { primary: '#2563eb', class: 'text-blue-600', bg: 'bg-blue-600', border: 'border-blue-600' },
+            emerald: { primary: '#059669', class: 'text-emerald-600', bg: 'bg-emerald-600', border: 'border-emerald-600' },
+            purple: { primary: '#9333ea', class: 'text-purple-600', bg: 'bg-purple-600', border: 'border-purple-600' },
+            amber: { primary: '#d97706', class: 'text-amber-600', bg: 'bg-amber-600', border: 'border-amber-600' }
         };
 
         const presets = {
@@ -674,7 +656,6 @@
             inputDirective: "This secure credential is authenticated for official use. Unauthorized reproduction or forgery is strictly prohibited under local jurisdiction."
         };
 
-        // Live Nonce Generator loop
         setInterval(() => {
             const hex = Math.floor(Math.random() * 0xFFFFFF).toString(16).toUpperCase();
             const nonceEl = document.getElementById("liveNonce");
@@ -721,11 +702,11 @@
             Object.keys(defaultValues).forEach(id => {
                 data[id] = document.getElementById(id).value;
             });
-            localStorage.setItem('vexornull_credential_data_v35', JSON.stringify(data));
+            localStorage.setItem('vexornull_credential_data_v35_white', JSON.stringify(data));
         }
 
         function loadFromLocalStorage() {
-            const saved = localStorage.getItem('vexornull_credential_data_v35');
+            const saved = localStorage.getItem('vexornull_credential_data_v35_white');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
@@ -747,8 +728,46 @@
             Object.keys(defaultValues).forEach(id => {
                 document.getElementById(id).value = defaultValues[id];
             });
-            localStorage.removeItem('vexornull_credential_data_v35');
+            localStorage.removeItem('vexornull_credential_data_v35_white');
             updateCard();
+        }
+
+        function toggleMasterTheme() {
+            const body = document.getElementById("appBody");
+            const header = document.getElementById("appHeader");
+            const formBox = document.getElementById("formSectionContainer");
+            const previewBox = document.getElementById("previewSectionContainer");
+            const suiteBox = document.getElementById("componentSuiteContainer");
+            const toggleBtnText = document.getElementById("themeBtnText");
+            const themeIcon = document.getElementById("themeIcon");
+
+            const isDark = body.classList.contains("bg-slate-950");
+
+            if (isDark) {
+                // Switch to White UI
+                body.className = "bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white transition-colors duration-300";
+                header.className = "w-full py-4 px-6 border-b border-slate-200 flex justify-between items-center glass-light sticky top-0 z-50";
+                formBox.className = "lg:col-span-7 glass-light p-6 md:p-8 rounded-2xl shadow-xl space-y-6 transition-colors duration-300";
+                previewBox.className = "lg:col-span-5 flex flex-col items-center justify-start glass-light p-6 rounded-2xl shadow-xl relative overflow-hidden space-y-5 transition-colors duration-300";
+                suiteBox.className = "glass-light p-6 rounded-2xl shadow-xl space-y-4 transition-colors duration-300";
+                
+                toggleBtnText.innerText = "Dark Mode";
+                themeIcon.className = "fa-solid fa-moon text-blue-600";
+                document.getElementById("cardMode").value = "light";
+                toggleCardThemeMode();
+            } else {
+                // Switch to Dark UI
+                body.className = "bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white transition-colors duration-300";
+                header.className = "w-full py-4 px-6 border-b border-slate-800/80 flex justify-between items-center glass sticky top-0 z-50";
+                formBox.className = "lg:col-span-7 glass p-6 md:p-8 rounded-2xl shadow-2xl space-y-6 transition-colors duration-300";
+                previewBox.className = "lg:col-span-5 flex flex-col items-center justify-start glass p-6 rounded-2xl shadow-2xl relative overflow-hidden space-y-5 transition-colors duration-300";
+                suiteBox.className = "glass p-6 rounded-2xl shadow-xl space-y-4 transition-colors duration-300";
+
+                toggleBtnText.innerText = "White UI";
+                themeIcon.className = "fa-solid fa-sun text-amber-400";
+                document.getElementById("cardMode").value = "dark";
+                toggleCardThemeMode();
+            }
         }
 
         function setThemeColor(themeName) {
@@ -779,46 +798,35 @@
             const contentLayout = document.getElementById('cardContentLayout');
             const headerTitle = document.getElementById('previewHeaderTitle');
             const fieldsBox = document.getElementById('cardFieldsBox');
+            const isDark = document.getElementById("appBody").classList.contains("bg-slate-950");
 
-            // Reset container width classes
             container.className = "card-inner relative w-full";
+
+            let bgFront = isDark ? "bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90" : "bg-gradient-to-b from-slate-50 via-white to-slate-100 border border-slate-200";
+            let bgBack = bgFront;
 
             if (format === 'horizontal') {
                 container.classList.add("max-w-md");
-                frontCard.className = "card-face w-full bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-4 text-center shadow-2xl relative overflow-hidden transition-colors duration-300";
-                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-4 text-center shadow-2xl flex flex-col justify-between";
                 contentLayout.className = "flex flex-row items-center space-x-4 text-left my-1";
                 headerTitle.innerText = "Live 3D NFC Horizontal Pass (v35.0)";
-                fieldsBox.className = "bg-slate-950/70 border border-slate-800/80 rounded-xl p-2 text-left space-y-1 text-[11px] font-medium";
+                fieldsBox.className = isDark ? "bg-slate-950/70 border border-slate-800/80 rounded-xl p-2 text-left space-y-1 text-[11px] font-medium" : "bg-white border border-slate-200 rounded-xl p-2 text-left space-y-1 text-[11px] font-medium shadow-sm";
             } else if (format === 'vip') {
                 container.classList.add("max-w-xs");
-                frontCard.className = "card-face w-full bg-gradient-to-b from-purple-950 via-slate-900 to-slate-950 border border-purple-500/40 rounded-3xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
-                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-purple-950 via-slate-900 to-slate-950 border border-purple-500/40 rounded-3xl p-5 text-center shadow-2xl flex flex-col justify-between";
                 contentLayout.className = "flex flex-col items-center space-y-2";
                 headerTitle.innerText = "Live 3D VIP Lanyard Pass (v35.0)";
-                fieldsBox.className = "bg-purple-950/30 border border-purple-500/30 rounded-xl p-2.5 text-left space-y-1 text-xs font-medium";
             } else if (format === 'holographic') {
                 container.classList.add("max-w-sm");
-                frontCard.className = "card-face w-full bg-gradient-to-tr from-blue-950 via-slate-900 to-indigo-950 border-2 border-blue-400/60 rounded-2xl p-5 text-center shadow-[0_0_30px_rgba(59,130,246,0.3)] space-y-3 relative overflow-hidden transition-colors duration-300";
-                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-tr from-blue-950 via-slate-900 to-indigo-950 border-2 border-blue-400/60 rounded-2xl p-5 text-center shadow-[0_0_30px_rgba(59,130,246,0.3)] flex flex-col justify-between";
                 contentLayout.className = "flex flex-col items-center space-y-3";
                 headerTitle.innerText = "Live Holographic Security Shield (v35.0)";
-                fieldsBox.className = "bg-blue-950/40 border border-blue-500/30 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium";
             } else if (format === 'compact') {
                 container.classList.add("max-w-xs");
-                frontCard.className = "card-face w-full bg-slate-900 border border-slate-700 rounded-xl p-4 text-center shadow-2xl space-y-2 relative overflow-hidden transition-colors duration-300";
-                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-slate-900 border border-slate-700 rounded-xl p-4 text-center shadow-2xl flex flex-col justify-between";
                 contentLayout.className = "flex flex-row items-center space-x-3 text-left";
                 headerTitle.innerText = "Live Compact RFID Keycard (v35.0)";
-                fieldsBox.className = "hidden"; // Hide detailed fields for ultra-compact look
+                fieldsBox.className = "hidden";
             } else {
-                // Default Vertical
                 container.classList.add("max-w-sm");
-                frontCard.className = "card-face w-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
-                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl flex flex-col justify-between";
                 contentLayout.className = "flex flex-col items-center space-y-3";
                 headerTitle.innerText = "Live 3D NFC Vertical Pass (v35.0)";
-                fieldsBox.className = "bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium";
             }
             updateCard();
         }
@@ -831,20 +839,20 @@
             const nameEl = document.getElementById('cardName');
             const headerSub = document.querySelector('.card-header-sub');
 
-            if (mode === 'light') {
-                card.classList.remove('bg-slate-900', 'from-slate-900', 'to-slate-950', 'bg-gradient-to-b', 'bg-gradient-to-r', 'from-purple-950', 'from-blue-950');
-                card.classList.add('bg-gradient-to-b', 'from-slate-100', 'via-white', 'to-slate-200', 'text-slate-900', 'border-slate-300');
-                cardBack.classList.remove('bg-slate-900', 'from-slate-900', 'to-slate-950', 'bg-gradient-to-b', 'bg-gradient-to-r', 'from-purple-950', 'from-blue-950');
-                cardBack.classList.add('bg-gradient-to-b', 'from-slate-100', 'via-white', 'to-slate-200', 'text-slate-900', 'border-slate-300');
-                fieldsBox.className = "bg-slate-100 border border-slate-300 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium text-slate-800";
-                nameEl.className = "text-lg font-extrabold text-slate-900 tracking-wide";
-                headerSub.className = "flex justify-between items-center border-b border-slate-300 pb-2 text-[10px] text-slate-600 font-mono tracking-wider card-header-sub";
-                
-                fieldsBox.querySelectorAll('span.text-slate-400').forEach(s => s.className = "text-slate-500 text-[11px]");
-                fieldsBox.querySelectorAll('span.text-slate-200').forEach(s => s.className = "text-slate-900 font-semibold text-[11px]");
+            if (mode === 'dark') {
+                card.className = "card-face w-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300 text-slate-100";
+                cardBack.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl flex flex-col justify-between text-slate-100";
+                fieldsBox.className = "bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium text-slate-200";
+                nameEl.className = "text-lg font-extrabold text-white tracking-wide";
+                headerSub.className = "flex justify-between items-center border-b border-slate-800 pb-2 text-[10px] text-slate-400 font-mono tracking-wider card-header-sub";
             } else {
-                changeCardFormat(); // Re-apply format background gradients
+                card.className = "card-face w-full bg-gradient-to-b from-slate-50 via-white to-slate-100 border border-slate-200 rounded-2xl p-5 text-center shadow-xl space-y-3 relative overflow-hidden transition-colors duration-300 text-slate-800";
+                cardBack.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-50 via-white to-slate-100 border border-slate-200 rounded-2xl p-5 text-center shadow-xl flex flex-col justify-between text-slate-800";
+                fieldsBox.className = "bg-white border border-slate-200 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium text-slate-800 shadow-sm";
+                nameEl.className = "text-lg font-extrabold text-slate-900 tracking-wide";
+                headerSub.className = "flex justify-between items-center border-b border-slate-200 pb-2 text-[10px] text-slate-500 font-mono tracking-wider card-header-sub";
             }
+            updateCard();
         }
 
         function initCode(qrData) {
@@ -854,7 +862,7 @@
             container.innerHTML = "";
 
             if (format === 'barcode') {
-                container.innerHTML = `<div class="py-2 text-center text-slate-900"><div class="barcode-lines text-2xl tracking-widest text-slate-100">||| | |||| || | ||</div><div class="text-[9px] font-mono mt-1 text-slate-400">${document.getElementById("inputCustomId").value}</div></div>`;
+                container.innerHTML = `<div class="py-2 text-center"><div class="barcode-lines text-2xl tracking-widest">||| | |||| || | ||</div><div class="text-[9px] font-mono mt-1 opacity-70">${document.getElementById("inputCustomId").value}</div></div>`;
                 label.innerText = "LINEAR ENTERPRISE BARCODE";
             } else {
                 const encodedData = encodeURIComponent(qrData);
@@ -890,7 +898,6 @@
             document.getElementById("cardClearance").innerText = clearance;
             document.getElementById("cardDirectiveText").innerText = directive;
 
-            // Generate pseudo hash for v35
             const hashString = "0x" + Math.abs((name + customId).split('').reduce((acc, char) => (acc << 5) - acc + char.charCodeAt(0), 0)).toString(16).toUpperCase() + "E35";
             document.getElementById("cardHashLabel").innerText = `HASH: ${hashString}`;
 
@@ -919,7 +926,7 @@
                 const text = e.target.result;
                 const lines = text.split(/\r\n|\n/).filter(line => line.trim() !== '');
                 if (lines.length < 2) {
-                    alert("Invalid CSV structure. Please include headers and at least one data row.");
+                    alert("Invalid CSV structure.");
                     return;
                 }
 
@@ -938,7 +945,7 @@
                     saveAndHandleUpdate();
                     alert(`Successfully imported batch profile for: ${rowData[0]}`);
                 } else {
-                    alert("CSV format mismatch. Expected columns: Name, Father, Designation, ID, DOB, CNIC, IssueDate, ExpiryDate, Org");
+                    alert("CSV format mismatch.");
                 }
             };
             reader.readAsText(file);
@@ -989,21 +996,20 @@
             title.innerText = "Simulating NFC Proximity Tap";
             sub.innerText = "Broadcasting encrypted badge UID to gateway reader...";
             statusBox.innerHTML = `
-                <div><b>UID:</b> <span class="text-blue-400">0x04F8A289C132</span></div>
+                <div><b>UID:</b> <span class="text-blue-600">0x04F8A289C132</span></div>
                 <div><b>Protocol:</b> ISO/IEC 14443-4 NFC</div>
-                <div><b>Status:</b> <span class="text-amber-400 animate-pulse">Authenticating handshake...</span></div>
+                <div><b>Status:</b> <span class="text-amber-600 animate-pulse font-semibold">Authenticating handshake...</span></div>
             `;
 
             setTimeout(() => {
                 statusBox.innerHTML = `
-                    <div><b>Holder:</b> <span class="text-white">${document.getElementById("inputName").value}</span></div>
-                    <div><b>Credential ID:</b> <span class="text-white">${document.getElementById("inputCustomId").value}</span></div>
-                    <div><b>Status:</b> <span class="text-emerald-400 font-bold">ACCESS GRANTED (GATEWAY OPEN)</span></div>
+                    <div><b>Holder:</b> <span class="text-slate-900 font-semibold">${document.getElementById("inputName").value}</span></div>
+                    <div><b>Credential ID:</b> <span class="text-slate-900 font-semibold">${document.getElementById("inputCustomId").value}</span></div>
+                    <div><b>Status:</b> <span class="text-emerald-600 font-bold">ACCESS GRANTED (GATEWAY OPEN)</span></div>
                 `;
                 title.innerText = "NFC Authentication Successful!";
                 sub.innerText = "Gateway relay unlocked successfully.";
 
-                // Fire celebration confetti
                 if (typeof confetti === 'function') {
                     confetti({
                         particleCount: 80,
@@ -1027,17 +1033,16 @@
             const org = document.getElementById("inputOrg").value;
             const clearance = document.getElementById("inputClearance").value;
 
-            const mainImgSrc = document.getElementById("previewImg").src;
-            document.getElementById("modalProfileImg").src = mainImgSrc;
+            document.getElementById("modalProfileImg").src = document.getElementById("previewImg").src;
 
             document.getElementById("modalDataBox").innerHTML = `
-                <div><b>ID:</b> <span class="text-white">${customId}</span></div>
-                <div><b>Holder Name:</b> <span class="text-white">${name}</span></div>
-                <div><b>Father Name:</b> <span class="text-slate-300">${document.getElementById("inputFather").value}</span></div>
-                <div><b>DOB:</b> <span class="text-white">${dob}</span></div>
+                <div><b>ID:</b> <span class="text-slate-900 font-semibold">${customId}</span></div>
+                <div><b>Holder Name:</b> <span class="text-slate-900 font-semibold">${name}</span></div>
+                <div><b>Father Name:</b> <span class="text-slate-700">${document.getElementById("inputFather").value}</span></div>
+                <div><b>DOB:</b> <span class="text-slate-900 font-semibold">${dob}</span></div>
                 <div><b>Role:</b> ${designation}</div>
-                <div><b>CNIC:</b> <span class="text-white">${cnic}</span></div>
-                <div><b>Clearance:</b> <span class="text-emerald-400">${clearance}</span></div>
+                <div><b>CNIC:</b> <span class="text-slate-900 font-semibold">${cnic}</span></div>
+                <div><b>Clearance:</b> <span class="text-emerald-600 font-semibold">${clearance}</span></div>
                 <div><b>Issuer:</b> ${org}</div>
             `;
             document.getElementById("verifyModal").classList.remove("hidden");
@@ -1058,11 +1063,12 @@
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = `${name}_Official_ID_Pass_v35.png`;
+                link.link = canvas.toDataURL('image/png');
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(err => {
                 console.error("Error capturing card:", err);
-                alert("Failed to capture ID image. Please try again.");
+                alert("Failed to capture ID image.");
             });
         }
 
@@ -1088,11 +1094,11 @@
                 const x = (210 - imgWidth) / 2;
                 const y = 20;
 
-                pdf.setFillColor(15, 23, 42);
+                pdf.setFillColor(241, 245, 249);
                 pdf.rect(0, 0, 210, 297, 'F');
                 
                 pdf.setFont("helvetica", "bold");
-                pdf.setTextColor(255, 255, 255);
+                pdf.setTextColor(15, 23, 42);
                 pdf.setFontSize(16);
                 pdf.text("VexorNull Official Enterprise Credential Badge v35", 105, 15, { align: "center" });
 
@@ -1124,7 +1130,7 @@
                     max: 8,
                     speed: 400,
                     glare: true,
-                    "max-glare": 0.25,
+                    "max-glare": 0.2,
                 });
             }
         };
