@@ -1049,7 +1049,7 @@
             document.getElementById("verifyModal").classList.add("hidden");
         }
 
-        // Updated function to download BOTH Front and Back PNG images automatically
+        // Updated function to download BOTH Front and Back PNG images automatically (Fixed un-mirror issue)
         async function downloadCardImage() {
             const frontCard = document.getElementById("digitalCard");
             const backCard = document.getElementById("digitalCardBack");
@@ -1067,15 +1067,20 @@
                 frontLink.href = frontCanvas.toDataURL('image/png');
                 frontLink.click();
 
-                // Small delay between downloads to prevent browser blocking multiple files
                 await new Promise(resolve => setTimeout(resolve, 500));
 
-                // 2. Capture Back Side
+                // 2. Temporarily remove backface-visibility / transform for correct un-mirrored capture
+                backCard.style.transform = "none";
+
                 const backCanvas = await html2canvas(backCard, {
                     scale: 3,
                     useCORS: true,
                     backgroundColor: null
                 });
+
+                // Restore original transform state
+                backCard.style.transform = "";
+
                 const backLink = document.createElement('a');
                 backLink.download = `${name}_Back_Pass_v351.png`;
                 backLink.href = backCanvas.toDataURL('image/png');
@@ -1083,11 +1088,12 @@
 
             } catch (err) {
                 console.error("Error capturing card images:", err);
+                backCard.style.transform = "";
                 alert("Failed to capture ID images.");
             }
         }
 
-        // Updated function to export BOTH Front and Back sides in a single multi-page or multi-card PDF
+        // Updated function to export BOTH Front and Back sides in a single multi-page PDF (Fixed un-mirror issue)
         async function downloadCardPdf() {
             const frontCard = document.getElementById("digitalCard");
             const backCard = document.getElementById("digitalCardBack");
@@ -1103,7 +1109,7 @@
 
                 const imgWidth = 85.6;
 
-                // 1. Capture and Add Front Side
+                // 1. Capture Front Side
                 const frontCanvas = await html2canvas(frontCard, {
                     scale: 3,
                     useCORS: true,
@@ -1121,18 +1127,25 @@
                 pdf.text("VexorNull Official Enterprise Credential (Front Side)", 105, 15, { align: "center" });
                 pdf.addImage(frontImgData, 'PNG', x, 25, imgWidth, frontImgHeight);
 
-                // 2. Add New Page for Back Side
-                pdf.addPage();
-                pdf.setFillColor(241, 245, 249);
-                pdf.rect(0, 0, 210, 297, 'F');
+                // 2. Temporarily remove transform for Back Side PDF capture
+                backCard.style.transform = "none";
 
                 const backCanvas = await html2canvas(backCard, {
                     scale: 3,
                     useCORS: true,
                     backgroundColor: null
                 });
+
+                // Restore original transform state
+                backCard.style.transform = "";
+
                 const backImgData = backCanvas.toDataURL('image/png');
                 const backImgHeight = (backCanvas.height * imgWidth) / backCanvas.width;
+
+                // Add New Page for Back Side
+                pdf.addPage();
+                pdf.setFillColor(241, 245, 249);
+                pdf.rect(0, 0, 210, 297, 'F');
 
                 pdf.setFont("helvetica", "bold");
                 pdf.setTextColor(15, 23, 42);
@@ -1145,6 +1158,7 @@
 
             } catch (err) {
                 console.error("Error generating PDF:", err);
+                backCard.style.transform = "";
                 alert("Failed to export PDF badge.");
             }
         }
