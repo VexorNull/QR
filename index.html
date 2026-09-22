@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Advanced Professional SEO & Branding Meta Tags -->
-    <title>VexorNull | Official Enterprise Credential & Verification Studio</title>
-    <meta name="title" content="VexorNull | Official Enterprise Credential & Verification Studio">
-    <meta name="description" content="Official secure digital credential and employee verification ID card generator studio. Developed by Tanveer Hussain (@vexornull).">
-    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain, secure ID generator">
+    <title>VexorNull | Official Enterprise Credential & Verification Studio v25.0</title>
+    <meta name="title" content="VexorNull | Official Enterprise Credential & Verification Studio v25.0">
+    <meta name="description" content="Official secure digital credential and employee verification ID card generator studio featuring 3D flip pass, biometric scanner simulation, and batch CSV support.">
+    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain, secure ID generator, v25">
     <meta name="author" content="Tanveer Hussain">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://vexornull.github.io/QR/">
@@ -19,15 +19,15 @@
     <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vexornull.github.io/QR/">
-    <meta property="og:title" content="VexorNull | Official Enterprise Credential Studio">
-    <meta property="og:description" content="Generate secure enterprise credentials, custom employee badges, and cryptographic verification passes instantly.">
+    <meta property="og:title" content="VexorNull | Official Enterprise Credential Studio v25.0">
+    <meta property="og:description" content="Generate secure enterprise credentials, custom employee badges, and cryptographic verification passes instantly with biometrics.">
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000">
     <meta property="og:site_name" content="VexorNull Security Studio">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://vexornull.github.io/QR/">
-    <meta name="twitter:title" content="VexorNull | Official Enterprise Credential Studio">
+    <meta name="twitter:title" content="VexorNull | Official Enterprise Credential Studio v25.0">
     <meta name="twitter:description" content="Official secure digital credential and employee verification ID card generator studio.">
     <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000">
     <meta name="twitter:creator" content="@vexornull">
@@ -37,7 +37,7 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "VexorNull Enterprise Credential Studio",
+      "name": "VexorNull Enterprise Credential Studio v25",
       "operatingSystem": "All",
       "applicationCategory": "BusinessApplication",
       "author": {
@@ -45,7 +45,7 @@
         "name": "Tanveer Hussain",
         "alternateName": "vexornull"
       },
-      "description": "Secure digital credential and employee ID card generator with real-time QR code encryption.",
+      "description": "Secure digital credential and employee ID card generator with biometric simulation and real-time QR encryption.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -105,17 +105,36 @@
             font-weight: 900;
         }
 
-        /* PRO v20.0 Seamless Transparent QR Wrapper Styling */
-        .qr-wrapper-v20 {
+        /* QR Wrapper Styling */
+        .qr-wrapper-v25 {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(8px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             transition: all 0.3s ease;
         }
-        .qr-wrapper-v20:hover {
+        .qr-wrapper-v25:hover {
             border-color: rgba(59, 130, 246, 0.4);
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        /* 3D Card Flip Mechanics */
+        .card-perspective {
+            perspective: 1000px;
+        }
+        .card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .card-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .card-back {
+            transform: rotateY(180deg);
         }
     </style>
 </head>
@@ -125,7 +144,7 @@
     <header class="w-full py-4 px-6 border-b border-slate-800/80 flex justify-between items-center glass sticky top-0 z-50">
         <div class="flex items-center space-x-3">
             <div id="headerDot" class="w-3 h-3 rounded-full bg-blue-500 animate-ping"></div>
-            <span class="font-extrabold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500" id="brandTextSpan">NULL</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 ml-1">PRO v20.0</span></span>
+            <span class="font-extrabold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500" id="brandTextSpan">NULL</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 ml-1">PRO v25.0</span></span>
         </div>
         <div class="flex items-center space-x-4">
             <!-- Theme Accent Color Selector -->
@@ -149,14 +168,30 @@
         <div class="lg:col-span-7 glass p-6 md:p-8 rounded-2xl shadow-2xl space-y-6">
             <div class="flex justify-between items-center border-b border-slate-800 pb-4">
                 <h2 class="text-xl font-bold flex items-center gap-2.5 text-white">
-                    <i class="fa-solid fa-shield-halved text-blue-500" id="formIcon"></i> Enterprise Credential Configurator
+                    <i class="fa-solid fa-id-card-clip text-blue-500" id="formIcon"></i> Enterprise Credential Studio v25
                 </h2>
                 <div class="flex items-center gap-2">
                     <button onclick="resetToDefaults()" title="Reset to Defaults" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-2.5 py-1 rounded-lg transition flex items-center gap-1">
                         <i class="fa-solid fa-rotate-right text-[10px]"></i> Reset
                     </button>
-                    <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Auto-Save Active</span>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Live Sync v25</span>
                 </div>
+            </div>
+
+            <!-- Quick Preset Templates Bar -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button onclick="applyPreset('standard')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-user-tie text-blue-400"></i> Standard
+                </button>
+                <button onclick="applyPreset('executive')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-crown text-amber-400"></i> Executive
+                </button>
+                <button onclick="applyPreset('contractor')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-helmet-safety text-emerald-400"></i> Contractor
+                </button>
+                <button onclick="applyPreset('visitor')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs py-2 px-3 rounded-xl transition font-medium flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-id-badge text-purple-400"></i> Visitor Pass
+                </button>
             </div>
 
             <!-- Batch CSV Upload Toolbar -->
@@ -183,41 +218,41 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Designation</label>
-                    <input type="text" id="inputDesignation" value="XX Assistant | XX Department" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Designation & Department</label>
+                    <input type="text" id="inputDesignation" value="Finance Assistant | Finance Dept" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Credential ID Number</label>
-                    <input type="text" id="inputCustomId" value="ID: #XX-XXXX-EMP" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
+                    <input type="text" id="inputCustomId" value="ID: #AG-2026-001" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Date of Birth (DOB)</label>
-                    <input type="text" id="inputDob" value="XX-XX-2000" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
+                    <input type="text" id="inputDob" value="10-07-2000" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">CNIC Number</label>
-                    <input type="text" id="inputCnic" value="42101-XXXXXXX-X" maxlength="15" oninput="formatCnic(this); saveAndHandleUpdate();" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
+                    <input type="text" id="inputCnic" value="42101-9988776-5" maxlength="15" oninput="formatCnic(this); saveAndHandleUpdate();" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition font-mono">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Issue Date</label>
-                    <input type="text" id="inputIssueDate" value="XX-XX-2026" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <input type="text" id="inputIssueDate" value="01-01-2026" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Expiry Date</label>
-                    <input type="text" id="inputExpiryDate" value="XX-XX-2028" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <input type="text" id="inputExpiryDate" value="31-12-2028" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Authorized Organization</label>
-                    <input type="text" id="inputOrg" value="XX & RP 🛡️ Registed-Employee" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <input type="text" id="inputOrg" value="AIRMEN GOLF CLUB & RECREATIONAL PARK" oninput="saveAndHandleUpdate()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Official Photograph / Emblem</label>
@@ -256,81 +291,126 @@
             <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" id="previewGlow"></div>
             
             <div class="flex justify-between items-center w-full px-1">
-                <h3 class="text-xs font-bold tracking-wider text-slate-400 uppercase">Live Official ID Pass (v20.0)</h3>
-                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-mono">SECURE v20</span>
+                <h3 class="text-xs font-bold tracking-wider text-slate-400 uppercase">Live 3D Flip ID Pass (v25.0)</h3>
+                <button onclick="flipCard()" class="text-[10px] bg-blue-600 hover:bg-blue-500 text-white px-2.5 py-1 rounded-lg font-semibold transition flex items-center gap-1 shadow dynamic-bg">
+                    <i class="fa-solid fa-rotate"></i> Flip Card (Front/Back)
+                </button>
             </div>
 
-            <!-- Professional ID Card Container with Tilt Effect -->
-            <div id="digitalCard" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000" class="w-full max-w-sm bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300">
-                
-                <!-- Holographic Security Seal Overlay Stamp -->
-                <div class="absolute top-12 right-3 w-12 h-12 rounded-full holo-stamp flex items-center justify-center shadow-lg z-10 pointer-events-none rotate-12 border border-white/30">
-                    <div class="text-[8px] font-black tracking-tighter text-blue-200 text-center uppercase leading-none">SECURE<br>PASS<br>VERIFIED</div>
-                </div>
+            <!-- Professional 3D Flip Card Container -->
+            <div class="card-perspective w-full max-w-sm">
+                <div id="cardInnerContainer" class="card-inner relative w-full">
+                    
+                    <!-- FRONT SIDE OF THE CARD -->
+                    <div id="digitalCard" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000" class="card-face w-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300">
+                        
+                        <!-- Holographic Security Seal Overlay Stamp -->
+                        <div class="absolute top-12 right-3 w-12 h-12 rounded-full holo-stamp flex items-center justify-center shadow-lg z-10 pointer-events-none rotate-12 border border-white/30">
+                            <div class="text-[8px] font-black tracking-tighter text-blue-200 text-center uppercase leading-none">SECURE<br>PASS<br>VERIFIED</div>
+                        </div>
 
-                <!-- Watermark Logo Ribbon -->
-                <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none"></div>
+                        <!-- Watermark Logo Ribbon -->
+                        <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none"></div>
 
-                <!-- Top Enterprise Header Bar with Manual ID & Smart Chip -->
-                <div class="flex justify-between items-center border-b border-slate-800 pb-2 text-[10px] text-slate-400 font-mono tracking-wider card-header-sub">
-                    <span id="cardIdBadge">ID: #XX-XXXX-EMP</span>
-                    <div class="flex items-center gap-2">
-                        <div class="smart-chip w-6 h-4 rounded-[4px]"></div>
-                        <span class="text-blue-400 dynamic-text font-bold">OFFICIAL PASS</span>
-                    </div>
-                </div>
+                        <!-- Top Enterprise Header Bar with Manual ID & Smart Chip -->
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2 text-[10px] text-slate-400 font-mono tracking-wider card-header-sub">
+                            <span id="cardIdBadge">ID: #AG-2026-001</span>
+                            <div class="flex items-center gap-2">
+                                <div class="smart-chip w-6 h-4 rounded-[4px]"></div>
+                                <span class="text-blue-400 dynamic-text font-bold">VERIFIED PASS</span>
+                            </div>
+                        </div>
 
-                <!-- Profile Photo & Info Layout -->
-                <div id="cardContentLayout" class="flex flex-col items-center space-y-3">
-                    <div class="relative w-20 h-20 mx-auto mt-1">
-                        <img id="previewImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Employee Photo" class="w-20 h-20 rounded-xl object-cover border-2 border-blue-500 shadow-xl dynamic-border">
-                        <div class="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full p-1 text-[9px] shadow dynamic-bg ring-2 ring-slate-900">
-                            <i class="fa-solid fa-check"></i>
+                        <!-- Profile Photo & Info Layout -->
+                        <div id="cardContentLayout" class="flex flex-col items-center space-y-3">
+                            <div class="relative w-20 h-20 mx-auto mt-1">
+                                <img id="previewImg" src="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000" alt="Employee Photo" class="w-20 h-20 rounded-xl object-cover border-2 border-blue-500 shadow-xl dynamic-border">
+                                <div class="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full p-1 text-[9px] shadow dynamic-bg ring-2 ring-slate-900">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 id="cardName" class="text-lg font-extrabold text-white tracking-wide card-title-text">Tanveer Hussain</h3>
+                                <p id="cardDesignation" class="text-xs text-blue-400 font-semibold mt-0.5 dynamic-text">Finance Assistant | Finance Dept</p>
+                            </div>
+                        </div>
+
+                        <!-- Official Fields Registry Box -->
+                        <div id="cardFieldsBox" class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium">
+                            <div class="flex justify-between border-b border-slate-800/60 pb-1">
+                                <span class="text-slate-400 text-[11px]">Father :</span>
+                                <span id="cardFather" class="text-slate-200 font-semibold">Hidden</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800/60 pb-1">
+                                <span class="text-slate-400 text-[11px]">DOB :</span>
+                                <span id="cardDob" class="text-slate-200 font-mono text-[11px]">10-07-2000</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800/60 pb-1">
+                                <span class="text-slate-400 text-[11px]">CNIC :</span>
+                                <span id="cardCnic" class="text-slate-200 font-mono text-[11px] font-semibold">42101-9988776-5</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800/60 pb-1">
+                                <span class="text-slate-400 text-[11px]">Issue Date :</span>
+                                <span id="cardIssueDate" class="text-slate-200 font-mono text-[11px]">01-01-2026</span>
+                            </div>
+                            <div class="flex justify-between pb-0.5">
+                                <span class="text-slate-400 text-[11px]">Expiry Date :</span>
+                                <span id="cardExpiryDate" class="text-slate-200 font-mono text-[11px]">31-12-2028</span>
+                            </div>
+                        </div>
+
+                        <!-- PRO v25.0 Code Container Box -->
+                        <div class="pt-2 border-t border-slate-800/80 flex flex-col items-center">
+                            <div id="codeContainer" class="qr-wrapper-v25 p-3 rounded-xl inline-flex justify-center items-center">
+                                <div id="qrcode"></div>
+                            </div>
+                            <span id="codeLabel" class="text-[9px] text-slate-400 mt-2 font-mono tracking-wider">ENCRYPTED CREDENTIAL QR</span>
+                        </div>
+
+                        <!-- Authorized Organization & Live Nonce Checksum Footer -->
+                        <div class="pt-2 border-t border-slate-800/60 text-center flex justify-between items-center px-1">
+                            <span id="liveNonce" class="text-[9px] text-slate-500 font-mono">NONCE: 0x9F3A</span>
+                            <span id="cardOrg" class="text-[10px] tracking-wider uppercase font-black text-blue-400 dynamic-text truncate max-w-[200px]">AIRMEN GOLF CLUB</span>
                         </div>
                     </div>
 
-                    <div>
-                        <h3 id="cardName" class="text-lg font-extrabold text-white tracking-wide card-title-text">Tanveer Hussain</h3>
-                        <p id="cardDesignation" class="text-xs text-blue-400 font-semibold mt-0.5 dynamic-text">XX Assistant | XX Department</p>
-                    </div>
-                </div>
+                    <!-- BACK SIDE OF THE CARD -->
+                    <div class="card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl flex flex-col justify-between">
+                        <div class="border-b border-slate-800 pb-2 flex justify-between items-center">
+                            <span class="text-[10px] font-mono text-blue-400 font-bold">OFFICIAL SECURITY DIRECTIVE</span>
+                            <span class="text-[9px] text-slate-400 font-mono">BACK PASS</span>
+                        </div>
 
-                <!-- Official Fields Registry Box -->
-                <div id="cardFieldsBox" class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium">
-                    <div class="flex justify-between border-b border-slate-800/60 pb-1">
-                        <span class="text-slate-400 text-[11px]">Father :</span>
-                        <span id="cardFather" class="text-slate-200 font-semibold">Hidden</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-800/60 pb-1">
-                        <span class="text-slate-400 text-[11px]">DOB :</span>
-                        <span id="cardDob" class="text-slate-200 font-mono text-[11px]">XX-XX-2000</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-800/60 pb-1">
-                        <span class="text-slate-400 text-[11px]">CNIC :</span>
-                        <span id="cardCnic" class="text-slate-200 font-mono text-[11px] font-semibold">42101-XXXXXXX-X</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-800/60 pb-1">
-                        <span class="text-slate-400 text-[11px]">Issue Date :</span>
-                        <span id="cardIssueDate" class="text-slate-200 font-mono text-[11px]">XX-XX-2026</span>
-                    </div>
-                    <div class="flex justify-between pb-0.5">
-                        <span class="text-slate-400 text-[11px]">Expiry Date :</span>
-                        <span id="cardExpiryDate" class="text-slate-200 font-mono text-[11px]">XX-XX-2028</span>
-                    </div>
-                </div>
+                        <div class="space-y-3 text-left py-2">
+                            <div class="bg-slate-950/80 border border-slate-800 p-3 rounded-xl space-y-2">
+                                <div class="text-[10px] uppercase tracking-wider text-slate-400 font-bold flex items-center justify-between">
+                                    <span>Biometric Authentication</span>
+                                    <i class="fa-solid fa-fingerprint text-blue-400 animate-pulse text-sm"></i>
+                                </div>
+                                <p class="text-[10px] text-slate-300 leading-relaxed">
+                                    This credential is property of <b id="cardBackOrg" class="text-white">Airmen Golf Club</b>. If found, please return to the security desk or report via portal.
+                                </p>
+                            </div>
 
-                <!-- PRO v20.0 Seamless Transparent Code Container Box -->
-                <div class="pt-2 border-t border-slate-800/80 flex flex-col items-center">
-                    <div id="codeContainer" class="qr-wrapper-v20 p-3 rounded-xl inline-flex justify-center items-center">
-                        <div id="qrcode"></div>
-                    </div>
-                    <span id="codeLabel" class="text-[9px] text-slate-400 mt-2 font-mono tracking-wider">ENCRYPTED CREDENTIAL QR</span>
-                </div>
+                            <div class="grid grid-cols-2 gap-2 text-[10px]">
+                                <div class="bg-slate-950/60 border border-slate-800/60 p-2 rounded-lg">
+                                    <span class="text-slate-400 block">Emergency Helpline:</span>
+                                    <span class="text-slate-200 font-mono font-bold">+92-21-3506XXXX</span>
+                                </div>
+                                <div class="bg-slate-950/60 border border-slate-800/60 p-2 rounded-lg">
+                                    <span class="text-slate-400 block">Security Clearance:</span>
+                                    <span class="text-emerald-400 font-mono font-bold">LEVEL-4 ACCESS</span>
+                                </div>
+                            </div>
+                        </div>
 
-                <!-- Authorized Organization & Live Nonce Checksum Footer -->
-                <div class="pt-2 border-t border-slate-800/60 text-center flex justify-between items-center px-1">
-                    <span id="liveNonce" class="text-[9px] text-slate-500 font-mono">NONCE: 0x9F3A</span>
-                    <span id="cardOrg" class="text-[10px] tracking-wider uppercase font-black text-blue-400 dynamic-text">XX & RP 🛡️ Registed-Employee</span>
+                        <div class="pt-3 border-t border-slate-800/80 text-center space-y-1">
+                            <div class="barcode-lines text-slate-300 text-lg tracking-widest">||| |||| || | ||||</div>
+                            <span class="text-[9px] text-slate-500 font-mono">SECURE HASH: 0x8F21A7C49E</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -390,16 +470,63 @@
             amber: { primary: '#f59e0b', class: 'text-amber-400', bg: 'bg-amber-600', border: 'border-amber-500' }
         };
 
+        const presets = {
+            standard: {
+                name: "Tanveer Hussain",
+                father: "Hidden",
+                designation: "Finance Assistant | Finance Dept",
+                id: "ID: #AG-2026-001",
+                dob: "10-07-2000",
+                cnic: "42101-9988776-5",
+                issue: "01-01-2026",
+                expiry: "31-12-2028",
+                org: "AIRMEN GOLF CLUB & RECREATIONAL PARK"
+            },
+            executive: {
+                name: "Tanveer Hussain",
+                father: "Hidden",
+                designation: "Senior Finance Executive",
+                id: "ID: #EXEC-001-2026",
+                dob: "10-07-2000",
+                cnic: "42101-9988776-5",
+                issue: "01-01-2026",
+                expiry: "31-12-2030",
+                org: "EXECUTIVE BOARD DIRECTORY"
+            },
+            contractor: {
+                name: "Tanveer Hussain",
+                father: "Hidden",
+                designation: "Technical & Web Consultant",
+                id: "ID: #CONT-992-2026",
+                dob: "10-07-2000",
+                cnic: "42101-9988776-5",
+                issue: "15-06-2026",
+                expiry: "15-12-2026",
+                org: "AUTHORIZED EXTERNAL CONTRACTOR"
+            },
+            visitor: {
+                name: "Tanveer Hussain",
+                father: "Hidden",
+                designation: "Special Guest / Auditor",
+                id: "ID: #VISIT-777-2026",
+                dob: "10-07-2000",
+                cnic: "42101-9988776-5",
+                issue: "22-09-2026",
+                expiry: "23-09-2026",
+                org: "VISITOR PASS GATEWAY"
+            }
+        };
+
         const defaultValues = {
             inputName: "Tanveer Hussain",
             inputFather: "Hidden",
-            inputDesignation: "XX Assistant | XX Department",
-            inputCustomId: "ID: #XX-XXXX-EMP",
-            inputDob: "XX-XX-2000",
-            inputCnic: "42101-XXXXXXX-X",
-            inputIssueDate: "XX-XX-2026",
-            inputExpiryDate: "XX-XX-2028",
-            inputOrg: "XX & RP 🛡️ Registed-Employee"
+            inputDesignation: "Finance Assistant | Finance Dept",
+            inputCustomId: "ID: #AG-2026-001",
+            inputDob: "10-07-2000",
+            inputCnic: "42101-9988776-5",
+            inputIssueDate: "01-01-2026",
+            inputExpiryDate: "31-12-2028",
+            inputOrg: "AIRMEN GOLF CLUB & RECREATIONAL PARK"
         };
 
         // Live Nonce Generator loop
@@ -421,16 +548,36 @@
             input.value = v;
         }
 
+        function applyPreset(type) {
+            const p = presets[type];
+            if (!p) return;
+            document.getElementById("inputName").value = p.name;
+            document.getElementById("inputFather").value = p.father;
+            document.getElementById("inputDesignation").value = p.designation;
+            document.getElementById("inputCustomId").value = p.id;
+            document.getElementById("inputDob").value = p.dob;
+            document.getElementById("inputCnic").value = p.cnic;
+            document.getElementById("inputIssueDate").value = p.issue;
+            document.getElementById("inputExpiryDate").value = p.expiry;
+            document.getElementById("inputOrg").value = p.org;
+            saveAndHandleUpdate();
+        }
+
+        function flipCard() {
+            const inner = document.getElementById("cardInnerContainer");
+            inner.classList.toggle("is-flipped");
+        }
+
         function saveToLocalStorage() {
             const data = {};
             Object.keys(defaultValues).forEach(id => {
                 data[id] = document.getElementById(id).value;
             });
-            localStorage.setItem('vexornull_credential_data', JSON.stringify(data));
+            localStorage.setItem('vexornull_credential_data_v25', JSON.stringify(data));
         }
 
         function loadFromLocalStorage() {
-            const saved = localStorage.getItem('vexornull_credential_data');
+            const saved = localStorage.getItem('vexornull_credential_data_v25');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
@@ -452,7 +599,7 @@
             Object.keys(defaultValues).forEach(id => {
                 document.getElementById(id).value = defaultValues[id];
             });
-            localStorage.removeItem('vexornull_credential_data');
+            localStorage.removeItem('vexornull_credential_data_v25');
             updateCard();
         }
 
@@ -473,10 +620,9 @@
                 el.className = `fa-solid ${el.classList[1]} ${theme.class}`;
             });
             document.getElementById('brandTextSpan').className = theme.class;
-            document.getElementById('formIcon').className = `fa-solid fa-shield-halved ${theme.class}`;
+            document.getElementById('formIcon').className = `fa-solid fa-id-card-clip ${theme.class}`;
         }
 
-        // Toggle Card Layout (Vertical Badge vs Horizontal Pass)
         function toggleCardLayout() {
             const layout = document.getElementById('cardLayout').value;
             const contentLayout = document.getElementById('cardContentLayout');
@@ -495,7 +641,7 @@
             const headerSub = document.querySelector('.card-header-sub');
 
             if (mode === 'light') {
-                card.className = "w-full max-w-sm bg-gradient-to-b from-slate-100 via-white to-slate-200 text-slate-900 border border-slate-300 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
+                card.className = "card-face w-full bg-gradient-to-b from-slate-100 via-white to-slate-200 text-slate-900 border border-slate-300 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
                 fieldsBox.className = "bg-slate-100 border border-slate-300 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium text-slate-800";
                 nameEl.className = "text-lg font-extrabold text-slate-900 tracking-wide";
                 headerSub.className = "flex justify-between items-center border-b border-slate-300 pb-2 text-[10px] text-slate-600 font-mono tracking-wider card-header-sub";
@@ -503,7 +649,7 @@
                 fieldsBox.querySelectorAll('span.text-slate-400').forEach(s => s.className = "text-slate-500 text-[11px]");
                 fieldsBox.querySelectorAll('span.text-slate-200').forEach(s => s.className = "text-slate-900 font-semibold text-[11px]");
             } else {
-                card.className = "w-full max-w-sm bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 text-slate-100 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
+                card.className = "card-face w-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 text-slate-100 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
                 fieldsBox.className = "bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium";
                 nameEl.className = "text-lg font-extrabold text-white tracking-wide";
                 headerSub.className = "flex justify-between items-center border-b border-slate-800 pb-2 text-[10px] text-slate-400 font-mono tracking-wider card-header-sub";
@@ -520,7 +666,7 @@
             container.innerHTML = "";
 
             if (format === 'barcode') {
-                container.innerHTML = `<div class="py-2 text-center text-slate-900"><div class="barcode-lines text-2xl tracking-widest">||| | |||| || | ||</div><div class="text-[9px] font-mono mt-1">${document.getElementById("inputCustomId").value}</div></div>`;
+                container.innerHTML = `<div class="py-2 text-center text-slate-900"><div class="barcode-lines text-2xl tracking-widest text-slate-100">||| | |||| || | ||</div><div class="text-[9px] font-mono mt-1 text-slate-400">${document.getElementById("inputCustomId").value}</div></div>`;
                 label.innerText = "LINEAR ENTERPRISE BARCODE";
             } else {
                 const encodedData = encodeURIComponent(qrData);
@@ -549,8 +695,9 @@
             document.getElementById("cardIssueDate").innerText = issueDate;
             document.getElementById("cardExpiryDate").innerText = expiryDate;
             document.getElementById("cardOrg").innerText = org;
+            document.getElementById("cardBackOrg").innerText = org;
 
-            const qrText = `[SECURE ID VERIFICATION]\n` +
+            const qrText = `[SECURE ID VERIFICATION v25]\n` +
                            `Credential ID: ${customId}\n` +
                            `Name : ${name}\n` +
                            `Father : ${father}\n` +
