@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Advanced Professional SEO & Branding Meta Tags -->
-    <title>VexorNull | Official Enterprise Credential & Verification Studio v32.0</title>
-    <meta name="title" content="VexorNull | Official Enterprise Credential & Verification Studio v32.0">
-    <meta name="description" content="Official secure digital credential and employee verification ID card generator studio featuring dual-side editing, cryptographic biometrics, NFC simulator, and batch CSV support.">
-    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain, secure ID generator, v32, NFC badge">
+    <title>VexorNull | Multi-Format Enterprise ID & Cryptographic Credential Studio v35.0</title>
+    <meta name="title" content="VexorNull | Multi-Format Enterprise ID & Cryptographic Credential Studio v35.0">
+    <meta name="description" content="Official secure multi-format digital credential and employee verification ID card generator studio featuring multiple card formats (Vertical, Horizontal, VIP Lanyard, Holographic Badge, Compact RFID), cryptographic biometrics, NFC simulator, and batch CSV support.">
+    <meta name="keywords" content="employee id, digital credential, official pass, verification studio, vexornull, tanveer hussain, secure ID generator, v35, NFC badge, multi-format card">
     <meta name="author" content="Tanveer Hussain">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://vexornull.github.io/QR/">
@@ -19,16 +19,16 @@
     <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vexornull.github.io/QR/">
-    <meta property="og:title" content="VexorNull | Official Enterprise Credential Studio v32.0">
-    <meta property="og:description" content="Generate secure enterprise credentials, custom employee badges, NFC cryptographic verification passes instantly with biometrics.">
+    <meta property="og:title" content="VexorNull | Multi-Format Enterprise Credential Studio v35.0">
+    <meta property="og:description" content="Generate secure enterprise credentials, custom employee badges, and multiple card layout formats instantly with biometrics & NFC simulation.">
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000">
     <meta property="og:site_name" content="VexorNull Security Studio">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://vexornull.github.io/QR/">
-    <meta name="twitter:title" content="VexorNull | Official Enterprise Credential Studio v32.0">
-    <meta name="twitter:description" content="Official secure digital credential and employee verification ID card generator studio with NFC simulation.">
+    <meta name="twitter:title" content="VexorNull | Multi-Format Enterprise Credential Studio v35.0">
+    <meta name="twitter:description" content="Official secure digital credential and multi-format employee verification ID card generator studio with NFC simulation.">
     <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/1NzqmZp796ksKZrtpuMabgqpFXTGV3YIR=s1000">
     <meta name="twitter:creator" content="@vexornull">
 
@@ -37,7 +37,7 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "VexorNull Enterprise Credential Studio v32",
+      "name": "VexorNull Enterprise Credential Studio v35",
       "operatingSystem": "All",
       "applicationCategory": "BusinessApplication",
       "author": {
@@ -45,7 +45,7 @@
         "name": "Tanveer Hussain",
         "alternateName": "vexornull"
       },
-      "description": "Secure digital credential and employee ID card generator with dual-side editing, NFC proximity simulation, and real-time QR encryption.",
+      "description": "Secure digital credential and multi-format employee ID card generator with dual-side editing, NFC proximity simulation, multiple card formats, and real-time QR encryption.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -107,14 +107,14 @@
         }
 
         /* QR Wrapper Styling */
-        .qr-wrapper-v32 {
+        .qr-wrapper-v35 {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(8px);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             transition: all 0.3s ease;
         }
-        .qr-wrapper-v32:hover {
+        .qr-wrapper-v35:hover {
             border-color: rgba(59, 130, 246, 0.4);
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
         }
@@ -163,7 +163,7 @@
     <header class="w-full py-4 px-6 border-b border-slate-800/80 flex justify-between items-center glass sticky top-0 z-50">
         <div class="flex items-center space-x-3">
             <div id="headerDot" class="w-3 h-3 rounded-full bg-blue-500 animate-ping"></div>
-            <span class="font-extrabold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500" id="brandTextSpan">NULL</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 ml-1">PRO v32.0</span></span>
+            <span class="font-extrabold text-lg tracking-wider text-white">VEXOR<span class="text-blue-500" id="brandTextSpan">NULL</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 ml-1">PRO v35.0</span></span>
         </div>
         <div class="flex items-center space-x-4">
             <!-- Theme Accent Color Selector -->
@@ -187,13 +187,13 @@
         <div class="lg:col-span-7 glass p-6 md:p-8 rounded-2xl shadow-2xl space-y-6">
             <div class="flex justify-between items-center border-b border-slate-800 pb-4">
                 <h2 class="text-xl font-bold flex items-center gap-2.5 text-white">
-                    <i class="fa-solid fa-id-card-clip text-blue-500" id="formIcon"></i> Dual-Side NFC Enterprise Studio v32
+                    <i class="fa-solid fa-id-card-clip text-blue-500" id="formIcon"></i> Multi-Format Enterprise Studio v35
                 </h2>
                 <div class="flex items-center gap-2">
                     <button onclick="resetToDefaults()" title="Reset to Defaults" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-2.5 py-1 rounded-lg transition flex items-center gap-1">
                         <i class="fa-solid fa-rotate-right text-[10px]"></i> Reset
                     </button>
-                    <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">NFC & Biometric Sync</span>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-medium" id="versionBadge">Multi-Format Sync</span>
                 </div>
             </div>
 
@@ -309,10 +309,13 @@
             <!-- Upgrade Controls Toolbar (Layout & Appearance) -->
             <div class="pt-4 border-t border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Card Layout</label>
-                    <select id="cardLayout" onchange="toggleCardLayout()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
-                        <option value="vertical">Vertical Badge</option>
-                        <option value="horizontal">Horizontal Pass</option>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Card Format Preset</label>
+                    <select id="cardLayout" onchange="changeCardFormat()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+                        <option value="vertical">Vertical ID Badge (Standard)</option>
+                        <option value="horizontal">Horizontal Pass (Landscape)</option>
+                        <option value="vip">VIP Lanyard Pass (Event)</option>
+                        <option value="holographic">Holographic Security Shield</option>
+                        <option value="compact">Compact RFID Keycard</option>
                     </select>
                 </div>
                 <div>
@@ -337,15 +340,15 @@
             <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" id="previewGlow"></div>
             
             <div class="flex justify-between items-center w-full px-1">
-                <h3 class="text-xs font-bold tracking-wider text-slate-400 uppercase">Live 3D NFC Dual-Side Pass (v32.0)</h3>
+                <h3 class="text-xs font-bold tracking-wider text-slate-400 uppercase" id="previewHeaderTitle">Live 3D NFC Vertical Pass (v35.0)</h3>
                 <button onclick="flipCard()" class="text-[10px] bg-blue-600 hover:bg-blue-500 text-white px-2.5 py-1 rounded-lg font-semibold transition flex items-center gap-1 shadow dynamic-bg">
                     <i class="fa-solid fa-rotate"></i> Flip Card (Front/Back)
                 </button>
             </div>
 
-            <!-- Professional 3D Flip Card Container -->
-            <div class="card-perspective w-full max-w-sm">
-                <div id="cardInnerContainer" class="card-inner relative w-full">
+            <!-- Professional 3D Flip Card Container with dynamic dimensions based on format -->
+            <div class="card-perspective w-full flex justify-center">
+                <div id="cardInnerContainer" class="card-inner relative w-full max-w-sm">
                     
                     <!-- FRONT SIDE OF THE CARD -->
                     <div id="digitalCard" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1200" class="card-face w-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300">
@@ -364,7 +367,7 @@
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-wifi text-blue-400 animate-pulse text-xs dynamic-icon" title="NFC Enabled Chip"></i>
                                 <div class="smart-chip w-5 h-3.5 rounded-[3px]"></div>
-                                <span class="text-blue-400 dynamic-text font-bold">NFC v32</span>
+                                <span class="text-blue-400 dynamic-text font-bold">NFC v35</span>
                             </div>
                         </div>
 
@@ -407,9 +410,9 @@
                             </div>
                         </div>
 
-                        <!-- PRO v32.0 Code Container Box -->
+                        <!-- PRO v35.0 Code Container Box -->
                         <div class="pt-2 border-t border-slate-800/80 flex flex-col items-center">
-                            <div id="codeContainer" class="qr-wrapper-v32 p-3 rounded-xl inline-flex justify-center items-center">
+                            <div id="codeContainer" class="qr-wrapper-v35 p-3 rounded-xl inline-flex justify-center items-center">
                                 <div id="qrcode"></div>
                             </div>
                             <span id="codeLabel" class="text-[9px] text-slate-400 mt-2 font-mono tracking-wider">CRYPTOGRAPHIC CREDENTIAL QR</span>
@@ -426,7 +429,7 @@
                     <div id="digitalCardBack" class="card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl flex flex-col justify-between">
                         <div class="border-b border-slate-800 pb-2 flex justify-between items-center">
                             <span class="text-[10px] font-mono text-blue-400 font-bold dynamic-text">OFFICIAL SECURITY DIRECTIVE</span>
-                            <span class="text-[9px] text-slate-400 font-mono">BACK PASS v32</span>
+                            <span class="text-[9px] text-slate-400 font-mono">BACK PASS v35</span>
                         </div>
 
                         <div class="space-y-3 text-left py-2">
@@ -518,7 +521,7 @@
                 <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
                     <i class="fa-solid fa-layer-group text-blue-500"></i> VexorNull Unified Cyber-Glass Component Suite
                 </h3>
-                <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">Active Modules v32</span>
+                <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">Active Modules v35</span>
             </div>
             
             <div class="vexor-component-grid">
@@ -573,7 +576,7 @@
             </div>
 
             <div>
-                <h3 class="text-base font-bold text-white">v32.0 Secure Credential Verified</h3>
+                <h3 class="text-base font-bold text-white">v35.0 Secure Credential Verified</h3>
                 <p class="text-xs text-slate-400 mt-0.5">Cryptographic state validation successful.</p>
             </div>
             <div id="modalDataBox" class="bg-slate-950 p-3 rounded-xl text-left text-xs font-mono space-y-1.5 text-slate-300 border border-slate-800">
@@ -585,7 +588,7 @@
 
     <!-- Footer -->
     <footer class="py-4 text-center text-xs text-slate-500 border-t border-slate-900">
-        Official Enterprise Studio Built by <span class="text-slate-300 font-medium">Tanveer Hussain</span> (<a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-400 hover:underline" id="footerAuthorLink">@vexornull</a>)
+        Official Multi-Format Enterprise Studio Built by <span class="text-slate-300 font-medium">Tanveer Hussain</span> (<a href="https://Instagram.com/vexornull" target="_blank" class="text-blue-400 hover:underline" id="footerAuthorLink">@vexornull</a>)
     </footer>
 
     <!-- Script Logic -->
@@ -718,11 +721,11 @@
             Object.keys(defaultValues).forEach(id => {
                 data[id] = document.getElementById(id).value;
             });
-            localStorage.setItem('vexornull_credential_data_v32', JSON.stringify(data));
+            localStorage.setItem('vexornull_credential_data_v35', JSON.stringify(data));
         }
 
         function loadFromLocalStorage() {
-            const saved = localStorage.getItem('vexornull_credential_data_v32');
+            const saved = localStorage.getItem('vexornull_credential_data_v35');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
@@ -744,7 +747,7 @@
             Object.keys(defaultValues).forEach(id => {
                 document.getElementById(id).value = defaultValues[id];
             });
-            localStorage.removeItem('vexornull_credential_data_v32');
+            localStorage.removeItem('vexornull_credential_data_v35');
             updateCard();
         }
 
@@ -768,14 +771,56 @@
             document.getElementById('formIcon').className = `fa-solid fa-id-card-clip ${theme.class}`;
         }
 
-        function toggleCardLayout() {
-            const layout = document.getElementById('cardLayout').value;
+        function changeCardFormat() {
+            const format = document.getElementById('cardLayout').value;
+            const container = document.getElementById('cardInnerContainer');
+            const frontCard = document.getElementById('digitalCard');
+            const backCard = document.getElementById('digitalCardBack');
             const contentLayout = document.getElementById('cardContentLayout');
-            if (layout === 'horizontal') {
-                contentLayout.className = "flex flex-row items-center space-x-4 text-left my-2";
-            } else {
+            const headerTitle = document.getElementById('previewHeaderTitle');
+            const fieldsBox = document.getElementById('cardFieldsBox');
+
+            // Reset container width classes
+            container.className = "card-inner relative w-full";
+
+            if (format === 'horizontal') {
+                container.classList.add("max-w-md");
+                frontCard.className = "card-face w-full bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-4 text-center shadow-2xl relative overflow-hidden transition-colors duration-300";
+                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-4 text-center shadow-2xl flex flex-col justify-between";
+                contentLayout.className = "flex flex-row items-center space-x-4 text-left my-1";
+                headerTitle.innerText = "Live 3D NFC Horizontal Pass (v35.0)";
+                fieldsBox.className = "bg-slate-950/70 border border-slate-800/80 rounded-xl p-2 text-left space-y-1 text-[11px] font-medium";
+            } else if (format === 'vip') {
+                container.classList.add("max-w-xs");
+                frontCard.className = "card-face w-full bg-gradient-to-b from-purple-950 via-slate-900 to-slate-950 border border-purple-500/40 rounded-3xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
+                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-purple-950 via-slate-900 to-slate-950 border border-purple-500/40 rounded-3xl p-5 text-center shadow-2xl flex flex-col justify-between";
+                contentLayout.className = "flex flex-col items-center space-y-2";
+                headerTitle.innerText = "Live 3D VIP Lanyard Pass (v35.0)";
+                fieldsBox.className = "bg-purple-950/30 border border-purple-500/30 rounded-xl p-2.5 text-left space-y-1 text-xs font-medium";
+            } else if (format === 'holographic') {
+                container.classList.add("max-w-sm");
+                frontCard.className = "card-face w-full bg-gradient-to-tr from-blue-950 via-slate-900 to-indigo-950 border-2 border-blue-400/60 rounded-2xl p-5 text-center shadow-[0_0_30px_rgba(59,130,246,0.3)] space-y-3 relative overflow-hidden transition-colors duration-300";
+                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-tr from-blue-950 via-slate-900 to-indigo-950 border-2 border-blue-400/60 rounded-2xl p-5 text-center shadow-[0_0_30px_rgba(59,130,246,0.3)] flex flex-col justify-between";
                 contentLayout.className = "flex flex-col items-center space-y-3";
+                headerTitle.innerText = "Live Holographic Security Shield (v35.0)";
+                fieldsBox.className = "bg-blue-950/40 border border-blue-500/30 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium";
+            } else if (format === 'compact') {
+                container.classList.add("max-w-xs");
+                frontCard.className = "card-face w-full bg-slate-900 border border-slate-700 rounded-xl p-4 text-center shadow-2xl space-y-2 relative overflow-hidden transition-colors duration-300";
+                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-slate-900 border border-slate-700 rounded-xl p-4 text-center shadow-2xl flex flex-col justify-between";
+                contentLayout.className = "flex flex-row items-center space-x-3 text-left";
+                headerTitle.innerText = "Live Compact RFID Keycard (v35.0)";
+                fieldsBox.className = "hidden"; // Hide detailed fields for ultra-compact look
+            } else {
+                // Default Vertical
+                container.classList.add("max-w-sm");
+                frontCard.className = "card-face w-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
+                backCard.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl flex flex-col justify-between";
+                contentLayout.className = "flex flex-col items-center space-y-3";
+                headerTitle.innerText = "Live 3D NFC Vertical Pass (v35.0)";
+                fieldsBox.className = "bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium";
             }
+            updateCard();
         }
 
         function toggleCardThemeMode() {
@@ -787,8 +832,10 @@
             const headerSub = document.querySelector('.card-header-sub');
 
             if (mode === 'light') {
-                card.className = "card-face w-full bg-gradient-to-b from-slate-100 via-white to-slate-200 text-slate-900 border border-slate-300 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
-                cardBack.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-100 via-white to-slate-200 text-slate-900 border border-slate-300 rounded-2xl p-5 text-center shadow-2xl flex flex-col justify-between";
+                card.classList.remove('bg-slate-900', 'from-slate-900', 'to-slate-950', 'bg-gradient-to-b', 'bg-gradient-to-r', 'from-purple-950', 'from-blue-950');
+                card.classList.add('bg-gradient-to-b', 'from-slate-100', 'via-white', 'to-slate-200', 'text-slate-900', 'border-slate-300');
+                cardBack.classList.remove('bg-slate-900', 'from-slate-900', 'to-slate-950', 'bg-gradient-to-b', 'bg-gradient-to-r', 'from-purple-950', 'from-blue-950');
+                cardBack.classList.add('bg-gradient-to-b', 'from-slate-100', 'via-white', 'to-slate-200', 'text-slate-900', 'border-slate-300');
                 fieldsBox.className = "bg-slate-100 border border-slate-300 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium text-slate-800";
                 nameEl.className = "text-lg font-extrabold text-slate-900 tracking-wide";
                 headerSub.className = "flex justify-between items-center border-b border-slate-300 pb-2 text-[10px] text-slate-600 font-mono tracking-wider card-header-sub";
@@ -796,14 +843,7 @@
                 fieldsBox.querySelectorAll('span.text-slate-400').forEach(s => s.className = "text-slate-500 text-[11px]");
                 fieldsBox.querySelectorAll('span.text-slate-200').forEach(s => s.className = "text-slate-900 font-semibold text-[11px]");
             } else {
-                card.className = "card-face w-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 text-slate-100 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl space-y-3 relative overflow-hidden transition-colors duration-300";
-                cardBack.className = "card-face card-back absolute inset-0 w-full h-full bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 text-slate-100 border border-slate-800/90 rounded-2xl p-5 text-center shadow-2xl flex flex-col justify-between";
-                fieldsBox.className = "bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium";
-                nameEl.className = "text-lg font-extrabold text-white tracking-wide";
-                headerSub.className = "flex justify-between items-center border-b border-slate-800 pb-2 text-[10px] text-slate-400 font-mono tracking-wider card-header-sub";
-
-                fieldsBox.querySelectorAll('span.text-slate-500').forEach(s => s.className = "text-slate-400 text-[11px]");
-                fieldsBox.querySelectorAll('span.text-slate-900').forEach(s => s.className = "text-slate-200 font-semibold text-[11px]");
+                changeCardFormat(); // Re-apply format background gradients
             }
         }
 
@@ -850,11 +890,11 @@
             document.getElementById("cardClearance").innerText = clearance;
             document.getElementById("cardDirectiveText").innerText = directive;
 
-            // Generate pseudo hash for v32
-            const hashString = "0x" + Math.abs((name + customId).split('').reduce((acc, char) => (acc << 5) - acc + char.charCodeAt(0), 0)).toString(16).toUpperCase() + "E32";
+            // Generate pseudo hash for v35
+            const hashString = "0x" + Math.abs((name + customId).split('').reduce((acc, char) => (acc << 5) - acc + char.charCodeAt(0), 0)).toString(16).toUpperCase() + "E35";
             document.getElementById("cardHashLabel").innerText = `HASH: ${hashString}`;
 
-            const qrText = `[SECURE ID VERIFICATION v32]\n` +
+            const qrText = `[SECURE ID VERIFICATION v35]\n` +
                            `Credential ID: ${customId}\n` +
                            `Name : ${name}\n` +
                            `Father : ${father}\n` +
@@ -933,7 +973,7 @@
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', `${name.replace(/\s+/g, '_')}_Credential_v32.txt`);
+            link.setAttribute('download', `${name.replace(/\s+/g, '_')}_Credential_v35.txt`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -1017,7 +1057,7 @@
                 backgroundColor: null
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `${name}_Official_ID_Pass_v32.png`;
+                link.download = `${name}_Official_ID_Pass_v35.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(err => {
@@ -1054,10 +1094,10 @@
                 pdf.setFont("helvetica", "bold");
                 pdf.setTextColor(255, 255, 255);
                 pdf.setFontSize(16);
-                pdf.text("VexorNull Official Enterprise Credential Badge v32", 105, 15, { align: "center" });
+                pdf.text("VexorNull Official Enterprise Credential Badge v35", 105, 15, { align: "center" });
 
                 pdf.addImage(imgData, 'PNG', x, y + 10, imgWidth, imgHeight);
-                pdf.save(`${name}_Enterprise_Badge_v32.pdf`);
+                pdf.save(`${name}_Enterprise_Badge_v35.pdf`);
             }).catch(err => {
                 console.error("Error generating PDF:", err);
                 alert("Failed to export PDF badge.");
