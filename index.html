@@ -457,10 +457,10 @@
                 <button onclick="simulateNfcTap()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5" title="Simulate NFC Proximity Tap">
                     <i class="fa-solid fa-wifi"></i> <span class="text-[9px]">NFC Tap</span>
                 </button>
-                <button onclick="downloadCardPdf()" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5" title="Export as PDF Badge">
+                <button onclick="downloadCardPdf()" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5" title="Export Both Sides as PDF">
                     <i class="fa-solid fa-file-pdf"></i> <span class="text-[9px]">PDF</span>
                 </button>
-                <button onclick="downloadCardImage()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5 dynamic-bg" title="Save as High-Res PNG">
+                <button onclick="downloadCardImage()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 px-1 rounded-xl shadow transition flex flex-col items-center justify-center gap-0.5 dynamic-bg" title="Save Both Sides as High-Res PNG">
                     <i class="fa-solid fa-download"></i> <span class="text-[9px]">PNG</span>
                 </button>
             </div>
@@ -1049,87 +1049,104 @@
             document.getElementById("verifyModal").classList.add("hidden");
         }
 
-        function downloadCardImage() {
-            const innerContainer = document.getElementById("cardInnerContainer");
-            const isFlipped = innerContainer.classList.contains("is-flipped");
-            const cardElement = isFlipped ? document.getElementById("digitalCardBack") : document.getElementById("digitalCard");
+        // Updated function to download BOTH Front and Back PNG images automatically
+        async function downloadCardImage() {
+            const frontCard = document.getElementById("digitalCard");
+            const backCard = document.getElementById("digitalCardBack");
             const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
-            const suffix = isFlipped ? "Back_Pass_v351" : "Official_ID_Pass_v351";
-            
-            if (isFlipped) {
-                cardElement.style.transform = "none";
-            }
 
-            html2canvas(cardElement, {
-                scale: 3,
-                useCORS: true,
-                backgroundColor: null
-            }).then(canvas => {
-                if (isFlipped) {
-                    cardElement.style.transform = "";
-                }
-                const link = document.createElement('a');
-                link.download = `${name}_${suffix}.png`;
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            }).catch(err => {
-                if (isFlipped) {
-                    cardElement.style.transform = "";
-                }
-                console.error("Error capturing card:", err);
-                alert("Failed to capture ID image.");
-            });
+            try {
+                // 1. Capture Front Side
+                const frontCanvas = await html2canvas(frontCard, {
+                    scale: 3,
+                    useCORS: true,
+                    backgroundColor: null
+                });
+                const frontLink = document.createElement('a');
+                frontLink.download = `${name}_Front_Pass_v351.png`;
+                frontLink.href = frontCanvas.toDataURL('image/png');
+                frontLink.click();
+
+                // Small delay between downloads to prevent browser blocking multiple files
+                await new Promise(resolve => setTimeout(resolve, 500));
+
+                // 2. Capture Back Side
+                const backCanvas = await html2canvas(backCard, {
+                    scale: 3,
+                    useCORS: true,
+                    backgroundColor: null
+                });
+                const backLink = document.createElement('a');
+                backLink.download = `${name}_Back_Pass_v351.png`;
+                backLink.href = backCanvas.toDataURL('image/png');
+                backLink.click();
+
+            } catch (err) {
+                console.error("Error capturing card images:", err);
+                alert("Failed to capture ID images.");
+            }
         }
 
-        function downloadCardPdf() {
-            const innerContainer = document.getElementById("cardInnerContainer");
-            const isFlipped = innerContainer.classList.contains("is-flipped");
-            const cardElement = isFlipped ? document.getElementById("digitalCardBack") : document.getElementById("digitalCard");
+        // Updated function to export BOTH Front and Back sides in a single multi-page or multi-card PDF
+        async function downloadCardPdf() {
+            const frontCard = document.getElementById("digitalCard");
+            const backCard = document.getElementById("digitalCardBack");
             const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
-            const suffix = isFlipped ? "Back_Badge_v351" : "Enterprise_Badge_v351";
 
-            if (isFlipped) {
-                cardElement.style.transform = "none";
-            }
-
-            html2canvas(cardElement, {
-                scale: 3,
-                useCORS: true,
-                backgroundColor: null
-            }).then(canvas => {
-                if (isFlipped) {
-                    cardElement.style.transform = "";
-                }
-                const imgData = canvas.toDataURL('image/png');
+            try {
                 const { jsPDF } = window.jspdf;
                 const pdf = new jsPDF({
                     orientation: 'portrait',
                     unit: 'mm',
                     format: 'a4'
                 });
-                
+
                 const imgWidth = 85.6;
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                // 1. Capture and Add Front Side
+                const frontCanvas = await html2canvas(frontCard, {
+                    scale: 3,
+                    useCORS: true,
+                    backgroundColor: null
+                });
+                const frontImgData = frontCanvas.toDataURL('image/png');
+                const frontImgHeight = (frontCanvas.height * imgWidth) / frontCanvas.width;
                 const x = (210 - imgWidth) / 2;
-                const y = 20;
 
                 pdf.setFillColor(241, 245, 249);
                 pdf.rect(0, 0, 210, 297, 'F');
-                
                 pdf.setFont("helvetica", "bold");
                 pdf.setTextColor(15, 23, 42);
                 pdf.setFontSize(16);
-                pdf.text(`VexorNull Official Enterprise Credential (${isFlipped ? 'Back Side' : 'Front Side'})`, 105, 15, { align: "center" });
+                pdf.text("VexorNull Official Enterprise Credential (Front Side)", 105, 15, { align: "center" });
+                pdf.addImage(frontImgData, 'PNG', x, 25, imgWidth, frontImgHeight);
 
-                pdf.addImage(imgData, 'PNG', x, y + 10, imgWidth, imgHeight);
-                pdf.save(`${name}_${suffix}.pdf`);
-            }).catch(err => {
-                if (isFlipped) {
-                    cardElement.style.transform = "";
-                }
+                // 2. Add New Page for Back Side
+                pdf.addPage();
+                pdf.setFillColor(241, 245, 249);
+                pdf.rect(0, 0, 210, 297, 'F');
+
+                const backCanvas = await html2canvas(backCard, {
+                    scale: 3,
+                    useCORS: true,
+                    backgroundColor: null
+                });
+                const backImgData = backCanvas.toDataURL('image/png');
+                const backImgHeight = (backCanvas.height * imgWidth) / backCanvas.width;
+
+                pdf.setFont("helvetica", "bold");
+                pdf.setTextColor(15, 23, 42);
+                pdf.setFontSize(16);
+                pdf.text("VexorNull Official Enterprise Credential (Back Side)", 105, 15, { align: "center" });
+                pdf.addImage(backImgData, 'PNG', x, 25, imgWidth, backImgHeight);
+
+                // Save Combined PDF
+                pdf.save(`${name}_Complete_Enterprise_Badge_v351.pdf`);
+
+            } catch (err) {
                 console.error("Error generating PDF:", err);
                 alert("Failed to export PDF badge.");
-            });
+            }
         }
 
         document.getElementById("inputPhoto").addEventListener("change", function(event) {
