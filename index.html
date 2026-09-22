@@ -1049,9 +1049,18 @@
             document.getElementById("verifyModal").classList.add("hidden");
         }
 
+        // Updated function to capture whichever card side is active (front or back)
+        function getActiveCardElement() {
+            const innerContainer = document.getElementById("cardInnerContainer");
+            const isFlipped = innerContainer.classList.contains("is-flipped");
+            return isFlipped ? document.getElementById("digitalCardBack") : document.getElementById("digitalCard");
+        }
+
         function downloadCardImage() {
-            const cardElement = document.getElementById("digitalCard");
+            const cardElement = getActiveCardElement();
+            const isFlipped = document.getElementById("cardInnerContainer").classList.contains("is-flipped");
             const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
+            const suffix = isFlipped ? "Back_Pass_v351" : "Official_ID_Pass_v351";
             
             html2canvas(cardElement, {
                 scale: 3,
@@ -1059,8 +1068,7 @@
                 backgroundColor: null
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `${name}_Official_ID_Pass_v351.png`;
-                link.link = canvas.toDataURL('image/png');
+                link.download = `${name}_${suffix}.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(err => {
@@ -1070,8 +1078,10 @@
         }
 
         function downloadCardPdf() {
-            const cardElement = document.getElementById("digitalCard");
+            const cardElement = getActiveCardElement();
+            const isFlipped = document.getElementById("cardInnerContainer").classList.contains("is-flipped");
             const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
+            const suffix = isFlipped ? "Back_Badge_v351" : "Enterprise_Badge_v351";
 
             html2canvas(cardElement, {
                 scale: 3,
@@ -1097,10 +1107,10 @@
                 pdf.setFont("helvetica", "bold");
                 pdf.setTextColor(15, 23, 42);
                 pdf.setFontSize(16);
-                pdf.text("VexorNull Official Enterprise Credential Badge v35.1", 105, 15, { align: "center" });
+                pdf.text(`VexorNull Official Enterprise Credential (${isFlipped ? 'Back Side' : 'Front Side'})`, 105, 15, { align: "center" });
 
                 pdf.addImage(imgData, 'PNG', x, y + 10, imgWidth, imgHeight);
-                pdf.save(`${name}_Enterprise_Badge_v351.pdf`);
+                pdf.save(`${name}_${suffix}.pdf`);
             }).catch(err => {
                 console.error("Error generating PDF:", err);
                 alert("Failed to export PDF badge.");
