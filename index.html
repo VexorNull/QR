@@ -400,7 +400,7 @@
                             <span id="codeLabel" class="text-[9px] text-slate-500 mt-2 font-mono tracking-wider">CRYPTOGRAPHIC CREDENTIAL QR</span>
                         </div>
 
-                        <!-- Authorized Organization Footer (Fixed Layout & Text Wrapping) -->
+                        <!-- Authorized Organization Footer -->
                         <div class="pt-2 border-t border-slate-200 flex justify-between items-center px-1 gap-2">
                             <span id="liveNonce" class="text-[9px] text-slate-400 font-mono whitespace-nowrap">NONCE: 0x9F3A</span>
                             <span id="cardOrg" class="text-[9px] sm:text-[10px] tracking-tight font-black text-blue-600 dynamic-text text-right uppercase leading-tight">AIRMEN GOLF CLUB & RECREATIONAL PARK</span>
@@ -1049,45 +1049,59 @@
             document.getElementById("verifyModal").classList.add("hidden");
         }
 
-        // Updated function to capture whichever card side is active (front or back)
-        function getActiveCardElement() {
+        // Updated PNG export function with mirror transform reset for back card
+        function downloadCardImage() {
             const innerContainer = document.getElementById("cardInnerContainer");
             const isFlipped = innerContainer.classList.contains("is-flipped");
-            return isFlipped ? document.getElementById("digitalCardBack") : document.getElementById("digitalCard");
-        }
-
-        function downloadCardImage() {
-            const cardElement = getActiveCardElement();
-            const isFlipped = document.getElementById("cardInnerContainer").classList.contains("is-flipped");
+            const cardElement = isFlipped ? document.getElementById("digitalCardBack") : document.getElementById("digitalCard");
             const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
             const suffix = isFlipped ? "Back_Pass_v351" : "Official_ID_Pass_v351";
             
+            if (isFlipped) {
+                cardElement.style.transform = "none";
+            }
+
             html2canvas(cardElement, {
                 scale: 3,
                 useCORS: true,
                 backgroundColor: null
             }).then(canvas => {
+                if (isFlipped) {
+                    cardElement.style.transform = "";
+                }
                 const link = document.createElement('a');
                 link.download = `${name}_${suffix}.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(err => {
+                if (isFlipped) {
+                    cardElement.style.transform = "";
+                }
                 console.error("Error capturing card:", err);
                 alert("Failed to capture ID image.");
             });
         }
 
+        // Updated PDF export function with mirror transform reset for back card
         function downloadCardPdf() {
-            const cardElement = getActiveCardElement();
-            const isFlipped = document.getElementById("cardInnerContainer").classList.contains("is-flipped");
+            const innerContainer = document.getElementById("cardInnerContainer");
+            const isFlipped = innerContainer.classList.contains("is-flipped");
+            const cardElement = isFlipped ? document.getElementById("digitalCardBack") : document.getElementById("digitalCard");
             const name = document.getElementById("inputName").value.replace(/\s+/g, '_');
             const suffix = isFlipped ? "Back_Badge_v351" : "Enterprise_Badge_v351";
+
+            if (isFlipped) {
+                cardElement.style.transform = "none";
+            }
 
             html2canvas(cardElement, {
                 scale: 3,
                 useCORS: true,
                 backgroundColor: null
             }).then(canvas => {
+                if (isFlipped) {
+                    cardElement.style.transform = "";
+                }
                 const imgData = canvas.toDataURL('image/png');
                 const { jsPDF } = window.jspdf;
                 const pdf = new jsPDF({
@@ -1112,6 +1126,9 @@
                 pdf.addImage(imgData, 'PNG', x, y + 10, imgWidth, imgHeight);
                 pdf.save(`${name}_${suffix}.pdf`);
             }).catch(err => {
+                if (isFlipped) {
+                    cardElement.style.transform = "";
+                }
                 console.error("Error generating PDF:", err);
                 alert("Failed to export PDF badge.");
             });
