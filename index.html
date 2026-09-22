@@ -371,23 +371,23 @@
                         <!-- Official Fields Registry Box -->
                         <div id="cardFieldsBox" class="bg-white border border-slate-200 rounded-xl p-3 text-left space-y-1.5 text-xs font-medium shadow-sm">
                             <div class="flex justify-between border-b border-slate-100 pb-1">
-                                <span class="text-slate-500 text-[11px]">Father :</span>
+                                <span class="text-slate-500 text-[11px]">Father:</span>
                                 <span id="cardFather" class="text-slate-800 font-semibold">Hidden</span>
                             </div>
                             <div class="flex justify-between border-b border-slate-100 pb-1">
-                                <span class="text-slate-500 text-[11px]">DOB :</span>
+                                <span class="text-slate-500 text-[11px]">DOB:</span>
                                 <span id="cardDob" class="text-slate-800 font-mono text-[11px]">10-07-2000</span>
                             </div>
                             <div class="flex justify-between border-b border-slate-100 pb-1">
-                                <span class="text-slate-500 text-[11px]">CNIC :</span>
+                                <span class="text-slate-500 text-[11px]">CNIC:</span>
                                 <span id="cardCnic" class="text-slate-800 font-mono text-[11px] font-semibold">42101-9988776-5</span>
                             </div>
                             <div class="flex justify-between border-b border-slate-100 pb-1">
-                                <span class="text-slate-500 text-[11px]">Issue Date :</span>
+                                <span class="text-slate-500 text-[11px]">Issue Date:</span>
                                 <span id="cardIssueDate" class="text-slate-800 font-mono text-[11px]">01-01-2026</span>
                             </div>
                             <div class="flex justify-between pb-0.5">
-                                <span class="text-slate-500 text-[11px]">Expiry Date :</span>
+                                <span class="text-slate-500 text-[11px]">Expiry Date:</span>
                                 <span id="cardExpiryDate" class="text-slate-800 font-mono text-[11px]">31-12-2028</span>
                             </div>
                         </div>
@@ -900,15 +900,15 @@
 
             const qrText = `[SECURE ID VERIFICATION v35.1]\n` +
                            `Credential ID: ${customId}\n` +
-                           `Name : ${name}\n` +
-                           `Father : ${father}\n` +
-                           `DOB : ${dob}\n` +
+                           `Name: ${name}\n` +
+                           `Father: ${father}\n` +
+                           `DOB: ${dob}\n` +
                            `Designation: ${designation}\n` +
-                           `Cnic : ${cnic}\n` +
-                           `Issue Date : ${issueDate}\n` +
-                           `Expiry Date : ${expiryDate}\n` +
-                           `Organization : ${org}\n` +
-                           `Clearance : ${clearance}\n` +
+                           `CNIC: ${cnic}\n` +
+                           `Issue Date: ${issueDate}\n` +
+                           `Expiry Date: ${expiryDate}\n` +
+                           `Organization: ${org}\n` +
+                           `Clearance: ${clearance}\n` +
                            `Signature: ${hashString}`;
 
             initCode(qrText);
@@ -962,16 +962,16 @@
             const helpline = document.getElementById("inputHelpline").value;
 
             const content = `Credential ID: ${customId}\n` +
-                            `Name : ${name}\n` +
-                            `Father : ${father}\n` +
-                            `DOB : ${dob}\n` +
+                            `Name: ${name}\n` +
+                            `Father: ${father}\n` +
+                            `DOB: ${dob}\n` +
                             `Designation: ${designation}\n` +
-                            `Cnic : ${cnic}\n` +
-                            `Issue Date : ${issueDate}\n` +
-                            `Expiry Date : ${expiryDate}\n` +
-                            `Clearance : ${clearance}\n` +
-                            `Helpline : ${helpline}\n\n` +
-                            `Authorized Organization : ${org}`;
+                            `CNIC: ${cnic}\n` +
+                            `Issue Date: ${issueDate}\n` +
+                            `Expiry Date: ${expiryDate}\n` +
+                            `Clearance: ${clearance}\n` +
+                            `Helpline: ${helpline}\n\n` +
+                            `Authorized Organization: ${org}`;
 
             const blob = new Blob([content], { type: 'text/plain;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
@@ -1049,7 +1049,6 @@
             document.getElementById("verifyModal").classList.add("hidden");
         }
 
-        // Updated PNG export function with mirror transform reset for back card
         function downloadCardImage() {
             const innerContainer = document.getElementById("cardInnerContainer");
             const isFlipped = innerContainer.classList.contains("is-flipped");
@@ -1082,7 +1081,6 @@
             });
         }
 
-        // Updated PDF export function with mirror transform reset for back card
         function downloadCardPdf() {
             const innerContainer = document.getElementById("cardInnerContainer");
             const isFlipped = innerContainer.classList.contains("is-flipped");
